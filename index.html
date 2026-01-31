@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDJ-FLX4 Controller</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controller-layout">
+            <!-- 左デッキ -->
+            <div class="deck">
+                <div class="top-buttons">
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">IN</div>
+                        <button class="top-btn-circle orange"></button>
+                        <div class="top-btn-label-sub">IN ADJ</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">OUT</div>
+                        <button class="top-btn-circle orange"></button>
+                        <div class="top-btn-label-sub">OUT ADJ</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">4 BEAT/EXIT</div>
+                        <button class="top-btn-circle black"></button>
+                        <div class="top-btn-label-sub">ACTIVE</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">CUE/LOOP</div>
+                        <button class="top-btn-circle black">
+                            <div class="arrow-icon">◁</div>
+                        </button>
+                        <div class="top-btn-label-sub">1/2X<br>DELL</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">CALL</div>
+                        <button class="top-btn-circle black">
+                            <div class="arrow-icon">▷</div>
+                        </button>
+                        <div class="top-btn-label-sub">2X<br>MEMORY</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">- MASTER</div>
+                        <button class="top-btn-circle orange">
+                            <div class="beat-sync-icon">
+                                <div class="beat-sync-text">BEAT<br>SYNC</div>
+                            </div>
+                        </button>
+                        <div class="top-btn-label-sub">TEMPO RANGE</div>
+                    </div>
+                </div>
+
+                <div class="jog-section">
+                    <div class="jog-wheel">
+                        <div class="jog-outer-rim">
+                            <div class="jog-platter">
+                                <div class="jog-center-logo">
+                                    <svg class="cube-logo" viewBox="0 0 100 100">
+                                        <polygon points="50,25 75,37.5 75,62.5 50,75 25,62.5 25,37.5"/>
+                                        <polygon points="50,25 50,50 75,62.5 75,37.5" opacity="0.7"/>
+                                        <polygon points="50,25 50,50 25,62.5 25,37.5" opacity="0.4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shift-container">
+                    <div class="shift-label">SHIFT</div>
+                    <button class="shift-btn-square"></button>
+                </div>
+
+                <div class="bottom-section">
+                    <div class="left-buttons">
+                        <div>
+                            <button class="large-btn">
+                                <div class="cue-text">CUE</div>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="large-btn">
+                                <div class="play-icon">▶❚❚</div>
+                            </button>
+                            <div class="btn-label">PLAY/PAUSE</div>
+                        </div>
+                    </div>
+
+                    <div class="pads-area">
+                        <div class="pad-mode-buttons">
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn active">HOT CUE</button>
+                                <div class="pad-mode-label">KEYBOARD</div>
+                            </div>
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn">PAD FX1</button>
+                                <div class="pad-mode-label">PAD FX2</div>
+                            </div>
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn">BEAT JUMP</button>
+                                <div class="pad-mode-label">BEAT LOOP</div>
+                            </div>
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn">SAMPLER</button>
+                                <div class="pad-mode-label">KEY SHIFT</div>
+                            </div>
+                        </div>
+
+                        <div class="performance-pads">
+                            <div class="pad">1</div>
+                            <div class="pad">2</div>
+                            <div class="pad">3</div>
+                            <div class="pad">4</div>
+                            <div class="pad">5</div>
+                            <div class="pad">6</div>
+                            <div class="pad">7</div>
+                            <div class="pad">8</div>
+                        </div>
+                    </div>
+
+                    <div class="right-controls">
+                        <div class="tempo-fader-wrapper">
+                            <div class="tempo-markers">
+                                <span>−</span>
+                                <span>0</span>
+                                <span>+</span>
+                            </div>
+                            <div class="tempo-fader-container">
+                                <div class="tempo-fader">
+                                    <div class="tempo-track"></div>
+                                    <div class="tempo-markers-lines">
+                                        <div class="tempo-marker-line top"></div>
+                                        <div class="tempo-marker-line middle"></div>
+                                        <div class="tempo-marker-line bottom"></div>
+                                    </div>
+                                    <div class="tempo-knob"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tempo-label">Tempo</div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+
+            <!-- 中央ミキサー -->
+            <div class="mixer-center">
+                <div class="top-area">
+                    <div class="load-section">
+                        <div class="load-label-top">LOAD</div>
+                        <div class="load-btn">◀</div>
+                        <div class="load-label-bottom">🔀</div>
+                    </div>
+                    <div class="browse-section">
+                        <div class="browse-knob">
+                            <div class="knob-indicator"></div>
+                        </div>
+                        <div class="browse-label">BACK</div>
+                    </div>
+                    <div class="load-section">
+                        <div class="load-label-top">LOAD</div>
+                        <div class="load-btn">▶</div>
+                        <div class="load-label-bottom">VIEW</div>
+                    </div>
+                </div>
+
+                <div class="mixer-main">
+                    <div class="channel-strip">
+                        <div class="knob-label-top">TRIM</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-∞</div>
+                                <div class="knob-value-label right">+9</div>
+                            </div>
+                            <div class="knob knob-trim">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">HI</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-26</div>
+                                <div class="knob-value-label right">+6</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">MID</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-26</div>
+                                <div class="knob-value-label right">+6</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">LOW</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-26</div>
+                                <div class="knob-value-label right">+6</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">CFX</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">LOW</div>
+                                <div class="knob-value-label right">HI</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 12px;">
+                            <div class="cue-channel-btn">
+                                <div class="cue-text">CUE</div>
+                            </div>
+                            <div class="cue-number-label">1</div>
+                        </div>
+                        <div class="channel-fader">
+                            <div class="fader-track"></div>
+                            <div class="fader-knob"></div>
+                        </div>
+                    </div>
+
+                    <div class="level-meters">
+                        <div class="bluetooth-icon"></div>
+                        <div class="meter-label">MIDI</div>
+                        <div class="midi-indicator"></div>
+                        <div class="meters-container">
+                            <div class="meter-column">
+                                <div class="meter-bar red"></div>
+                                <div class="meter-bar orange"></div>
+                                <div class="meter-bar orange"></div>
+                                <div class="meter-bar green"></div>
+                                <div class="meter-bar green"></div>
+                            </div>
+                            <div class="meter-column">
+                                <div class="meter-bar red"></div>
+                                <div class="meter-bar orange"></div>
+                                <div class="meter-bar orange"></div>
+                                <div class="meter-bar green"></div>
+                                <div class="meter-bar green"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="channel-strip">
+                        <div class="knob-label-top">TRIM</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-∞</div>
+                                <div class="knob-value-label right">+9</div>
+                            </div>
+                            <div class="knob knob-trim">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">HI</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-26</div>
+                                <div class="knob-value-label right">+6</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">MID</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-26</div>
+                                <div class="knob-value-label right">+6</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">LOW</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-26</div>
+                                <div class="knob-value-label right">+6</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div class="knob-label-top" style="margin-top: 12px;">CFX</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">LOW</div>
+                                <div class="knob-value-label right">HI</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 12px;">
+                            <div class="cue-channel-btn">
+                                <div class="cue-text">CUE</div>
+                            </div>
+                            <div class="cue-number-label">2</div>
+                        </div>
+                        <div class="channel-fader">
+                            <div class="fader-track"></div>
+                            <div class="fader-knob"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-area">
+                    <div class="crossfader">
+                        <div class="crossfader-track"></div>
+                        <div class="crossfader-knob"></div>
+                    </div>
+                    <div class="pioneer-logo">Pioneer DJ</div>
+                </div>
+
+                <div class="left-area">
+                    <div class="left-header-text">
+                        <div class="left-header-line">PERFORMANCE</div>
+                        <div class="left-header-line">DJ CONTROLLER</div>
+                        <div class="left-header-line large">DDJ-FLX4</div>
+                        <div class="left-header-line" style="margin-top: 8px;">⊙rekordbox</div>
+                        <div class="left-header-line">serato</div>
+                    </div>
+                    <div class="left-knob-item">
+                        <div class="knob-label-top">MIC LEVEL</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-∞</div>
+                                <div class="knob-value-label right">0</div>
+                            </div>
+                            <div class="knob knob-medium">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orange-btn-circle">
+                        <div class="orange-btn-text">SMART<br>CFX</div>
+                    </div>
+                    <div class="left-label">FX SELECT</div>
+                    <div class="left-knob-item">
+                        <div class="knob-label-top">🎧MIX</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">CUE</div>
+                                <div class="knob-value-label right">MST</div>
+                            </div>
+                            <div class="knob knob-medium">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-knob-item">
+                        <div class="knob-label-top">🎧LEVEL</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-∞</div>
+                                <div class="knob-value-label right">0</div>
+                            </div>
+                            <div class="knob knob-medium">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orange-btn-circle">
+                        <div class="orange-btn-text">SMART<br>FADER</div>
+                    </div>
+                </div>
+
+                <div class="right-area">
+                    <div class="right-knob-item">
+                        <div class="knob-label-top">MASTER LEVEL</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">-∞</div>
+                                <div class="knob-value-label right">0</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cue-channel-btn">
+                        <div class="cue-text">CUE</div>
+                    </div>
+                    <div class="right-label">BEAT FX</div>
+                    <div style="width: 100%;">
+                        <div class="beat-fx-labels">
+                            <div class="beat-fx-label">1</div>
+                            <div class="beat-fx-label">2</div>
+                            <div class="beat-fx-label">1&2</div>
+                        </div>
+                        <div class="beat-fx-switch">
+                            <div class="beat-fx-switch-knob"></div>
+                        </div>
+                    </div>
+                    <div class="right-label">FX SELECT</div>
+                    <div class="fx-select-container">
+                        <div class="fx-select-btn">▼</div>
+                        <div class="fx-select-label">▲</div>
+                    </div>
+                    <div class="right-label">BEAT</div>
+                    <div class="beat-arrows">
+                        <div class="beat-arrow-btn">◀</div>
+                        <div class="beat-arrow-btn">▶</div>
+                    </div>
+                    <div class="auto-tap-labels">
+                        <div class="auto-tap-label">AUTO</div>
+                        <div class="auto-tap-label">TAP</div>
+                    </div>
+                    <div class="right-knob-item">
+                        <div class="knob-label-top">LEVEL/DEPTH</div>
+                        <div class="knob-with-labels">
+                            <div class="knob-value-labels">
+                                <div class="knob-value-label left">MIN</div>
+                                <div class="knob-value-label right">MAX</div>
+                            </div>
+                            <div class="knob knob-large">
+                                <div class="knob-indicator-mixer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-label">ON/OFF</div>
+                    <div class="large-orange-btn">
+                        <div class="large-orange-text">ON/OFF</div>
+                    </div>
+                    <div class="left-label">RELEASE FX</div>
+                </div>
+            </div>
+
+            <!-- 右デッキ -->
+            <div class="deck">
+                <div class="top-buttons">
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">IN</div>
+                        <button class="top-btn-circle orange"></button>
+                        <div class="top-btn-label-sub">IN ADJ</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">OUT</div>
+                        <button class="top-btn-circle orange"></button>
+                        <div class="top-btn-label-sub">OUT ADJ</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">4 BEAT/EXIT</div>
+                        <button class="top-btn-circle black"></button>
+                        <div class="top-btn-label-sub">ACTIVE</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">CUE/LOOP</div>
+                        <button class="top-btn-circle black">
+                            <div class="arrow-icon">◁</div>
+                        </button>
+                        <div class="top-btn-label-sub">1/2X<br>DELL</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">CALL</div>
+                        <button class="top-btn-circle black">
+                            <div class="arrow-icon">▷</div>
+                        </button>
+                        <div class="top-btn-label-sub">2X<br>MEMORY</div>
+                    </div>
+                    <div class="top-btn">
+                        <div class="top-btn-label-main">- MASTER</div>
+                        <button class="top-btn-circle orange">
+                            <div class="beat-sync-icon">
+                                <div class="beat-sync-text">BEAT<br>SYNC</div>
+                            </div>
+                        </button>
+                        <div class="top-btn-label-sub">TEMPO RANGE</div>
+                    </div>
+                </div>
+
+                <div class="jog-section">
+                    <div class="jog-wheel">
+                        <div class="jog-outer-rim">
+                            <div class="jog-platter">
+                                <div class="jog-center-logo">
+                                    <svg class="cube-logo" viewBox="0 0 100 100">
+                                        <polygon points="50,25 75,37.5 75,62.5 50,75 25,62.5 25,37.5"/>
+                                        <polygon points="50,25 50,50 75,62.5 75,37.5" opacity="0.7"/>
+                                        <polygon points="50,25 50,50 25,62.5 25,37.5" opacity="0.4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shift-container">
+                    <div class="shift-label">SHIFT</div>
+                    <button class="shift-btn-square"></button>
+                </div>
+
+                <div class="bottom-section">
+                    <div class="left-buttons">
+                        <div>
+                            <button class="large-btn">
+                                <div class="cue-text">CUE</div>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="large-btn">
+                                <div class="play-icon">▶❚❚</div>
+                            </button>
+                            <div class="btn-label">PLAY/PAUSE</div>
+                        </div>
+                    </div>
+
+                    <div class="pads-area">
+                        <div class="pad-mode-buttons">
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn active">HOT CUE</button>
+                                <div class="pad-mode-label">KEYBOARD</div>
+                            </div>
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn">PAD FX1</button>
+                                <div class="pad-mode-label">PAD FX2</div>
+                            </div>
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn">BEAT JUMP</button>
+                                <div class="pad-mode-label">BEAT LOOP</div>
+                            </div>
+                            <div class="pad-mode-item">
+                                <button class="pad-mode-btn">SAMPLER</button>
+                                <div class="pad-mode-label">KEY SHIFT</div>
+                            </div>
+                        </div>
+
+                        <div class="performance-pads">
+                            <div class="pad">1</div>
+                            <div class="pad">2</div>
+                            <div class="pad">3</div>
+                            <div class="pad">4</div>
+                            <div class="pad">5</div>
+                            <div class="pad">6</div>
+                            <div class="pad">7</div>
+                            <div class="pad">8</div>
+                        </div>
+                    </div>
+
+                    <div class="right-controls">
+                        <div class="tempo-fader-wrapper">
+                            <div class="tempo-markers">
+                                <span>−</span>
+                                <span>0</span>
+                                <span>+</span>
+                            </div>
+                            <div class="tempo-fader-container">
+                                <div class="tempo-fader">
+                                    <div class="tempo-track"></div>
+                                    <div class="tempo-markers-lines">
+                                        <div class="tempo-marker-line top"></div>
+                                        <div class="tempo-marker-line middle"></div>
+                                        <div class="tempo-marker-line bottom"></div>
+                                    </div>
+                                    <div class="tempo-knob"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tempo-label">Tempo</div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

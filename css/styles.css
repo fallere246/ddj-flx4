@@ -1,0 +1,1253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.controller-layout {
+    display: grid;
+    grid-template-columns: 480px 720px 480px;
+    gap: 0;
+    background: #3a3a3a;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* ========== デッキ共通スタイル ========== */
+.deck {
+    background: #3a3a3a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ========== 上部ボタン ========== */
+.top-buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.top-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.top-btn-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+.top-btn-circle.orange {
+    background: radial-gradient(circle at 30% 30%, #ffb347, #ff8c00);
+    box-shadow: inset 0 3px 8px rgba(255,255,255,0.4),
+                inset 0 -2px 6px rgba(0,0,0,0.3),
+                0 4px 12px rgba(255, 140, 0, 0.5);
+    color: #fff;
+}
+
+.top-btn-circle.orange:hover {
+    background: radial-gradient(circle at 30% 30%, #ffc266, #ffa500);
+    box-shadow: inset 0 3px 8px rgba(255,255,255,0.5),
+                inset 0 -2px 6px rgba(0,0,0,0.3),
+                0 4px 16px rgba(255, 140, 0, 0.7);
+}
+
+.top-btn-circle.orange:active {
+    transform: scale(0.96);
+}
+
+.top-btn-circle.black {
+    background: radial-gradient(circle at 30% 30%, #3a3a3a, #1a1a1a);
+    border: 3px solid #2a2a2a;
+    color: #888;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.6),
+                inset 0 -2px 4px rgba(255,255,255,0.03),
+                0 3px 8px rgba(0,0,0,0.4);
+}
+
+.top-btn-circle.black:hover {
+    border-color: #3a3a3a;
+    background: radial-gradient(circle at 30% 30%, #4a4a4a, #2a2a2a);
+}
+
+.top-btn-label-main {
+    font-size: 0.6rem;
+    color: #ccc;
+    text-align: center;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.top-btn-label-sub {
+    font-size: 0.5rem;
+    color: #888;
+    text-align: center;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.arrow-icon {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.beat-sync-icon {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.beat-sync-text {
+    font-size: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+}
+
+/* ========== ジョグホイール ========== */
+.jog-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.jog-wheel {
+    width: 340px;
+    height: 340px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.jog-wheel:hover {
+    transform: scale(1.01);
+}
+
+.jog-wheel:active {
+    transform: scale(0.99);
+}
+
+.jog-outer-rim {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border-radius: 50%;
+    border: 8px solid #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6),
+                inset 0 -2px 10px rgba(255,255,255,0.05);
+}
+
+.jog-platter {
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.jog-center-logo {
+    width: 60px;
+    height: 60px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.9);
+}
+
+.cube-logo {
+    width: 35px;
+    height: 35px;
+    opacity: 0.3;
+}
+
+.cube-logo polygon {
+    fill: #666;
+}
+
+/* ========== SHIFTボタン ========== */
+.shift-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+    gap: 5px;
+}
+
+.shift-label {
+    font-size: 0.65rem;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.shift-btn-square {
+    width: 45px;
+    height: 45px;
+    background: #1a1a1a;
+    border: 2px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.5),
+                0 2px 4px rgba(0,0,0,0.3);
+}
+
+.shift-btn-square:hover {
+    border-color: #666;
+    background: #2a2a2a;
+}
+
+.shift-btn-square:active {
+    transform: scale(0.95);
+}
+
+/* ========== 下部コントロール ========== */
+.bottom-section {
+    display: grid;
+    grid-template-columns: 75px 1fr 85px 25px;
+    gap: 8px;
+    align-items: start;
+}
+
+.left-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.large-btn {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #2a2a2a, #0a0a0a);
+    border: 3px solid #1a1a1a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.6),
+                0 4px 12px rgba(0,0,0,0.4);
+}
+
+.large-btn:hover {
+    border-color: #2a2a2a;
+    transform: translateY(-1px);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.6),
+                0 6px 16px rgba(0,0,0,0.5);
+}
+
+.large-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-label {
+    font-size: 0.65rem;
+    color: #999;
+    text-align: center;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.play-icon {
+    color: #8bc34a;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.cue-text {
+    color: #ff8c00;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ========== パフォーマンスパッド ========== */
+.pads-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pad-mode-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.pad-mode-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.pad-mode-btn {
+    width: 100%;
+    background: #1a1a1a;
+    border: 3px solid #ff8c00;
+    border-radius: 6px;
+    padding: 8px 4px;
+    color: #ff8c00;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.58rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    line-height: 1.1;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.pad-mode-btn:hover {
+    background: #2a2a2a;
+    border-color: #ffa500;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+}
+
+.pad-mode-btn.active {
+    background: #ff8c00;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+}
+
+.pad-mode-label {
+    font-size: 0.52rem;
+    color: #666;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.performance-pads {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    padding: 12px;
+    background: rgba(139, 0, 139, 0.15);
+    border-radius: 8px;
+}
+
+.pad {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #2a1a2a, #1a0a1a);
+    border: 3px solid #c060c0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c060c0;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4),
+                0 2px 6px rgba(0,0,0,0.3);
+}
+
+.pad:hover {
+    background: linear-gradient(135deg, #ff8c00, #ff6b00);
+    border-color: #ff8c00;
+    color: #000;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.2),
+                0 0 20px rgba(255, 140, 0, 0.6);
+    transform: scale(1.05);
+}
+
+.pad:active {
+    transform: scale(0.95);
+}
+
+/* ========== テンポフェーダー ========== */
+.right-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.tempo-fader-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.tempo-markers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: normal;
+    padding: 8px 0;
+}
+
+.tempo-fader-container {
+    position: relative;
+    width: 65px;
+    height: 220px;
+}
+
+.tempo-fader {
+    width: 100%;
+    height: 100%;
+    background: #2a2a2a;
+    border-radius: 6px;
+    border: 2px solid #1a1a1a;
+    position: relative;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.7),
+                0 2px 6px rgba(0,0,0,0.3);
+}
+
+.tempo-track {
+    position: absolute;
+    width: 4px;
+    height: 88%;
+    background: #1a1a1a;
+    left: 50%;
+    top: 6%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.tempo-markers-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.tempo-marker-line {
+    position: absolute;
+    width: 28px;
+    height: 1.5px;
+    background: #666;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tempo-marker-line.top {
+    top: 8%;
+}
+
+.tempo-marker-line.middle {
+    top: 50%;
+    background: #888;
+    width: 32px;
+}
+
+.tempo-marker-line.bottom {
+    bottom: 8%;
+}
+
+.tempo-knob {
+    position: absolute;
+    width: 55px;
+    height: 22px;
+    background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    border: 1px solid #1a1a1a;
+    cursor: grab;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5),
+                inset 0 1px 2px rgba(255,255,255,0.08);
+}
+
+.tempo-knob::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 10px;
+    background: #666;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+}
+
+.tempo-knob:active {
+    cursor: grabbing;
+    background: linear-gradient(to bottom, #3a3a3a, #1a1a1a);
+}
+
+.tempo-label {
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+/* ========== ミキサーセクション ========== */
+.mixer-center {
+    background: #3a3a3a;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 15px;
+}
+
+.top-area {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.load-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.load-label-top {
+    font-size: 0.65rem;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.load-btn {
+    background: linear-gradient(to bottom, #2a2a2a, #0a0a0a);
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 18px 28px;
+    color: #888;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.6),
+                0 3px 8px rgba(0,0,0,0.4);
+}
+
+.load-btn:hover {
+    background: linear-gradient(to bottom, #3a3a3a, #1a1a1a);
+    border-color: #2a2a2a;
+}
+
+.load-label-bottom {
+    font-size: 0.55rem;
+    color: #888;
+    border: 1px solid #555;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.3);
+}
+
+.browse-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.browse-knob {
+    width: 85px;
+    height: 85px;
+    background: radial-gradient(circle at 35% 35%, #333, #0a0a0a);
+    border-radius: 50%;
+    border: 4px solid #1a1a1a;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.8),
+                0 4px 12px rgba(0,0,0,0.5);
+}
+
+.browse-knob::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    background: conic-gradient(from 0deg, #1a1a1a 0deg, #2a2a2a 90deg, #1a1a1a 180deg, #0a0a0a 270deg);
+    border-radius: 50%;
+}
+
+.browse-knob:hover {
+    border-color: #2a2a2a;
+}
+
+.knob-indicator {
+    position: absolute;
+    width: 4px;
+    height: 32px;
+    background: linear-gradient(to bottom, #aaa, #666);
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.browse-label {
+    font-size: 0.6rem;
+    color: #888;
+    border: 1px solid #555;
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.3);
+}
+
+/* ========== ミキサーチャンネル ========== */
+.mixer-main {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 55px 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+.channel-strip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.knob {
+    background: radial-gradient(circle at 30% 30%, #333, #0a0a0a);
+    border-radius: 50%;
+    border: 3px solid #1a1a1a;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: inset 0 3px 10px rgba(0,0,0,0.8),
+                inset 0 -2px 6px rgba(255,255,255,0.03),
+                0 3px 8px rgba(0,0,0,0.5);
+}
+
+.knob::before {
+    content: '';
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    top: 12.5%;
+    left: 12.5%;
+    background: conic-gradient(from 0deg, #1a1a1a 0deg, #2a2a2a 90deg, #1a1a1a 180deg, #0a0a0a 270deg);
+    border-radius: 50%;
+}
+
+.knob:hover {
+    border-color: #2a2a2a;
+}
+
+.knob-trim {
+    width: 50px;
+    height: 50px;
+}
+
+.knob-large {
+    width: 58px;
+    height: 58px;
+}
+
+.knob-medium {
+    width: 48px;
+    height: 48px;
+}
+
+.knob-indicator-mixer {
+    position: absolute;
+    width: 3px;
+    height: 35%;
+    background: linear-gradient(to bottom, #bbb, #777);
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.knob-with-labels {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.knob-value-labels {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    pointer-events: none;
+}
+
+.knob-value-label {
+    position: absolute;
+    font-size: 0.55rem;
+    color: #888;
+}
+
+.knob-value-label.left {
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.knob-value-label.right {
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.knob-label-top {
+    font-size: 0.6rem;
+    color: #999;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+/* ========== レベルメーター ========== */
+.level-meters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+}
+
+.bluetooth-icon {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.bluetooth-icon::before {
+    content: 'Ⓑ';
+    font-size: 1rem;
+}
+
+.meter-label {
+    font-size: 0.6rem;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.midi-indicator {
+    width: 30px;
+    height: 6px;
+    background: linear-gradient(to right, #8bc34a 0%, #cddc39 100%);
+    border-radius: 3px;
+    border: 1px solid #0a0a0a;
+    margin-bottom: 8px;
+}
+
+.meters-container {
+    display: flex;
+    gap: 6px;
+}
+
+.meter-column {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.meter-bar {
+    width: 7px;
+    height: 20px;
+    border-radius: 2px;
+    border: 1px solid #0a0a0a;
+}
+
+.meter-bar.red {
+    background: linear-gradient(to top, #f44336 0%, #ff5252 100%);
+}
+
+.meter-bar.orange {
+    background: linear-gradient(to top, #ff9800 0%, #ffb74d 100%);
+}
+
+.meter-bar.green {
+    background: linear-gradient(to top, #8bc34a 0%, #aed581 100%);
+}
+
+/* ========== チャンネルフェーダー ========== */
+.channel-fader {
+    width: 65px;
+    height: 180px;
+    background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+    border-radius: 8px;
+    border: 2px solid #0a0a0a;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.8),
+                0 3px 8px rgba(0,0,0,0.5);
+}
+
+.fader-track {
+    position: absolute;
+    width: 4px;
+    height: 85%;
+    background: #0a0a0a;
+    left: 50%;
+    top: 7.5%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.fader-knob {
+    position: absolute;
+    width: 55px;
+    height: 30px;
+    background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    border: 1px solid #1a1a1a;
+    cursor: grab;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.6),
+                inset 0 1px 3px rgba(255,255,255,0.08);
+}
+
+.fader-knob:active {
+    cursor: grabbing;
+    background: linear-gradient(to bottom, #3a3a3a, #1a1a1a);
+}
+
+.fader-knob::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background: #666;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+}
+
+.cue-channel-btn {
+    background: #0a0a0a;
+    border: 3px solid #ff8c00;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.6),
+                0 3px 8px rgba(255, 140, 0, 0.2);
+}
+
+.cue-channel-btn:hover {
+    background: #1a1a1a;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.6),
+                0 3px 12px rgba(255, 140, 0, 0.4);
+}
+
+.cue-number-label {
+    color: #888;
+    font-size: 1.1rem;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 6px;
+}
+
+/* ========== 左サイドエリア ========== */
+.left-area {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-self: center;
+    align-self: start;
+}
+
+.left-header-text {
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.left-header-line {
+    font-size: 0.5rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.left-header-line.large {
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: #888;
+    margin: 3px 0;
+}
+
+.left-knob-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.orange-btn-circle {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #ffa500, #ff8c00);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.3),
+                0 4px 12px rgba(255, 140, 0, 0.4);
+    transition: all 0.2s;
+}
+
+.orange-btn-circle:hover {
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.4),
+                0 4px 16px rgba(255, 140, 0, 0.6);
+}
+
+.orange-btn-text {
+    font-size: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.left-label {
+    font-size: 0.55rem;
+    color: #888;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.3);
+}
+
+/* ========== 右サイドエリア ========== */
+.right-area {
+    grid-column: 3;
+    grid-row: 2 / 4;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-self: center;
+    align-self: start;
+}
+
+.right-knob-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.right-label {
+    font-size: 0.6rem;
+    color: #888;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 5px 0;
+}
+
+.beat-fx-labels {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.beat-fx-label {
+    font-size: 0.6rem;
+    color: #888;
+    text-align: center;
+}
+
+.beat-fx-switch {
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+    border: 2px solid #0a0a0a;
+    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.6);
+}
+
+.beat-fx-switch-knob {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    border: 1px solid #1a1a1a;
+    cursor: grab;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.beat-fx-switch-knob:active {
+    cursor: grabbing;
+}
+
+.beat-fx-switch-knob::after {
+    content: '・・・';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.fx-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.fx-select-label {
+    font-size: 0.55rem;
+    color: #888;
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.3);
+}
+
+.fx-select-btn {
+    background: #1a1a1a;
+    border: 2px solid #444;
+    border-radius: 4px;
+    padding: 6px;
+    color: #888;
+    font-size: 0.9rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.fx-select-btn:hover {
+    border-color: #666;
+    background: #2a2a2a;
+}
+
+.beat-arrows {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+}
+
+.beat-arrow-btn {
+    flex: 1;
+    background: #1a1a1a;
+    border: 2px solid #444;
+    border-radius: 4px;
+    padding: 8px;
+    color: #888;
+    font-size: 0.9rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.beat-arrow-btn:hover {
+    border-color: #666;
+    background: #2a2a2a;
+}
+
+.auto-tap-labels {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+}
+
+.auto-tap-label {
+    flex: 1;
+    font-size: 0.55rem;
+    color: #888;
+    text-align: center;
+    padding: 6px 4px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.3);
+}
+
+.large-orange-btn {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #ffa500, #ff8c00);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 8px rgba(255,255,255,0.3),
+                0 4px 16px rgba(255, 140, 0, 0.5);
+    transition: all 0.2s;
+}
+
+.large-orange-btn:hover {
+    box-shadow: inset 0 2px 8px rgba(255,255,255,0.4),
+                0 4px 20px rgba(255, 140, 0, 0.7);
+}
+
+.large-orange-text {
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* ========== クロスフェーダー ========== */
+.bottom-area {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.crossfader {
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+    border-radius: 8px;
+    border: 2px solid #0a0a0a;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.8),
+                0 3px 8px rgba(0,0,0,0.5);
+}
+
+.crossfader-track {
+    position: absolute;
+    width: 85%;
+    height: 4px;
+    background: #0a0a0a;
+    left: 7.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+.crossfader-knob {
+    position: absolute;
+    width: 80px;
+    height: 50px;
+    background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    border: 1px solid #1a1a1a;
+    cursor: grab;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.6),
+                inset 0 1px 3px rgba(255,255,255,0.08);
+}
+
+.crossfader-knob:active {
+    cursor: grabbing;
+    background: linear-gradient(to bottom, #3a3a3a, #1a1a1a);
+}
+
+.crossfader-knob::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 30px;
+    background: #666;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+}
+
+.pioneer-logo {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #666;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 3px;
+    margin: 8px 0;
+}
