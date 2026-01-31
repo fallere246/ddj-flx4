@@ -23,8 +23,8 @@ body {
 
 .controller-layout {
     display: grid;
-    grid-template-columns: 520px 640px 520px;
-    gap: 20px;
+    grid-template-columns: 600px 580px 600px;
+    gap: 25px;
     background: #3a3a3a;
     border-radius: 15px;
     padding: 18px;
@@ -33,7 +33,7 @@ body {
 /* ========== デッキ共通スタイル ========== */
 .deck {
     background: #3a3a3a;
-    padding: 18px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -55,8 +55,8 @@ body {
 }
 
 .top-btn-circle {
-    width: 58px;
-    height: 58px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -152,8 +152,8 @@ body {
 }
 
 .jog-wheel {
-    width: 360px;
-    height: 360px;
+    width: 570px;
+    height: 570px;
     position: relative;
     cursor: pointer;
     transition: transform 0.1s;
@@ -265,8 +265,8 @@ body {
 }
 
 .large-btn {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #2a2a2a, #0a0a0a);
     border: 3px solid #1a1a1a;
@@ -379,8 +379,8 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 8px;
-    padding: 12px;
+    gap: 10px;
+    padding: 15px;
     background: rgba(139, 0, 139, 0.15);
     border-radius: 8px;
 }
@@ -433,7 +433,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 240px;
+    height: 250px;
     font-size: 0.75rem;
     color: #999;
     font-weight: normal;
@@ -443,7 +443,7 @@ body {
 .tempo-fader-container {
     position: relative;
     width: 65px;
-    height: 240px;
+    height: 250px;
 }
 
 .tempo-fader {
@@ -543,9 +543,9 @@ body {
     background: #3a3a3a;
     padding: 18px;
     display: grid;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-columns: 95px 1fr 95px;
     grid-template-rows: auto auto 1fr auto;
-    gap: 12px;
+    gap: 10px;
 }
 
 .top-area {
@@ -924,7 +924,7 @@ body {
     grid-row: 2 / 4;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
     align-items: center;
     justify-self: center;
     align-self: start;
@@ -933,7 +933,47 @@ body {
 .left-header-text {
     text-align: center;
     line-height: 1.4;
-    margin-bottom: 20px;
+    margin-bottom: 45px;
+}
+
+.left-section-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+/* セクション1: MIC LEVEL下 */
+.left-section-group:nth-of-type(1) {
+    margin-bottom: 40px;
+}
+
+/* セクション2: SMART CFX + FX SELECT下 */
+.left-section-group:nth-of-type(2) {
+    margin-bottom: 40px;
+}
+
+.left-section-group:nth-of-type(2) .orange-btn-circle {
+    margin-bottom: 8px;
+}
+
+/* セクション3: MIX + LEVEL下 */
+.left-section-group:nth-of-type(3) {
+    margin-bottom: 60px;
+}
+
+.left-section-group .left-knob-item {
+    margin-bottom: 0;
+}
+
+.left-section-group .left-knob-item + .left-knob-item {
+    margin-top: 8px;
+}
+
+.left-area > .orange-btn-circle:last-child {
+    margin-top: 40px;
+    margin-bottom: 0;
 }
 
 .left-header-line {
@@ -1002,10 +1042,62 @@ body {
     grid-row: 2 / 4;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
     align-items: center;
     justify-self: center;
     align-self: start;
+}
+
+.right-section-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* セクション1: MASTER LEVEL下 */
+.right-section-group:nth-of-type(1) {
+    margin-bottom: 35px;
+}
+
+/* セクション2: CUE下 */
+.right-section-group:nth-of-type(2) {
+    margin-bottom: 15px;
+}
+
+/* セクション3: BEAT FX下 */
+.right-section-group:nth-of-type(3) {
+    margin-bottom: 25px;
+}
+
+/* セクション4: FX SELECT下 */
+.right-section-group:nth-of-type(4) {
+    margin-bottom: 20px;
+}
+
+/* セクション5: BEAT下 */
+.right-section-group:nth-of-type(5) {
+    margin-bottom: 25px;
+}
+
+/* セクション6: LEVEL/DEPTH下 */
+.right-section-group:nth-of-type(6) {
+    margin-bottom: 20px;
+}
+
+/* セクション7: ON/OFF（最後） */
+.right-section-group:nth-of-type(7) {
+    margin-bottom: 0;
+}
+
+.right-section-group .right-label {
+    margin: 0;
+}
+
+.right-section-group .beat-arrows {
+    margin-bottom: 5px;
 }
 
 .right-knob-item {
