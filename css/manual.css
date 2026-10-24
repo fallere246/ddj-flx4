@@ -1,0 +1,697 @@
+/* ========== Web マニュアルの画面 ========== */
+:root {
+    --ui-font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, sans-serif;
+    --ui-bg: #f4f4f2;
+    --ui-surface: #fff;
+    --ui-line: #e2e1dd;
+    --ui-text: #222;
+    --ui-sub: #6b6b6b;
+    --accent: #e47a1c;
+    --accent-soft: #fdf0e3;
+    --mac: #b45fb0;
+    --ios: #4a9b3c;
+    --pro: #7d7d7d;
+    --topbar-h: 60px;
+}
+
+body {
+    background: var(--ui-bg);
+    color: var(--ui-text);
+    font-family: var(--ui-font);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ========== 上部バー ========== */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: var(--topbar-h);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--ui-line);
+}
+
+.title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.title span {
+    font-weight: 500;
+    color: var(--ui-sub);
+}
+
+.sw-select {
+    display: flex;
+    background: #ecebe8;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.sw-select input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sw-select span {
+    display: block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--ui-sub);
+    cursor: pointer;
+}
+
+.sw-select small {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.sw-select input:checked + span {
+    background: var(--ui-surface);
+    color: var(--ui-text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.sw-select input:focus-visible + span {
+    outline: 2px solid var(--accent);
+}
+
+.pro-toggle {
+    font-size: 13px;
+    color: var(--ui-sub);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.pro-toggle[hidden] {
+    display: none;
+}
+
+.shift-toggle {
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1.5px solid #bdbcb8;
+    background: var(--ui-surface);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #555;
+}
+
+.shift-toggle[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.search {
+    margin-left: auto;
+    width: 220px;
+    padding: 7px 12px;
+    border: 1px solid #cfcecb;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 13px;
+    background: var(--ui-surface);
+}
+
+.search:focus {
+    outline: 2px solid var(--accent);
+    border-color: transparent;
+}
+
+/* ========== 本体 + パネル ========== */
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 20px;
+    padding: 20px;
+    align-items: start;
+}
+
+.viewer {
+    min-width: 0;
+}
+
+.stage-box {
+    position: relative;
+}
+
+.hint {
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--ui-sub);
+}
+
+.panel {
+    position: sticky;
+    top: calc(var(--topbar-h) + 20px);
+    max-height: calc(100vh - var(--topbar-h) - 40px);
+    display: flex;
+    flex-direction: column;
+    background: var(--ui-surface);
+    border: 1px solid var(--ui-line);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--ui-line);
+}
+
+.tabs button {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ui-sub);
+    border-bottom: 2px solid transparent;
+}
+
+.tabs button[aria-selected="true"] {
+    color: var(--ui-text);
+    border-bottom-color: var(--accent);
+}
+
+.tab-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px 20px;
+}
+
+.source {
+    padding: 10px 20px;
+    border-top: 1px solid var(--ui-line);
+    font-size: 11px;
+    color: #999;
+}
+
+@media (max-width: 1000px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .panel {
+        position: static;
+        max-height: none;
+    }
+
+    .search {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar,
+    .layout {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .sw-select span {
+        padding: 4px 8px;
+    }
+}
+
+/* ========== 説明パネルの中身 ========== */
+.d-name {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.d-meta {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--ui-sub);
+}
+
+.d-group {
+    margin-top: 18px;
+}
+
+.d-group-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ui-sub);
+    margin-bottom: 6px;
+}
+
+.d-group.is-focus .d-group-title {
+    color: var(--accent);
+}
+
+.act {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #f7f7f5;
+}
+
+.act + .act {
+    margin-top: 6px;
+}
+
+.d-group.is-focus .act {
+    background: var(--accent-soft);
+}
+
+.act.is-other-deck {
+    opacity: 0.45;
+}
+
+.act-how {
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 6px;
+}
+
+.act-text {
+    margin-top: 2px;
+    font-size: 13.5px;
+}
+
+kbd {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: #3a3a3a;
+    color: #fff;
+}
+
+.badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 0 6px;
+    border-radius: 3px;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.badge.mac { background: var(--mac); }
+.badge.ios { background: var(--ios); }
+.badge.pro { background: var(--pro); }
+.badge.side { background: #e9e8e4; color: #555; }
+
+.empty {
+    font-size: 13px;
+    color: var(--ui-sub);
+}
+
+.intro h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.intro ul {
+    padding-left: 1.2em;
+    font-size: 13.5px;
+}
+
+.intro li + li {
+    margin-top: 6px;
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.chip {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #d6d5d1;
+    background: var(--ui-surface);
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.chip.is-on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+/* パッドの割り当て表 */
+.pad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.pad-grid button {
+    aspect-ratio: 1.25;
+    border-radius: 5px;
+    border: 2px solid #e8a061;
+    background: #2a2a2a;
+    color: #f4b778;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.15;
+    padding: 2px;
+    word-break: break-word;
+}
+
+.pad-grid button.is-sel {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.pad-grid button.is-empty {
+    border-color: #555;
+    color: #777;
+}
+
+.pad-pick {
+    margin-top: 8px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    font-size: 13.5px;
+}
+
+.notes {
+    margin-top: 12px;
+    padding-left: 1.2em;
+    font-size: 12.5px;
+    color: #444;
+}
+
+/* 操作ガイド */
+.guide-list {
+    list-style: none;
+}
+
+.guide-list button {
+    width: 100%;
+    text-align: left;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.guide-list button:hover {
+    background: #f4f3f0;
+}
+
+.guide-list small {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--ui-sub);
+}
+
+.back {
+    font-size: 12.5px;
+    color: var(--ui-sub);
+    margin-bottom: 8px;
+}
+
+.back:hover {
+    color: var(--accent);
+}
+
+.steps {
+    list-style: none;
+    margin-top: 14px;
+    counter-reset: step;
+}
+
+.steps li button {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: #777;
+}
+
+.steps li button::before {
+    counter-increment: step;
+    content: counter(step);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    background: #e9e8e4;
+    color: #666;
+}
+
+.steps li button.is-cur {
+    background: var(--accent-soft);
+    color: var(--ui-text);
+}
+
+.steps li button.is-cur::before {
+    background: var(--accent);
+    color: #fff;
+}
+
+.steps li button.is-done::before {
+    background: #c9c8c3;
+    color: #fff;
+}
+
+.step-note {
+    display: block;
+    margin-top: 2px;
+    font-size: 11.5px;
+    color: var(--ui-sub);
+}
+
+.step-nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.step-nav button {
+    flex: 1;
+    padding: 9px;
+    border-radius: 7px;
+    border: 1px solid #d6d5d1;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.step-nav button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.step-nav button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* 一覧 */
+.idx-section + .idx-section {
+    margin-top: 16px;
+}
+
+.idx-section h3 {
+    font-size: 12px;
+    color: var(--ui-sub);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.idx-section ul {
+    list-style: none;
+}
+
+.idx-section button {
+    width: 100%;
+    text-align: left;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13.5px;
+}
+
+.idx-section button:hover,
+.idx-section button.is-sel {
+    background: var(--accent-soft);
+}
+
+.idx-section .hit {
+    display: block;
+    font-size: 12px;
+    color: var(--ui-sub);
+}
+
+mark {
+    background: #ffe2b8;
+    color: inherit;
+    border-radius: 2px;
+}
+
+/* ========== 本体図の上の状態表示 ========== */
+[data-ctl] {
+    cursor: pointer;
+    transition: outline-color 0.15s;
+    outline: 1.6px solid transparent;
+    outline-offset: 2px;
+}
+
+.hot-area {
+    width: calc(var(--w) * 1px);
+    height: calc(var(--h) * 1px);
+    border-radius: 3px;
+}
+
+.knob[data-ctl],
+.jog[data-ctl] {
+    outline-offset: 3px;
+}
+
+[data-ctl]:hover,
+[data-ctl]:focus-visible {
+    outline: 1.6px dashed rgba(255, 168, 80, 0.9);
+}
+
+[data-ctl].is-sel {
+    outline: 1.8px solid #ffab4f;
+    box-shadow: 0 0 0 4px rgba(255, 150, 40, 0.28);
+}
+
+/* 自前の box-shadow を持つ部品は選択時の影を重ねる */
+.btn-orange.is-sel,
+.btn-black.is-sel,
+.btn-ring.is-sel,
+.knob.is-sel,
+.pad.is-sel,
+.cue-btn.is-sel,
+.load-btn.is-sel,
+.dark-btn.is-sel,
+.shift-btn.is-sel,
+.beatfx-switch.is-sel,
+.pad-mode-btn.is-sel,
+.jog.is-sel,
+.btn-big.is-sel {
+    box-shadow: 0 0 0 4px rgba(255, 150, 40, 0.28), 0 0 12px rgba(255, 150, 40, 0.45);
+}
+
+[data-ctl].is-match {
+    outline: 1.6px solid #6fc3ff;
+    outline-offset: 2px;
+}
+
+[data-ctl].is-guide {
+    animation: guide-pulse 1.1s ease-in-out infinite;
+    outline: 2px solid #ffab4f;
+    outline-offset: 3px;
+}
+
+@keyframes guide-pulse {
+    50% { outline-color: rgba(255, 171, 79, 0.15); outline-offset: 6px; }
+}
+
+/* SHIFT 中: SHIFT ボタンを点灯し、SHIFT 機能のある部品に印を付ける */
+.controller.shift-on .shift-btn {
+    background: linear-gradient(to bottom, #ffb267, #e47a1c);
+}
+
+.controller.shift-on [data-ctl].has-shift:not(.is-sel):not(.is-guide):not(:hover) {
+    outline: 1.4px dotted rgba(255, 168, 80, 0.75);
+}
+
+/* SHIFT 側のパッドモード（KEYBOARD など）は点滅で表す */
+.pad-mode-btn.active.alt {
+    animation: mode-blink 0.9s steps(1) infinite;
+}
+
+@keyframes mode-blink {
+    50% { background: #2c2620; color: #e09040; }
+}
+
+.pad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+}
+
+.pad-label {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 5.6px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #f5ae66;
+    text-align: center;
+    word-break: break-word;
+    pointer-events: none;
+}
+
+.pad-label.long {
+    font-size: 4.4px;
+}
+
+/* ホバー時の名前 */
+.tip {
+    position: fixed;
+    z-index: 30;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: rgba(20, 20, 20, 0.92);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none;
+    white-space: nowrap;
+    translate: -50% -100%;
+}
+
+.tip[hidden] {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-ctl].is-guide,
+    .pad-mode-btn.active.alt {
+        animation: none;
+    }
+}

@@ -1,33 +1,42 @@
-# DDJ-FLX4 Controller
+# DDJ-FLX4 Webマニュアル
 
-Pioneer DJ DDJ-FLX4コントローラーのWebベースビジュアライザー
-
-## 概要
-
-DDJ-FLX4 DJコントローラーのインタラクティブなWeb表現です。HTML/CSS/JavaScriptで実装されています。
+Pioneer DJ DDJ-FLX4 の「どのボタンを押すと何ができるか」を、本体の図をクリックしながら確認できる Web マニュアルです。HTML/CSS/JavaScript だけで動きます。
 
 ## 機能
 
-- **左右デッキ**: ジョグホイール、パフォーマンスパッド、テンポフェーダー
-- **中央ミキサー**: 2チャンネルミキサー、クロスフェーダー、BEAT FXセクション
-- **インタラクティブ要素**: パッドモード切り替え、ホバーエフェクト
+- **本体図から引ける説明**: ボタンやつまみをクリックすると、「押す」「回す」「SHIFT + 押す」などの操作ごとの説明を表示
+- **ソフトウェアの切り替え**: rekordbox (Mac/Windows) / rekordbox (iOS/Android) / Serato DJ Lite（Serato DJ Pro の機能も表示可）
+- **SHIFT**: 画面の SHIFT ボタン、またはキーボードの Shift キーを押している間は SHIFT 機能を表示
+- **パッドモード**: モードを選ぶと、各パッドの割り当てを本体図と説明パネルに表示
+- **操作ガイド**: ループ、ホットキュー、フェーダースタート、BEAT FX などの手順を、本体図を光らせながら 1 ステップずつ確認
+- **一覧と検索**: 全機能を部位ごとに一覧表示し、キーワードで検索
+- **リンク**: 選んだ部品は URL（`#load/1/` など）に反映されるので、そのまま共有可能
 
 ## ファイル構成
 
 ```
 ddj-flx4/
-├── index.html          # メインHTMLファイル
+├── index.html            # 本体図とマニュアル画面
 ├── css/
-│   └── styles.css      # スタイルシート
+│   ├── styles.css        # 本体図のスタイル
+│   └── manual.css        # マニュアル画面のスタイル
 ├── js/
-│   └── script.js       # JavaScript
+│   ├── manual-data.js    # 各部の機能、パッドモード、操作ガイドのデータ
+│   └── script.js         # 画面の動作
 └── docs/
-    └── .private/       # プライベートドキュメント（Git管理外）
+    └── .private/         # 取扱説明書 PDF など（Git管理外）
 ```
 
 ## 使用方法
 
-ブラウザで`index.html`を開いてください。
+ブラウザで `index.html` を開くか、ローカルサーバーを立てて開いてください。
+
+```sh
+python3 -m http.server 8000
+# http://localhost:8000/ を開く
+```
+
+`?scale=1` を付けると本体図を等倍（931×516px）で表示します（参照画像との見比べ用）。
 
 ### GitHub Pagesでのホスティング
 
@@ -35,11 +44,9 @@ ddj-flx4/
 2. ソースを`main`ブランチのルートに設定
 3. `https://<username>.github.io/ddj-flx4/`でアクセス可能
 
-## 技術スタック
+## 内容について
 
-- HTML5
-- CSS3 (Grid Layout, Flexbox, グラデーション)
-- Vanilla JavaScript
+説明文は DDJ-FLX4 取扱説明書（DRJ1092-A）の「各部の名称とはたらき」「操作する（応用編）」をもとに要約したものです。画面に出るページ番号は取扱説明書のページです。正確な仕様は公式の取扱説明書を確認してください。
 
 ## ライセンス
 
