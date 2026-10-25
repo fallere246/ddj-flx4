@@ -11,11 +11,11 @@
 <body data-root="../" data-page="trouble">
 <article class="lesson">
     <h1>困ったとき</h1>
-    <p class="lead">機材は、ちょっとしたことで動かなくなります。あわてず、症状ごとに「確かめること」を上から順に試してください。多くの場合、ケーブル、つまみの位置、ソフトの設定のどれかが原因です。ここにない症状や、それでも直らないときは、最後に書いた公式サポートを見てください。</p>
+    <p class="lead">機材はちょっとしたことで動かなくなります。あわてず、症状ごとに「確かめること」を上から順に試してください。多くの場合、ケーブル、つまみの位置、ソフトの設定のどれかが原因です。ここにない症状や、それでも直らないときは、最後に書いた公式サポートを見てください。</p>
 
     <h2>電源が入らない・勝手に切れる</h2>
     <ol class="steps">
-        <li>USB ケーブルが、FLX4 と PC の両方にしっかり差さっているか確かめる。接続の順番は<a href="setup.html">「機材をつないでソフトを準備する」</a>を見る</li>
+        <li>USB ケーブルが FLX4 と PC の両方にしっかり差さっているか確かめる。接続の順番は<a href="setup.html">「機材をつないでソフトを準備する」</a>を見る</li>
         <li>USB ケーブルを別のものに替える。ケーブルの断線や、充電専用で通信できないケーブルのことがある</li>
         <li>モバイルバッテリーを電源にしているときは、省電力機能のないものを使う。電力が足りないと、勝手に切れることがある</li>
         <li>両デッキの <a class="ctl" data-ctl="in" data-deck="1">IN</a> と <a class="ctl" data-ctl="out" data-deck="1">OUT</a> のボタンが点滅して動かないときは、<a class="ctl" data-ctl="usbpower">USB 端子（電源専用）</a>につないだ電源の供給量が足りないことが考えられる。取扱説明書で指定された電力に対応した機器を使う</li>
@@ -58,7 +58,7 @@
     <ol class="steps">
         <li>次の曲のチャンネルの<a class="ctl" data-ctl="chcue" data-ch="2">ヘッドホン CUE</a>ボタンが点灯しているか</li>
         <li><a class="ctl" data-ctl="hplevel">HEADPHONES LEVEL</a>が上がっているか</li>
-        <li><a class="ctl" data-ctl="hpmix">HEADPHONES MIX</a>が、CUE 側に寄っているか。MASTER 側に回しきると、CUE の音が聞こえない</li>
+        <li><a class="ctl" data-ctl="hpmix">HEADPHONES MIX</a>が CUE 側に寄っているか。MASTER 側に回しきると、CUE の音が聞こえない</li>
         <li>次の曲のデッキが再生中か。停止中は音が出ない</li>
         <li><a class="ctl" data-ctl="trim" data-ch="2">TRIM</a>が下がりすぎていないか</li>
         <li><span data-sw="rb">rekordbox の出力設定で、ヘッドホン出力が FLX4 の PHONES になっているか確認する。</span><span data-sw="serato">Serato DJ Lite のオーディオ設定で、ヘッドホンの出力先が FLX4 になっているか確認する。</span></li>
@@ -68,14 +68,14 @@
     <h2>PC のスピーカーからも音が出てしまう</h2>
     <p>FLX4 につないだスピーカーと同じ音が、PC 内蔵のスピーカーからも出ることがあります。2 か所で鳴るので、二重に聞こえたり、DJ プレイの邪魔になったりします。</p>
     <ol class="steps">
-        <li data-sw="mac"><a class="term" data-term="pc-master-out">PC MASTER OUT</a>がオンになっていないか見る。この機能は、PC のスピーカーからもマスター音声を出す機能で、初期設定ではオンになっている。オフにすれば PC のスピーカーからは鳴らなくなる。ボタンの場所は、取扱説明書の rekordbox の項目を参照する</li>
-        <li data-sw="ios">スマートフォンやタブレットでは、USB ケーブルでつないでいる間は、モバイル機器本体から音は出ません。音を出したいときは、<a class="ctl" data-ctl="masterout">MASTER 出力端子</a>にパワードスピーカーなどをつなぎます。</li>
+        <li data-sw="mac"><a class="term" data-term="pc-master-out">PC MASTER OUT</a>がオンになっていないか見る。この機能は PC のスピーカーからもマスター音声を出す機能で、初期設定ではオンになっている。オフにすれば PC のスピーカーからは鳴らなくなる。ボタンの場所は取扱説明書の rekordbox の項目を参照する</li>
+        <li data-sw="ios">スマートフォンやタブレットでは、USB ケーブルでつないでいる間は、モバイル機器本体から音は出ない。音を出したいときは、<a class="ctl" data-ctl="masterout">MASTER 出力端子</a>にパワードスピーカーなどをつなぐ。</li>
         <li data-sw="serato">Serato DJ Lite では、出力先を FLX4 だけにしているかを、ソフトのオーディオ設定で確認する。</li>
         <li>Mac や Windows の音の出力先が、FLX4 以外になっていないかも見る</li>
     </ol>
 
     <h2>BPM やビートグリッドがおかしい</h2>
-    <p>曲の BPM が 2 倍や半分になっていたり、ビートグリッド（拍の目印）が、曲の拍とずれていたりすると、SYNC もずれます。</p>
+    <p>曲の BPM が 2 倍や半分になっていたり、ビートグリッド（拍の目印）が曲の拍とずれていたりすると、SYNC もずれます。</p>
     <ol class="steps">
         <li>BPM が 2 倍か半分になっていないか確認する。なっていたら、BPM の解析範囲を変更して、もう一度解析する</li>
         <li>それでも直らないときは、BPM とビートグリッドを手で設定する</li>
@@ -97,7 +97,7 @@
         <li>DJ ソフト以外のアプリを閉じる</li>
         <li>それでも不安定なら、無線 LAN などの無線接続、セキュリティソフト、スクリーンセーバー、省電力モードを、一時的に切って試す</li>
         <li>FLX4 以外の USB 機器を外す</li>
-        <li>ノート PC は、バッテリー駆動ではなく AC アダプターにつなぐ</li>
+        <li>ノート PC はバッテリー駆動ではなく AC アダプターにつなぐ</li>
     </ol>
 
     <h2>曲やデッキの表示、そのほかの機能</h2>
@@ -107,7 +107,9 @@
         <li data-sw="serato"><strong>クロスフェーダーが効かない（Serato）</strong>：ソフトのクロスフェーダーの設定で、無効になっていないかを見る</li>
         <li data-sw="rb"><strong>フェーダースタートが動かない</strong>：先にキューを設定しておく。ソフトの設定でフェーダースタートが有効になっているかも確かめる</li>
         <li data-sw="serato"><strong>フェーダースタートが動かない</strong>：先に一時的なキューを設定しておく。FLX4 の設定モードでも、フェーダースタートが有効か確かめる</li>
-        <li data-sw="mac"><strong>録音機能が使えない</strong>：FLX4 をつないでいないと、録音機能が使えないことがある（契約のプランによる）。FLX4 などの対象機器をつなぐ</li>
+        <li data-sw="mac"><strong>録音機能が使えない</strong>：無料のプランでは FLX4 をつないでいないと録音できない。FLX4 をつないでいても、Apple Music などのストリーミングの曲をデッキに読み込んでいる間は録音できないので、その曲をデッキから外す</li>
+        <li data-sw="mac"><strong>Apple Music の曲が出ない・再生できない</strong>：rekordbox が ver. 7.1.0 以降か、パソコンがインターネットにつながっているか、メディアブラウザから Apple Music にログインしているかを確かめる。ストリーミングの曲は、オフラインでは再生できない</li>
+        <li data-sw="mac"><strong>Apple Music の曲を USB メモリーに書き出せない</strong>：ストリーミングの曲は書き出せない仕様。クラブの機材で使う曲はファイルで購入する</li>
         <li data-sw="ios"><strong>Android で音が乱れる</strong>：機種によっては、本体背面の Android MONO/STEREO スイッチを MONO にすると直ることがある</li>
         <li data-sw="ios"><strong>Bluetooth 接続中は音が出ない</strong>：Bluetooth でつないでいる間は、MASTER 出力やヘッドホン出力から音が出ない。音は機器から出る。出力したいときは USB ケーブルでつなぐ</li>
         <li data-sw="ios"><strong>マイクの音が出ない</strong>：マイクのつまみ（MIC LEVEL、MIC ATT.）の位置を確かめる。Bluetooth 接続中は、マイクの音は出力されない</li>
@@ -115,7 +117,7 @@
 
     <h2>それでも直らないとき</h2>
     <p>外からの静電気などで、本体の動きがおかしくなることもあります。電源を入れ直すと、直ることがあります。</p>
-    <p>ここに書いた方法で直らないときは、Pioneer DJ の公式サポートページ（<strong>pioneerdj.com/support/</strong>）で、DDJ-FLX4 の「よくある質問（FAQ）」を探してください。ソフトのことは、rekordbox や Serato の公式マニュアルを見てください。使用上の注意をよく読んだうえで、販売店に相談することもできます。</p>
+    <p>ここに書いた方法で直らないときは、Pioneer DJ の公式サポートページ（<strong>pioneerdj.com/support/</strong>）で、DDJ-FLX4 の「よくある質問（FAQ）」を探してください。ソフトのことは rekordbox や Serato の公式マニュアルを見てください。使用上の注意をよく読んだうえで、販売店に相談することもできます。</p>
 </article>
 <script src="../js/course.js"></script>
 <script src="../js/glossary.js"></script>

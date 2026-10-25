@@ -412,3 +412,9 @@
     .mx-center { grid-column: 1 / -1; grid-row: 1; flex-direction: row; flex-wrap: wrap; justify-content: center; }
     .k-body { width: 34px; height: 34px; }
 }
+
+/* hidden 属性を display の指定より優先する（拡大波形や小節の表示を隠すとき） */
+.w [hidden] { display: none !important; }
+
+/* ループの IN を押して OUT を待っている間 */
+.w-btn.pending { border-color: var(--w-accent); color: var(--w-accent); animation: w-blink 1s steps(2, start) infinite; }

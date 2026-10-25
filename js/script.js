@@ -477,4 +477,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (CONTROLS[hashId].section === 'deck' && !state.sel.deck) state.sel.deck = 1;
     }
     render();
+    // URL で部品を選んで開いたときも、1 カラム表示なら説明パネルを画面に入れる（クリック時と同じ条件）
+    if (state.sel && matchMedia('(max-width: 1000px)').matches) {
+        requestAnimationFrame(() => document.querySelector('.panel').scrollIntoView({ block: 'start' }));
+    }
 });

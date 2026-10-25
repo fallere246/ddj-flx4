@@ -18,7 +18,8 @@ const DJAudio = (() => {
             const d = noise.getChannelData(0);
             for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
         }
-        if (ctx.state === 'suspended') ctx.resume();
+        // iOS では 'interrupted' になることもあるので、running 以外ならすべて再開を試す
+        if (ctx.state !== 'running' && ctx.state !== 'closed') ctx.resume();
         return ctx;
     };
 
@@ -603,6 +604,8 @@ const DJAudio = (() => {
             this.cuePoint = 0;
             this.hotcues = new Array(8).fill(null);
             this.loop = null;
+            this.pendingIn = null;
+            this.syncWith = null;  // SYNC で合わせた相手（再生し始めたときに拍の位置もそろえる）
             this.cueHeld = false;
             this.nodes = [];
             this.nextStep = 0;
@@ -669,7 +672,8 @@ const DJAudio = (() => {
                         continue;
                     }
                     const t = a.t + (this.track.beats - a.b) / a.speed;
-                    if (now >= t) { this.ended = true; this.pause(); this.seek(this.track.beats - 0.001); }
+                    // 終端で止まったら CUE ポイント（なければ先頭）に戻す。終端に CUE が打たれないように
+                    if (now >= t) { this.pause(); this.seek(this.cuePoint || 0); this.ended = true; }
                     break;
                 }
                 const t = a.t + (beat - a.b) / a.speed;
@@ -695,6 +699,9 @@ const DJAudio = (() => {
             if (this.pos >= this.track.beats - 0.01) this.seek(0);
             this.playing = true;
             this.reanchor();
+            // SYNC 中（テンポが相手と同じ）なら、相手が再生中のとき拍の位置もそろえる（rekordbox の BEAT SYNC と同じ）
+            const o = this.syncWith;
+            if (o && o.playing && Math.abs(this.bpm - o.bpm) < 0.05) this.alignPhase(o);
             this.changed('play');
         }
 
@@ -717,6 +724,11 @@ const DJAudio = (() => {
                 b = Math.floor(beat) + (cur - Math.floor(cur));
             }
             b = Math.max(0, Math.min(this.track.beats - 0.001, b));
+            // ループの外へ移ったらループを解除する（rekordbox と同じく、ループの外に出たら抜ける）
+            if (this.loop && (b < this.loop.start - 1e-6 || b >= this.loop.end - 1e-6)) {
+                this.loop = null;
+                this.changed('loop');
+            }
             this.ended = false;
             this.reanchor(b);
             this.changed('seek');
@@ -776,8 +788,10 @@ const DJAudio = (() => {
         // ---- ループ ----
         loopBeats(beats) {
             const p = this.pos;
-            const start = this.quantize ? Math.floor(p) : p;
+            // いちばん近い拍から始める（少し先の拍になったときは、そこまで進んでからループに入る）
+            const start = this.quantize ? Math.round(p) : p;
             this.loop = { start, end: start + beats };
+            this.pendingIn = null;
             this.reanchor();
             this.changed('loop');
         }
@@ -791,9 +805,12 @@ const DJAudio = (() => {
             const p = this.pos;
             let end = this.quantize ? Math.round(p) : p;
             if (end <= this.pendingIn) end = this.pendingIn + 1;
-            this.loop = { start: this.pendingIn, end };
+            const start = this.pendingIn;
+            this.loop = { start, end };
             this.pendingIn = null;
-            this.reanchor();
+            // 丸めた end が今の位置以前なら、ループの中の同じ位置へ移って、必ずループさせる
+            if (p >= end) this.seek(start + ((p - start) % (end - start)));
+            else this.reanchor();
             this.changed('loop');
         }
         exitLoop() {
@@ -835,15 +852,20 @@ const DJAudio = (() => {
         // SYNC：テンポと拍の位置を相手に合わせる
         syncTo(other) {
             this.setTempo(this.tempoFor(other.bpm));
-            if (this.playing && other.playing) {
-                const mine = this.pos;
-                const theirs = other.pos;
-                let d = (theirs - Math.floor(theirs)) - (mine - Math.floor(mine));
-                if (d > 0.5) d -= 1;
-                if (d < -0.5) d += 1;
-                this.seek(mine + d);
-            }
+            this.syncWith = other;
+            if (this.playing && other.playing) this.alignPhase(other);
             this.changed('sync');
+        }
+
+        // 拍の中の位置（小数部）を相手に合わせる。いちばん近い方向へ動かす（曲の頭より前には戻さない）
+        alignPhase(other) {
+            const mine = this.pos;
+            const theirs = other.pos;
+            let d = (theirs - Math.floor(theirs)) - (mine - Math.floor(mine));
+            if (d > 0.5) d -= 1;
+            if (d < -0.5) d += 1;
+            if (mine + d < 0) d += 1;
+            if (Math.abs(d) > 1e-4) this.seek(mine + d);
         }
 
         // 相手との拍のずれ（-0.5〜0.5 拍。正なら自分が先に進んでいる）

@@ -33,7 +33,22 @@ const Widgets = (() => {
     const fmtPct = v => `${v >= 0 ? '+' : ''}${(v * 100).toFixed(1)}%`;
     const pos2txt = p => { const { bar, beat } = Deck.barBeat(p); return `${bar}小節 ${beat}拍`; };
 
-    // つまみ：上下にドラッグ、矢印キー、ダブルクリックで初期値
+    // タッチ端末では dblclick が出ないことがあるので、300ms 以内の 2 回のタップでも fn を呼ぶ
+    const onDoubleTap = (el, fn) => {
+        let last = 0;
+        let down = null;
+        el.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY }; });
+        el.addEventListener('pointerup', e => {
+            if (e.pointerType === 'mouse' || !down) return;
+            const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y) > 10;
+            down = null;
+            if (moved) { last = 0; return; }
+            const now = performance.now();
+            if (now - last < 300) { last = 0; fn(); } else last = now;
+        });
+    };
+
+    // つまみ：上下にドラッグ、矢印キー、ダブルクリック（ダブルタップ）で初期値
     const knob = ({ label, value = 0, min = -1, max = 1, def = value, cls = '', onInput, title }) => {
         let v = value;
         const cap = h('div', { class: 'k-cap' }, h('i'));
@@ -64,6 +79,7 @@ const Widgets = (() => {
         el.addEventListener('pointerup', end);
         el.addEventListener('pointercancel', end);
         el.addEventListener('dblclick', () => set(def));
+        onDoubleTap(el, () => set(def));
         el.addEventListener('keydown', e => {
             const step = (max - min) / 40;
             if (e.key === 'ArrowUp' || e.key === 'ArrowRight') set(v + step);
@@ -76,8 +92,9 @@ const Widgets = (() => {
         return { el, set, get value() { return v; } };
     };
 
-    // フェーダー：つまみをドラッグ、レールをクリック
-    const fader = ({ label, value = 0, min = 0, max = 1, def = value, vertical = true, cls = '', onInput, title, center = false }) => {
+    // フェーダー：つまみをドラッグ、レールをクリック。Shift を押しながらのドラッグ・矢印キーで細かく動かす
+    // step は矢印キー 1 回の量（関数でもよい）。Shift のときはその 1/5
+    const fader = ({ label, value = 0, min = 0, max = 1, def = value, vertical = true, cls = '', onInput, title, center = false, step = (max - min) / 50 }) => {
         let v = value;
         const knobEl = h('div', { class: 'f-cap' });
         const rail = h('div', { class: 'f-rail' }, center ? h('div', { class: 'f-center' }) : null, knobEl);
@@ -99,16 +116,34 @@ const Widgets = (() => {
             const ratio = vertical ? 1 - (e.clientY - r.top - 7) / (r.height - 14) : (e.clientX - r.left - 13) / (r.width - 26);
             set(min + clamp(ratio, 0, 1) * (max - min));
         };
-        let dragging = false;
-        el.addEventListener('pointerdown', e => { dragging = true; el.setPointerCapture(e.pointerId); fromPointer(e); e.preventDefault(); });
-        el.addEventListener('pointermove', e => { if (dragging) fromPointer(e); });
-        el.addEventListener('pointerup', () => { dragging = false; });
-        el.addEventListener('pointercancel', () => { dragging = false; });
+        // drag.rel：Shift を押したあとは、つまみが指先に飛ばないように動かした量だけ動かす
+        let drag = null;
+        const along = e => (vertical ? -e.clientY : e.clientX);
+        el.addEventListener('pointerdown', e => {
+            drag = { rel: e.shiftKey, at: along(e) };
+            el.setPointerCapture(e.pointerId);
+            if (!drag.rel) fromPointer(e);
+            e.preventDefault();
+        });
+        el.addEventListener('pointermove', e => {
+            if (!drag) return;
+            const at = along(e);
+            const d = at - drag.at;
+            drag.at = at;
+            if (e.shiftKey) drag.rel = true;
+            if (!drag.rel) { fromPointer(e); return; }
+            const r = rail.getBoundingClientRect();
+            const len = Math.max(1, (vertical ? r.height - 14 : r.width - 26));
+            set(v + d / len * (max - min) / (e.shiftKey ? 10 : 1));
+        });
+        el.addEventListener('pointerup', () => { drag = null; });
+        el.addEventListener('pointercancel', () => { drag = null; });
         el.addEventListener('dblclick', () => set(def));
+        onDoubleTap(el, () => set(def));
         el.addEventListener('keydown', e => {
-            const step = (max - min) / 50;
-            if (e.key === 'ArrowUp' || e.key === 'ArrowRight') set(v + step);
-            else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') set(v - step);
+            const st = (typeof step === 'function' ? step() : step) / (e.shiftKey ? 5 : 1);
+            if (e.key === 'ArrowUp' || e.key === 'ArrowRight') set(v + st);
+            else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') set(v - st);
             else if (e.key === 'Home') set(def);
             else return;
             e.preventDefault();
@@ -338,7 +373,11 @@ const Widgets = (() => {
         entries.forEach(en => { if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target); });
     }) : null;
     const loop = () => {
-        live.forEach(w => { if (!io || visible.has(w.root)) w.frame(); });
+        // 1 つのツールで例外が出ても、ほかのツールの描画は止めない（同じツールのエラーは 1 回だけ出す）
+        live.forEach(w => {
+            if (io && !visible.has(w.root)) return;
+            try { w.frame(); } catch (e) { if (!w.failed) { w.failed = true; console.error(e); } }
+        });
         requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
@@ -504,9 +543,12 @@ const Widgets = (() => {
         const pos = h('span', { class: 'w-pos' });
         const sec = h('span', { class: 'w-sec' });
         const phraseBars = Array.from({ length: 8 }, (_, i) => h('div', { class: 'mc-bar', text: i + 1 }));
+        const barsEl = h('div', { class: 'mc-bars small' }, phraseBars);
         body.append(ov.el, zm.el,
             h('div', { class: 'w-row' }, play, pos, sec),
-            h('div', { class: 'mc-bars small' }, phraseBars));
+            barsEl);
+        // 「隠す」モード：セクション名・拡大波形・小節の表示（インジケーターと「N 小節 M 拍」）を隠す
+        const setHidden = on => { ov.hideLabels = on; zm.el.hidden = on; barsEl.hidden = on; pos.hidden = on; };
 
         let msg = null;
         if (game) {
@@ -535,11 +577,11 @@ const Widgets = (() => {
                 score.textContent = `${hits} / ${tries}`;
             };
             const tapBtn = btn('ここだ！', { cls: 'tap small', onDown: tapNow, title: 'スペースキーでもタップできます' });
-            const hide = h('label', { class: 'w-check' }, h('input', { type: 'checkbox', checked: root.hasAttribute('data-hide-labels'), onchange: e => { ov.hideLabels = e.target.checked; zm.el.hidden = e.target.checked; } }), 'セクション名と拡大波形を隠す');
+            const hide = h('label', { class: 'w-check' }, h('input', { type: 'checkbox', checked: root.hasAttribute('data-hide-labels'), onchange: e => setHidden(e.target.checked) }), 'セクション名・拡大波形・小節の表示を隠す');
             body.append(h('div', { class: 'w-row' }, tapBtn, h('span', { class: 'w-label', text: '成功' }), score, hide), msg);
             root.tabIndex = 0;
             root.addEventListener('keydown', e => { if (e.key === ' ' && e.target === root) { e.preventDefault(); if (!e.repeat) tapNow(); } });
-            if (root.hasAttribute('data-hide-labels')) zm.el.hidden = true;
+            if (root.hasAttribute('data-hide-labels')) setHidden(true);
         }
         body.append(audioNote());
         deck.onChange = () => { play.innerHTML = deck.playing ? '❚❚ 一時停止' : '▶ 再生'; };
@@ -574,7 +616,7 @@ const Widgets = (() => {
         const m = meter();
         const strip = h('div', { class: 'ch-strip' });
         const ctl = {};
-        if (controls.includes('trim')) { ctl.trim = knob({ label: 'TRIM', value: mixer.ch[0].state.trim, min: 0, max: 1, def: 0.5, onInput: v => mixer.setTrim(0, v) }); strip.append(ctl.trim.el); }
+        if (controls.includes('trim')) { ctl.trim = knob({ label: 'TRIM', value: mixer.ch[0].state.trim, min: 0, max: 1, onInput: v => mixer.setTrim(0, v) }); strip.append(ctl.trim.el); }
         if (controls.includes('eq')) ['high', 'mid', 'low'].forEach(b => {
             ctl[b] = knob({ label: b.toUpperCase().replace('HIGH', 'HI'), value: 0, onInput: v => mixer.setEq(0, b, v) });
             strip.append(ctl[b].el);
@@ -652,12 +694,15 @@ const Widgets = (() => {
             },
             onRelease: () => { if (deck.nudge) deck.setNudge(0); },
         });
-        const shiftBtn = btn('SHIFT', { cls: 'shift', onDown: () => { shift = true; shiftBtn.classList.add('on'); }, onUp: () => { shift = false; shiftBtn.classList.remove('on'); }, title: '押しながらパッドを押すとホットキューを消す' });
-        const pads = HOTCUE_NAMES.slice(0, 4).map((name, i) => btn(name, { cls: 'pad', onClick: () => {
-            if (shift) {
+        // SHIFT はマウスでも使えるように、押すたびにオン・オフ（パッドを 1 回使うと自動でオフ）
+        const setShift = on => { shift = on; shiftBtn.classList.toggle('on', on); shiftBtn.setAttribute('aria-pressed', String(on)); };
+        const shiftBtn = btn('SHIFT', { cls: 'shift', pressed: false, onClick: () => setShift(!shift), title: 'SHIFT を押してからパッドを押すとホットキューを消す（Shift キーを押しながらクリックでも消せる）' });
+        const pads = HOTCUE_NAMES.slice(0, 4).map((name, i) => btn(name, { cls: 'pad', onClick: e => {
+            if (shift || e.shiftKey) {
+                setShift(false);
                 if (deck.hotcues[i] === null) return say(`ホットキュー ${name} は空です。`);
                 deck.clearHotcue(i);
-                return say(`SHIFT を押しながらパッドを押したので、ホットキュー ${name} を消しました。`);
+                return say(`SHIFT とパッドを押したので、ホットキュー ${name} を消しました。`);
             }
             const r = deck.hotcue(i);
             say(r === 'set'
@@ -699,7 +744,9 @@ const Widgets = (() => {
         const play = btn('▶/❚❚', { cls: 'play', title: 'PLAY/PAUSE', onClick: () => deck.playButton() });
         const cue = btn('CUE', { cls: 'cue', title: 'CUE', onDown: () => deck.cueDown(), onUp: () => deck.cueUp() });
         const tempoPct = h('span', { class: 'dk-tempo' });
-        const tempo = fader({ label: 'TEMPO', value: deck.tempo, min: -1, max: 1, def: 0, center: true, cls: 'tempo', title: 'テンポスライダー（手前に動かすと速くなる。ダブルクリックで中央）', onInput: v => deck.setTempo(-v) });
+        // 矢印キー 1 回で 0.1 BPM、Shift を押しながらで 0.02 BPM
+        const tempo = fader({ label: 'TEMPO', value: deck.tempo, min: -1, max: 1, def: 0, center: true, cls: 'tempo', step: () => 0.1 / (deck.track.bpm * deck.range),
+            title: 'テンポスライダー（手前に動かすと速くなる。Shift を押しながらドラッグ・矢印キーで細かく動く。ダブルクリックで中央）', onInput: v => deck.setTempo(-v) });
         tempo.set(-deck.tempo, false);
         const jg = jog({
             onTurn: (deg, vel) => {
@@ -715,7 +762,7 @@ const Widgets = (() => {
         parts.push(info);
         let sync = null;
         if (opts.sync) {
-            sync = btn('BEAT SYNC', { cls: 'sync', onClick: () => { deck.syncTo(other); w.synced[deck.index] = true; }, title: 'もう一方のデッキにテンポと拍を合わせる' });
+            sync = btn('BEAT SYNC', { cls: 'sync', onClick: () => { deck.syncTo(other); tempo.set(-deck.tempo, false); w.synced[deck.index] = true; }, title: 'もう一方のデッキにテンポと拍を合わせる' });
         }
         // 小さな画面では ±ボタンでも合わせられるように
         const nudgeBtns = h('div', { class: 'nudge' },
@@ -736,9 +783,10 @@ const Widgets = (() => {
         let loopEls = null;
         if (opts.loop) {
             const lp = btn('4 BEAT', { cls: 'loop', title: '4 拍のループ（ループ中はループを抜ける）', onClick: () => { if (deck.loop) deck.exitLoop(); else deck.loopBeats(4); } });
-            loopEls = { lp };
+            const inBtn = btn('IN', { onClick: () => deck.loopIn(), title: 'ループの始まり（点滅中は OUT でループが決まる）' });
+            loopEls = { lp, inBtn };
             parts.push(h('div', { class: 'w-row tight loop-row' },
-                btn('IN', { onClick: () => deck.loopIn(), title: 'ループの始まり' }),
+                inBtn,
                 btn('OUT', { onClick: () => deck.loopOut(), title: 'ループの終わり（ここからループ開始）' }),
                 lp,
                 btn('½', { onClick: () => deck.resizeLoop(0.5), title: 'ループを半分に' }),
@@ -764,7 +812,11 @@ const Widgets = (() => {
                 cue.classList.toggle('blink', !deck.playing && Math.abs(p - deck.cuePoint) > 0.01);
                 if (sync) sync.classList.toggle('on', w.synced[deck.index] && Math.abs(deck.bpm - other.bpm) < 0.05);
                 if (pads) pads.forEach((pd, i) => { pd.style.setProperty('--pad', deck.hotcues[i] === null ? '' : HOTCUE_COLORS[i]); pd.classList.toggle('set', deck.hotcues[i] !== null); });
-                if (loopEls) loopEls.lp.classList.toggle('on', !!deck.loop);
+                if (loopEls) {
+                    loopEls.lp.classList.toggle('on', !!deck.loop);
+                    // IN を押して OUT を待っている間は IN を点滅させる
+                    loopEls.inBtn.classList.toggle('pending', deck.pendingIn !== null && deck.pendingIn !== undefined);
+                }
             },
         };
     };
@@ -913,6 +965,7 @@ const Widgets = (() => {
                 col.append(ctl[i].cue);
             }
             ctl[i].fader = fader({ label: `CH ${i + 1}`, value: Number(root.dataset[`fader${i + 1}`] ?? (i === 0 ? 1 : 0)), onInput: v => mixer.setFader(i, v) });
+            ctl[i].faderInit = ctl[i].fader.value;
             mixer.setFader(i, ctl[i].fader.value);
             col.append(h('div', { class: 'ch-fader' }, meters[i].el, ctl[i].fader.el));
             return col;
@@ -921,11 +974,16 @@ const Widgets = (() => {
         const master = knob({ label: 'MASTER', value: 0.75, min: 0, max: 1, def: 0.75, onInput: v => mixer.setMasterLevel(v) });
         const clip = h('span', { class: 'w-clip', text: '音割れ' });
         const mid = h('div', { class: 'mx-center' }, master.el, clip);
+        // やり直しのときに初期状態へ戻すための部品
+        let pmix = null;
+        let monInputs = [];
+        let fx = null;
         if (has('phones')) {
-            const pmix = knob({ label: 'PHONES MIX', value: 0, min: 0, max: 1, def: 0.5, title: 'HEADPHONES MIX：左で CUE、右でマスター', onInput: v => mixer.setPhonesMix(v) });
+            pmix = knob({ label: 'PHONES MIX', value: 0, min: 0, max: 1, title: 'HEADPHONES MIX：左で CUE、右でマスター', onInput: v => mixer.setPhonesMix(v) });
             const mon = h('div', { class: 'monitor', role: 'radiogroup', 'aria-label': '聴く場所' },
                 h('span', { class: 'w-label', text: '聴く場所' }),
                 ...[['speakers', 'スピーカー'], ['phones', 'ヘッドホン']].map(([v, t]) => h('label', {}, h('input', { type: 'radio', name: `mon-${Math.random().toString(36).slice(2)}`, value: v, checked: v === 'speakers', onchange: () => mixer.setMonitor(v) }), t)));
+            monInputs = [...mon.querySelectorAll('input')];
             mid.append(pmix.el, mon);
         }
         if (has('fx')) {
@@ -943,6 +1001,7 @@ const Widgets = (() => {
                 mixer.setEcho(w.fxCh, { on: st, beats: w.fxBeats });
                 on.setAttribute('aria-pressed', String(st));
             } });
+            fx = { beatsSel, chSel, depth, on };
             mid.append(h('div', { class: 'fx-box' }, h('span', { class: 'w-label', text: 'BEAT FX（ECHO）' }), beatsSel, chSel, depth.el, on));
         }
         const mixerEl = h('div', { class: 'mx' }, h('div', { class: 'mx-cols' }, column(0), mid, column(1)), xf.el);
@@ -974,15 +1033,30 @@ const Widgets = (() => {
             body.append(h('div', { class: 'mission-box' }, h('div', { class: 'w-row' }, h('span', { class: 'w-label', text: 'ミッション' }), btn('最初からやり直す', { onClick: () => reset() })), missionEl, h('p', { class: 'w-msg mission-msg' })));
         }
         const reset = () => {
-            [[A, a], [B, b]].forEach(([d, spec]) => { d.pause(); d.exitLoop(); d.setTempo(0); d.setNudge(0); const s = sectionBeat(d.track, spec.at); d.seek(s); d.cuePoint = s; });
+            [[A, a], [B, b]].forEach(([d, spec]) => { d.pause(); d.exitLoop(); d.setTempo(0); d.setNudge(0); d.syncWith = null; const s = sectionBeat(d.track, spec.at); d.seek(s); d.cuePoint = s; });
             [0, 1].forEach(i => {
                 ['high', 'mid', 'low'].forEach(band => { if (ctl[i][band]) ctl[i][band].set(0); });
                 if (ctl[i].filter) ctl[i].filter.set(0);
                 ctl[i].trim.set(0.5);
-                ctl[i].fader.set(i === 0 ? 1 : 0);
+                ctl[i].fader.set(ctl[i].faderInit);
                 mixer.setEcho(i, { on: false });
+                if (ctl[i].cue) { mixer.setCue(i, false); ctl[i].cue.setAttribute('aria-pressed', 'false'); }
             });
             xf.set(0.5);
+            master.set(0.75);
+            pA.tempo.set(0, false);
+            pB.tempo.set(0, false);
+            if (pmix) pmix.set(0);
+            if (monInputs.length) { monInputs.forEach(x => { x.checked = x.value === 'speakers'; }); mixer.setMonitor('speakers'); }
+            if (fx) {
+                fx.beatsSel.value = '0.5';
+                fx.chSel.value = '0';
+                w.fxBeats = 0.5;
+                w.fxCh = 0;
+                fx.depth.set(0.5);
+                [0, 1].forEach(i => mixer.setEcho(i, { on: false, beats: w.fxBeats }));
+                fx.on.setAttribute('aria-pressed', 'false');
+            }
             w.synced = [false, false];
             stepIdx = 0;
             judgeMsg = '';
@@ -1072,7 +1146,8 @@ const Widgets = (() => {
             t2.textContent = CAMELOT[code][0];
             g.append(path, t1, t2);
             const choose = () => {
-                if (picked.length >= 2 || picked.includes(code)) picked = [];
+                // 同じキーを 2 回選ぶのもあり（同じキー同士を重ねる）。2 つ選び終えたあとの 3 回目で選び直し
+                if (picked.length >= 2) picked = [];
                 picked.push(code);
                 paint();
                 const notes = picked.length === 2 ? [...chordOf(picked[0]), ...chordOf(picked[1]).map(x => x + 12)] : chordOf(code);
@@ -1129,7 +1204,8 @@ const Widgets = (() => {
     };
 
     // 最初のクリックで音を出せるようにする（ブラウザの自動再生の制限のため）
-    document.addEventListener('pointerdown', () => DJAudio.ensure(), { once: true, capture: true });
+    // iOS では pointerdown だけでは再開できないことがあるので、click と touchend でも試す
+    ['pointerdown', 'click', 'touchend'].forEach(type => document.addEventListener(type, () => { if (!DJAudio.running) DJAudio.ensure(); }, { capture: true, passive: true }));
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
     else init();
 

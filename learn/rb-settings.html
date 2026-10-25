@@ -11,7 +11,7 @@
 <body data-root="../" data-page="rb-settings">
 <article class="lesson">
     <h1>rekordbox の設定を整える</h1>
-    <p class="lead">rekordbox には、たくさんの設定項目があります。ほとんどは初期値のままで困りませんが、見直しておくと使いやすくなるものがいくつかあります。このレッスンでは、設定を開く場所と構成をつかみ、最初に見る項目を理由つきで紹介します。rekordbox 7 の Mac/Windows 版の画面で説明します。</p>
+    <p class="lead">rekordbox にはたくさんの設定項目があります。ほとんどは初期値のままで困りませんが、見直しておくと使いやすくなるものがいくつかあります。このレッスンでは設定を開く場所と構成をつかみ、最初に見る項目を理由つきで紹介します。rekordbox 7 の Mac/Windows 版の画面で説明します。</p>
     <section class="goals">
         <h2>このレッスンでできるようになること</h2>
         <ul>
@@ -34,20 +34,20 @@
         <tr><td><span class="ui">表示</span></td><td><span class="ui">表示形式</span>、<span class="ui">レイアウト</span>、<span class="ui">カラー</span>。言語、キーの表示形式、波形の色、画面の明るさなど</td><td>扱う</td></tr>
         <tr><td><span class="ui">オーディオ</span></td><td><span class="ui">構成</span>、<span class="ui">入出力</span>。音の出力先、バッファサイズなど</td><td>扱う</td></tr>
         <tr><td><span class="ui">解析</span></td><td><span class="ui">楽曲解析</span>、<span class="ui">CUE解析</span>。BPM やキーの解析のしかた</td><td>場所と意味だけ扱う</td></tr>
-        <tr><td><span class="ui">コントローラー</span></td><td><span class="ui">デッキ</span>、<span class="ui">ミキサー</span>、<span class="ui">エフェクト</span>、<span class="ui">サンプラー</span>、<span class="ui">その他</span>など。PERFORMANCE モードで使う、デッキ・ミキサー・クオンタイズなどの設定</td><td>扱う</td></tr>
+        <tr><td><span class="ui">コントローラー</span></td><td><span class="ui">デッキ</span>、<span class="ui">ミキサー</span>、<span class="ui">エフェクト</span>、<span class="ui">サンプラー</span>、<span class="ui">録音</span>、<span class="ui">MIX POINT LINK</span>、<span class="ui">その他</span>など。PERFORMANCE モードで使う、デッキ・ミキサー・クオンタイズ・録音などの設定（録音は<a href="practice.html">「練習のしかたと次のステップ」</a>で扱う）</td><td>扱う</td></tr>
         <tr><td><span class="ui">DJシステム</span></td><td>CDJ / XDJ などの DJ プレーヤー向けの設定（EXPORT モード）</td><td>FLX4 では使わない</td></tr>
-        <tr><td><span class="ui">詳細</span></td><td><span class="ui">データベース</span>、<span class="ui">ブラウズ</span>、<span class="ui">録音</span>など</td><td>扱わない</td></tr>
+        <tr><td><span class="ui">詳細</span></td><td><span class="ui">データベース</span>、<span class="ui">ブラウズ</span>、EXPORT モード用の<span class="ui">録音</span>など</td><td>扱わない</td></tr>
         <tr><td>そのほか</td><td>アカウントとプラン、クラウド、DJ 機器連携、キーボードショートカット、拡張機能（STEMS など）、ビデオ、照明</td><td>扱わない</td></tr>
     </table>
 
     <h2>設定を変えるときの進め方</h2>
-    <p>設定の変更には、次の 3 つの方針で臨みます。</p>
+    <p>設定の変更には次の 3 つの方針で臨みます。</p>
     <ul>
         <li><strong>意味がわからない設定は、初期値のままにする。</strong>初期値は、多くの人が困らないように選ばれています。意味の分からないまま変えると、不具合が起きたときに原因が分からなくなります</li>
         <li><strong>1 回に 1 つだけ変える。</strong>いくつも同時に変えると、どれが効いたのか分かりません</li>
         <li><strong>変えたら、曲を流して音や画面で確かめる。</strong>見た目の設定は画面で、音の設定は音で、その場で確認します。思ったとおりでなければ元に戻します</li>
     </ul>
-    <p>変えた項目は、メモしておくと便利です。「音が途切れるようになった」ときに、直前に何を変えたかをたどれます。</p>
+    <p>変えた項目はメモしておくと便利です。「音が途切れるようになった」ときに、直前に何を変えたかをたどれます。</p>
 
     <h2>表示の設定：見やすくする</h2>
     <p>ここから、最初に見直したい設定を 4 つの場所に分けて紹介します。まず、画面の見やすさに関わるものです。</p>
@@ -57,7 +57,7 @@
         <tr><td><span class="ui">表示</span> &gt; <span class="ui">表示形式</span> &gt; <span class="ui">キー表示形式</span></td><td>キーを <span class="ui">Classic</span>（キー名称）で表示するか、<span class="ui">Alphanumeric</span>（1A、2A など）で表示するか。<span class="ui">データベース上のキー情報を表示</span>を選ぶと、曲に記録されているキーのまま表示される</td><td>相性のよい曲を数字で探す方法を学ぶので、<span class="ui">Alphanumeric</span> が使いやすい。このサイトの「8A」のような書き方はこちらの形式。慣れたキー名のほうがよければ <span class="ui">Classic</span> でもよい。<a href="key.html">「キーと曲の相性」</a>も参照</td></tr>
         <tr><td><span class="ui">表示</span> &gt; <span class="ui">カラー</span> &gt; <span class="ui">波形カラー</span></td><td>拡大波形と全体波形の色。<span class="ui">BLUE</span>、<span class="ui">RGB</span>、<span class="ui">3Band</span> から選ぶ</td><td>どれが見やすいかは好みなので、実際の曲で試して決める。色が変わっても、波形の太さで展開を読む方法は同じ（<a href="structure.html">「曲の構成とフレーズ」</a>参照）</td></tr>
         <tr><td><span class="ui">表示</span> &gt; <span class="ui">カラー</span> &gt; <span class="ui">Skin</span></td><td>画面の基調色。<span class="ui">Dark</span>（黒基調）か <span class="ui">Light</span>（白基調。屋外向け）</td><td>暗い部屋なら <span class="ui">Dark</span>、明るい場所なら <span class="ui">Light</span>。見やすさだけの問題なので、好みでよい</td></tr>
-        <tr><td><span class="ui">表示</span> &gt; <span class="ui">レイアウト</span> &gt; <span class="ui">デッキ</span></td><td>フレーズを全体波形や拡大波形に並べて表示するか、SYNC RATE（<span class="ui">x 1</span> など）のボタンを表示するか、など</td><td>フレーズの表示は、8 小節のまとまりを目で追うのに役立つ。必要になったら試す</td></tr>
+        <tr><td><span class="ui">表示</span> &gt; <span class="ui">レイアウト</span> &gt; <span class="ui">デッキ</span></td><td>フレーズを全体波形や拡大波形に並べて表示するか、SYNC RATE（<span class="ui">x 1</span> など）のボタンを表示するか、など</td><td>フレーズの表示は 8 小節のまとまりを目で追うのに役立つ。必要になったら試す</td></tr>
         <tr><td><span class="ui">表示</span> &gt; <span class="ui">表示形式</span> &gt; <span class="ui">ビートカウント表示</span></td><td>拡大波形に出るカウントを、現在位置（小節数）にするか、次のメモリーキューまで（小節数・拍数）にするか</td><td>フレーズの頭を数える練習をするとき、次のメモリーキューまでの数え方が役に立つ</td></tr>
     </table>
 
@@ -87,7 +87,7 @@
     <p>初期値のままで困らなければ、変えなくてかまいません。BPM が 2 倍や半分になる曲が続くときに、<span class="ui">BPM範囲</span>を見直します。</p>
 
     <h2>コントローラーの設定：デッキの動き</h2>
-    <p>PERFORMANCE モードで FLX4 を使うときの動作は、<span class="ui">コントローラー</span>カテゴリーにあります。次の項目は、意味を知っておくと役に立ちます。</p>
+    <p>PERFORMANCE モードで FLX4 を使うときの動作は、<span class="ui">コントローラー</span>カテゴリーにあります。次の項目は意味を知っておくと役に立ちます。</p>
     <table>
         <tr><th>場所と項目</th><th>何を決めるか</th><th>おすすめの考え方</th></tr>
         <tr><td><span class="ui">コントローラー</span> &gt; <span class="ui">その他</span> &gt; <span class="ui">QUANTIZE</span></td><td><a class="term" data-term="quantize">クオンタイズ</a>の動き。ホットキューの登録位置を近い拍にそろえる（<span class="ui">SNAP</span>）、ホットキューやループを呼び出したときにビートがずれないよう補正する、など。デッキの <span class="ui">Q</span> がオンのときに働く</td><td>初心者は、拍に合わせて動いてくれるほうが失敗が少ないので、オンのままにする。クオンタイズは<a href="cue.html">「CUE を打つ」</a>でも扱う</td></tr>
@@ -99,7 +99,7 @@
     </table>
     <div class="callout note">
         <span class="callout-title">テンポの幅とマスターテンポの初期値</span>
-        <p>FLX4 の TEMPO スライダーの幅（±6%、±10%、±16%、WIDE）は、FLX4 の SHIFT + BEAT SYNC で切り替えます。画面の JOG パネルの<span class="ui">テンポレンジ</span>をクリックしても切り替わります。マスターテンポ（<span class="ui">MT</span>）も、JOG パネルでオン・オフを切り替えます。これらの初期値を環境設定で決める項目は、今回確認した操作説明書の項目一覧には見つかりませんでした。</p>
+        <p>FLX4 の TEMPO スライダーの幅（±6%、±10%、±16%、WIDE）は、FLX4 の SHIFT + BEAT SYNC で切り替えます。画面の JOG パネルの<span class="ui">テンポレンジ</span>をクリックしても切り替わります。マスターテンポ（<span class="ui">MT</span>）も JOG パネルでオン・オフを切り替えます。これらの初期値を環境設定で決める項目は、今回確認した操作説明書の項目一覧には見つかりませんでした。</p>
     </div>
 
     <div class="quiz">
@@ -109,7 +109,7 @@
             <li data-correct>音の途切れは減りやすくなるが、操作してから音が変わるまでの遅れは大きくなる</li>
             <li>音の途切れは増えるが、反応は速くなる</li>
         </ul>
-        <p class="quiz-explain">バッファサイズは、音のデータを一度に送る量です。大きいと安定しますが、そのぶん遅れ（レイテンシー）が増えます。途切れが出ない範囲で小さい値を探すのが基本です。</p>
+        <p class="quiz-explain">バッファサイズは音のデータを一度に送る量です。大きいと安定しますが、そのぶん遅れ（レイテンシー）が増えます。途切れが出ない範囲で小さい値を探すのが基本です。</p>
     </div>
     <div class="quiz">
         <p class="quiz-q">意味のよく分からない設定項目を見つけました。どうするのがよい？</p>
@@ -124,10 +124,10 @@
     <section class="summary">
         <h2>まとめ</h2>
         <ul>
-            <li>環境設定は、画面右上のボタンかメニューから開く。カテゴリー、タブ、項目の順に場所をたどる</li>
+            <li>環境設定は画面右上のボタンかメニューから開く。カテゴリー、タブ、項目の順に場所をたどる</li>
             <li>わからない設定は初期値のまま。変えるときは 1 つずつ変えて、音や画面で確かめる</li>
             <li>最初に見るのは、表示（キー表示形式・波形の色）、オーディオ（出力先・バッファサイズ）、コントローラー（クオンタイズ・シンク）</li>
-            <li>バッファサイズは、大きいと途切れにくく、小さいと反応が速い。途切れない範囲で小さくする</li>
+            <li>バッファサイズは大きいと途切れにくく、小さいと反応が速い。途切れない範囲で小さくする</li>
             <li>解析の設定は場所と意味を知っておけばよい。使い方は「曲を取り込んで解析する」で扱う</li>
         </ul>
     </section>

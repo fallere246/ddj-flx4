@@ -171,9 +171,9 @@ const GLOSSARY = {
     bitrate: { term: 'ビットレート', cat: '曲とソフト', see: 'music',
         short: '1 秒あたりのデータ量。圧縮音源では数字が大きいほど音質がよい。MP3 なら 320 kbps がよく使われる。' },
     streaming: { term: 'ストリーミング', cat: '曲とソフト', see: 'music',
-        short: '曲をダウンロードせず、インターネット経由で再生すること。一部の DJ ソフトは対応サービスの曲をかけられる。' },
+        short: '曲をダウンロードせず、インターネット経由で再生すること。rekordbox は Apple Music や Beatport などに対応していて、ログインすると曲をかけられる。' },
     'hardware-unlock': { term: 'Hardware Unlock', cat: '曲とソフト', see: 'setup',
-        short: '対応機材をつなぐと、rekordbox の有料の機能が契約なしで使えるしくみ。FLX4 では PERFORMANCE モードが使える。' },
+        short: '対応機材をつなぐと、有料プランなしで PERFORMANCE モードの操作や録音などができるしくみ。FLX4 も対象。表示は Free プランのままで、有料プランと同じにはならない。' },
     'performance-mode': { term: 'PERFORMANCE モード', cat: '曲とソフト', see: 'setup',
         short: 'rekordbox（Mac/Windows）で、DJ プレイをするための画面とモード。' },
 
