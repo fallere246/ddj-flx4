@@ -2,7 +2,7 @@
  * レッスンに埋め込む練習ツール。
  * <div data-widget="名前" data-...="設定"></div> を書くと、ページを開いたときにここで組み立てる。
  *
- *   metronome   拍・小節・フレーズを数える（data-track="metronome|beat" data-bpm）
+ *   metronome   拍・小節・フレーズを数える（data-track="metronome|beat|halfbeat" data-bpm）
  *   tap-bpm     タップして BPM を測る（data-quiz で、曲の BPM を当てる練習）
  *   structure   曲の構成を見ながら聴く（data-track、data-game="phrase" でフレーズの頭をタップ）
  *   channel     1 チャンネルのミキサー（data-controls="trim eq filter fader"）
@@ -440,7 +440,8 @@ const Widgets = (() => {
                 deck.load(track);
                 if (wasPlaying) { deck.seek(b); deck.play(); }
             } },
-            h('option', { value: 'beat', text: 'ドラム（4 つ打ち）', selected: kind === 'beat' }), h('option', { value: 'metronome', text: 'クリック', selected: kind === 'metronome' }));
+            h('option', { value: 'beat', text: 'ドラム（4 つ打ち）', selected: kind === 'beat' }), h('option', { value: 'metronome', text: 'クリック', selected: kind === 'metronome' }),
+            h('option', { value: 'halfbeat', text: 'ドラム（半テン）', selected: kind === 'halfbeat' }));
 
         body.append(
             h('div', { class: 'w-row' }, play, h('div', { class: 'w-field grow' }, h('span', { class: 'w-label', text: 'テンポ' }), bpmSlider.el, bpmVal), soundSel),
@@ -903,6 +904,15 @@ const Widgets = (() => {
             { text: 'BEAT FX の拍数を 3/4 か 1 に、FX をかけるチャンネルを 1 にする', ok: s => s.w.fxCh === 0 && s.w.fxBeats >= 0.75 },
             { text: 'BEAT FX の ON/OFF を押してエコーをかける', ok: s => s.ch(0).echo },
             { text: 'エコーをかけたまま、DECK 1 のチャンネルフェーダーを下げる（残響だけが残ります）', ok: s => s.fader(0) < 0.05 },
+            { text: 'エコーを止める', ok: s => !s.ch(0).echo },
+        ],
+        'echo-cut': [
+            { text: 'DECK 1 を再生する', ok: s => s.A.playing },
+            { text: 'BEAT FX の拍数を 1 拍に、FX をかけるチャンネルを 1 にする', ok: s => s.w.fxCh === 0 && s.w.fxBeats >= 1 },
+            { text: 'BEAT FX の ON/OFF を押してエコーをかける', ok: s => s.ch(0).echo },
+            { text: 'エコーをかけたまま、DECK 1 のチャンネルフェーダーを下げる', ok: s => s.fader(0) < 0.05 },
+            { text: '残響が鳴っているうちに DECK 2 を再生する（DECK 2 はドロップの頭に CUE があります）', ok: s => s.B.playing },
+            { text: 'DECK 2 のチャンネルフェーダーを上まで上げる', ok: s => s.fader(1) > 0.9 },
             { text: 'エコーを止める', ok: s => !s.ch(0).echo },
         ],
         filter: [

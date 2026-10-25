@@ -128,6 +128,36 @@ const DJAudio = (() => {
             [o, sub].forEach(x => { x.start(t); x.stop(t + dur + 0.02); });
             return [o, sub];
         },
+        // うなるベース（ダブステップ風）：フィルターを拍に合わせて開け閉めする
+        wobble(dest, t, beat, p) {
+            const dur = p.d * beat;
+            const o = ctx.createOscillator();
+            const sub = ctx.createOscillator();
+            o.type = 'sawtooth';
+            o.frequency.value = midiHz(p.n);
+            sub.frequency.value = midiHz(p.n);
+            const f = ctx.createBiquadFilter();
+            f.type = 'lowpass';
+            f.Q.value = 8;
+            const rate = p.rate || 0.5;   // 開け閉めの間隔（拍）
+            f.frequency.setValueAtTime(150, t);
+            for (let x = 0; x < dur; x += rate * beat) {
+                f.frequency.exponentialRampToValueAtTime(1600, t + x + rate * beat * 0.45);
+                f.frequency.exponentialRampToValueAtTime(150, t + Math.min(dur, x + rate * beat));
+            }
+            const g = ctx.createGain();
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(0.24, t + 0.01);
+            g.gain.setValueAtTime(0.24, t + dur * 0.9);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+            const sg = ctx.createGain();
+            sg.gain.value = 0.8;
+            o.connect(f).connect(g);
+            sub.connect(sg).connect(g);
+            g.connect(dest);
+            [o, sub].forEach(x => { x.start(t); x.stop(t + dur + 0.02); });
+            return [o, sub];
+        },
         chord(dest, t, beat, p) {
             // p.ns: 音の高さ（MIDI）、p.d: 長さ（拍）、p.pad: ゆっくり立ち上がる持続音
             const dur = p.d * beat;
@@ -214,6 +244,10 @@ const DJAudio = (() => {
             const div = c.bar < 4 ? 4 : c.bar < 6 ? 2 : 1;
             return s % div === 0 ? [{ i: 'snare', v: 0.35 + 0.65 * ((c.bar * 16 + s) / 128) }] : [];
         },
+        // 半テン（ハーフタイム）：キックは小節の頭、スネアは 3 拍目だけ。BPM の半分の速さに聞こえる
+        halfkick: s => (s === 0 || s === 10 ? [{ i: 'kick' }] : []),
+        halfsnare: s => (s === 8 ? [{ i: 'snare', v: 1 }, { i: 'clap' }] : []),
+        wob: (s, c) => (s === 0 ? [{ i: 'wobble', n: c.chord[0], d: 3.5, rate: c.bar % 2 ? 0.25 : 0.5 }] : []),
         // ブロックの頭のシンバル
         crash: (s, c) => (c.bar === 0 && s === 0 ? [{ i: 'crash' }] : []),
     };
@@ -223,6 +257,7 @@ const DJAudio = (() => {
         click: [0, 0.5, 0.3], kick: [1, 0.15, 0], hat: [0, 0.05, 0.45], hat16: [0, 0.05, 0.35], clap: [0, 0.55, 0.3],
         bass: [0.55, 0.25, 0], rollbass: [0.5, 0.25, 0], stab: [0.05, 0.5, 0.2], pad: [0.05, 0.3, 0.05],
         arp: [0, 0.3, 0.25], roll: [0, 0.4, 0.35], crash: [0, 0.1, 0.7],
+        halfkick: [0.8, 0.1, 0], halfsnare: [0, 0.6, 0.4], wob: [0.6, 0.4, 0.1],
     };
 
     // ========== 練習用の曲 ==========
@@ -281,6 +316,20 @@ const DJAudio = (() => {
                 { label: 'アウトロ', parts: ['kick', 'hat', 'crash'] },
             ],
         },
+        // 140 BPM で、ドロップが半テン（ダブステップ風）。テンポの違う曲をつなぐ練習用
+        rift: {
+            title: 'Glass Rift', bpm: 140, key: 'Bm', camelot: '10A', level: -5,
+            prog: [chord('B1', 'B3', 'D4', 'F#4'), chord('B1', 'B3', 'D4', 'F#4'), chord('G1', 'G3', 'B3', 'D4'), chord('F#1', 'F#3', 'A#3', 'C#4')],
+            blocks: [
+                { label: 'イントロ', parts: ['kick', 'hat'] },
+                { label: 'ビルドアップ', parts: ['pad', 'roll'] },
+                { label: 'ドロップ', parts: ['halfkick', 'halfsnare', 'hat16', 'wob', 'crash'] },
+                { label: 'ドロップ', parts: ['halfkick', 'halfsnare', 'hat16', 'wob', 'stab', 'crash'] },
+                { label: 'ブレイク', parts: ['pad', 'arp', 'crash'] },
+                { label: 'ドロップ', parts: ['halfkick', 'halfsnare', 'hat16', 'wob', 'stab', 'crash'] },
+                { label: 'アウトロ', parts: ['halfkick', 'halfsnare', 'hat'] },
+            ],
+        },
         // メトロノーム（拍と小節を数える練習用）
         metronome: {
             title: 'メトロノーム', bpm: 120, key: '', camelot: '', level: -4, loopAll: true,
@@ -292,6 +341,12 @@ const DJAudio = (() => {
             title: 'ドラムだけ', bpm: 124, key: '', camelot: '', level: -6, loopAll: true,
             prog: [chord('A1', 'A3')],
             blocks: [{ label: '', parts: ['kick', 'hat', 'clap'] }],
+        },
+        // 半テンのドラムだけ（4 つ打ちと聴き比べる用）
+        halfbeat: {
+            title: 'ドラムだけ（半テン）', bpm: 140, key: '', camelot: '', level: -6, loopAll: true,
+            prog: [chord('A1', 'A3')],
+            blocks: [{ label: '', parts: ['halfkick', 'hat16', 'halfsnare'] }],
         },
     };
 
