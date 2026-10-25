@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rekordbox の画面の見かた | FLX4 DJ 入門</title>
+    <meta name="description" content="rekordbox の PERFORMANCE モードの画面で、デッキ・波形・ミキサー・ブラウザーがどこにあり、何が分かるのかを整理します。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="rb-screen">
+<article class="lesson">
+    <h1>rekordbox の画面の見かた</h1>
+    <p class="lead">FLX4 を rekordbox につなぐと、パソコンの画面にもデッキや波形が表示されます。画面は情報が多く、最初はどこを見ればよいか迷います。このレッスンでは、画面にあるものを場所ごとに分け、「何が分かるか」「いつ見るか」を整理します。説明は rekordbox 7 の Mac/Windows 版の画面で行います。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>EXPORT モードと PERFORMANCE モードの違いを説明でき、PERFORMANCE モードに切り替えられる</li>
+            <li>画面のどこに、デッキの情報・波形・ミキサー・ブラウザーがあるか分かる</li>
+            <li>デッキの BPM・キー・残り時間・テンポの値などの表示を読み取れる</li>
+            <li>FLX4 でトラックを選んで、デッキに読み込む流れが分かる</li>
+        </ul>
+    </section>
+
+    <h2>2 つのモード：EXPORT と PERFORMANCE</h2>
+    <p>rekordbox は、曲の管理と DJ プレイの両方ができるソフトです。使い方に合わせて、画面左上で 2 つのモードを切り替えます。</p>
+    <table>
+        <tr><th>モード</th><th>何をするモードか</th><th>FLX4 との関係</th></tr>
+        <tr><td><span class="ui">EXPORT</span></td><td>曲を USB メモリーなどに書き出して、クラブにあるような DJ プレーヤー（CDJ / XDJ シリーズなど）で DJ をするための準備をする。DJ 機器をネットワークでつなぐ使い方もここで行う</td><td>FLX4 での DJ には使わない</td></tr>
+        <tr><td><span class="ui">PERFORMANCE</span></td><td>rekordbox そのものを DJ ソフトとして使う。DJ コントローラーなどをつなぎ、パソコンの中の曲を再生してミックスする</td><td><strong>FLX4 で DJ をするのはこちら</strong></td></tr>
+    </table>
+    <p>操作説明書にも、DJ コントローラーと組み合わせて DJ をする人は PERFORMANCE モードの章を読むように書かれています。EXPORT モードの使い道は、後のレッスン<a href="rb-export.html">「クラブの機材で DJ する」</a>で扱います。</p>
+    <ol class="steps">
+        <li>rekordbox を起動し、FLX4 をつないでおく</li>
+        <li>画面左上のモード切り替えで、<span class="ui">PERFORMANCE</span> を選ぶ（EXPORT が選ばれているときは、そこから PERFORMANCE に変える）</li>
+        <li>デッキと波形の画面に変わったことを確かめる</li>
+    </ol>
+    <div class="callout note">
+        <span class="callout-title">使える機能は契約プランと機材で変わる</span>
+        <p>操作説明書には、ご契約のプランによって使えない機能があると書かれています。FLX4 をつなぐと、サブスクリプション契約がなくても <a class="term" data-term="performance-mode">PERFORMANCE モード</a>の機能が使えます（<a class="term" data-term="hardware-unlock">Hardware Unlock</a>）。対象の機能は、rekordbox.com のプランと Hardware Unlock のページで確認してください。</p>
+    </div>
+
+    <h2>PERFORMANCE モードの画面の全体</h2>
+    <p>PERFORMANCE モードの画面は、大きく 2 つに分かれます。1 つは演奏のための<strong>プレーヤーパネル</strong>、もう 1 つは曲を選ぶための<strong>ブラウザーパネル</strong>です。プレーヤーパネルの中には、さらに小さなパネルが並んでいます。</p>
+    <p>どのパネルがどこに並ぶかは、後で説明するレイアウトの選び方で変わります。そこで、ここでは場所ではなく、パネルの名前と役割で整理します。最初に見るものは太字にしています。</p>
+    <table>
+        <tr><th>操作説明書での呼び名</th><th>何があるか</th><th>使いどころ</th></tr>
+        <tr><td><strong>グローバルセクション</strong></td><td>モードの切り替え、レイアウトの切り替え、各パネルの表示ボタン、環境設定を開くボタン、マスター出力の音量メーターなど</td><td>画面の見た目を変える。音が出ているか、音量が大きすぎないかを見る</td></tr>
+        <tr><td><strong>トラック情報パネル</strong></td><td>曲名、アーティスト名、BPM、キー、残り時間、全体波形、SYNC 関連のボタン</td><td>いまどの曲が、どんなテンポとキーで、あとどれくらいで終わるかを知る</td></tr>
+        <tr><td><strong>拡大波形表示パネル</strong></td><td>再生位置のまわりを拡大した波形。ビートグリッドの線、キューの印</td><td>ミックスの最中に、拍の位置と曲の展開を見る</td></tr>
+        <tr><td><strong>JOG パネル</strong></td><td>再生ボタン、BPM とテンポの値、テンポレンジ、マスターテンポ（MT）、クオンタイズ（Q）、SLIP など</td><td>再生中のテンポの状態を確かめる</td></tr>
+        <tr><td>パフォーマンスパッド</td><td>HOT CUE、PAD FX、BEAT JUMP などのモードごとに内容が変わるパッドの表示</td><td>ホットキューが登録されているかを見る。使い方は後のレッスンで扱う</td></tr>
+        <tr><td><strong>ミキサーパネル</strong></td><td>チャンネルレベルインジケーター、TRIM、EQ、ヘッドホンのモニター、チャンネルフェーダー、クロスフェーダー</td><td>FLX4 のミキサー部の状態を画面で確かめる</td></tr>
+        <tr><td>エフェクトパネル</td><td>BEAT FX の種類やオン・オフ、かける先のデッキの選択</td><td>エフェクトを使うレッスンで見る</td></tr>
+        <tr><td>ヘッドホンパネル</td><td>ヘッドホンのモニター音量とバランス（MIX、LEVEL）</td><td>FLX4 の同名のつまみに対応する</td></tr>
+        <tr><td>サンプラーデッキ、録音パネル、マイクパネル、MIX POINT パネルなど</td><td>サンプラー、録音、マイク、曲どうしのつなぎ位置の機能</td><td>最初は使わない。必要になったら「rekordbox の演奏機能」のレッスンで触れる</td></tr>
+        <tr><td><strong>ブラウザーパネル</strong></td><td>コレクションやプレイリストの一覧と、曲のリスト</td><td>次に流す曲を探して選ぶ</td></tr>
+    </table>
+    <div class="callout tip">
+        <span class="callout-title">最初は 4 か所だけ見る</span>
+        <p>慣れるまでは、トラック情報パネル（曲の情報）、拡大波形（拍の位置）、ミキサーパネル（音量）、ブラウザーパネル（次の曲）の 4 か所だけで足ります。サンプラーや録音などは、必要になるまで閉じておいてかまいません。</p>
+    </div>
+
+    <h2>デッキの表示を読む</h2>
+    <p>デッキの情報は、主にトラック情報パネルと JOG パネルにあります。1 台のデッキについて、次の表示が確認できます。</p>
+    <h3>トラック情報パネル</h3>
+    <table>
+        <tr><th>表示</th><th>分かること</th></tr>
+        <tr><td>トラック名、アーティスト名</td><td>どの曲がロードされているか</td></tr>
+        <tr><td>BPM とキー（原曲のもの）</td><td>曲が本来持っているテンポとキー。テンポスライダーで速さを変えても、ここは原曲の値のまま</td></tr>
+        <tr><td>残り時間・再生経過時間</td><td>曲があと何分で終わるか。次の曲を用意するタイミングの目安になる</td></tr>
+        <tr><td>全体波形</td><td>曲全体の形と、いまの再生位置、キューの印。クリックするとその位置に再生位置が移動する</td></tr>
+        <tr><td><span class="ui">BEAT SYNC</span> と <span class="ui">MASTER</span></td><td>SYNC のオン・オフと、基準になるデッキ（シンクマスター）の指定</td></tr>
+        <tr><td>キーシンクと半音の上げ下げのボタン、現在のキーの表示</td><td>キーを半音単位で動かせる。動かしたときは、原曲からの変更分が表示される。ダブルクリックでキーをリセットできる</td></tr>
+        <tr><td><span class="ui">x 1</span> / <span class="ui">x 2</span> / <span class="ui">x 1/2</span></td><td>SYNC のとき、基準のテンポの 1 倍・2 倍・半分に合わせる切り替え（SYNC RATE）。環境設定で表示のオン・オフができる</td></tr>
+    </table>
+    <h3>JOG パネル</h3>
+    <table>
+        <tr><th>表示</th><th>分かること</th></tr>
+        <tr><td>現在の BPM</td><td>テンポを変えたあとの、いまの BPM</td></tr>
+        <tr><td>テンポの割合（％）</td><td>原曲から何 % 速く（遅く）なっているか。ダブルクリックで 0% に戻せる</td></tr>
+        <tr><td><span class="ui">テンポレンジ</span></td><td>テンポを動かせる幅。クリックするたびに切り替わる（±6、±10、±16、WIDE）。FLX4 の SHIFT + BEAT SYNC と同じ幅の選択肢</td></tr>
+        <tr><td><span class="ui">MT</span>（マスターテンポ）</td><td>赤く点灯しているとき、テンポを変えても音の高さ（キー）が変わらない。<a class="term" data-term="master-tempo">マスターテンポ</a>のオン・オフを示す</td></tr>
+        <tr><td><span class="ui">Q</span>（クオンタイズ）</td><td><a class="term" data-term="quantize">クオンタイズ</a>のオン・オフ。キューやループの位置を拍に合わせる機能</td></tr>
+        <tr><td><span class="ui">SLIP</span></td><td>スリップ機能のオン・オフ。ループなどの操作をしても、裏で元の再生が進み続ける機能</td></tr>
+    </table>
+    <p>テンポスライダーを動かしたとき、トラック情報パネルの BPM は原曲の値のまま、JOG パネルの BPM と割合（％）だけが変わります。「原曲の値」と「いまの値」を別々に見られるのが便利な点です。マスターテンポをオフにして <a class="term" data-term="sync">SYNC</a> などでテンポが変わると、キーの表示も一緒に変わります。</p>
+    <p>FLX4 側でテンポの幅を変える方法は<a href="rhythm.html">「拍・小節・BPM」</a>で、<a class="term" data-term="beatgrid">ビートグリッド</a>や解析は、のちの<a href="analyze.html">「曲を取り込んで解析する」</a>で扱っています。</p>
+
+    <h2>波形の見かた</h2>
+    <p>波形は 2 種類あります。役割が違うので、使い分けて見ます。</p>
+    <table>
+        <tr><th>種類</th><th>場所</th><th>見えるもの</th><th>何に使うか</th></tr>
+        <tr><td><strong>全体波形</strong></td><td>トラック情報パネル</td><td>曲の最初から最後まで。キューポイント、メモリーキュー、ホットキューの印。フレーズの表示（環境設定でオンにしたとき）</td><td>曲の構成と、いまどのあたりを再生しているかを一目で知る。クリックでその位置へ移動できる</td></tr>
+        <tr><td><strong>拡大波形</strong></td><td>拡大波形表示パネル</td><td>再生位置のまわりを拡大した波形。ビートグリッドの線</td><td>拍の位置を見ながらミックスする。ズーム倍率を変えられる</td></tr>
+    </table>
+    <p><a href="structure.html">「曲の構成とフレーズ」</a>で学んだ、波形の太さで曲の展開を読む方法は、全体波形でそのまま使えます。波形が細くなっているところがブレイクやイントロ、アウトロで、太く詰まっているところがメインやドロップです。曲を再生する前に全体波形を見れば、どこで次の曲に入るかの見当がつきます。</p>
+    <h3>拡大波形のビートグリッド</h3>
+    <p>拡大波形には、解析で見つかった拍の位置が、白い線（ビートグリッド）で表示されます。再生位置は、波形の中央の赤い縦線で表されます。グリッドを直すとき（GRID EDIT パネル）は、小節の頭の拍が赤い線で表示されます。直し方は<a href="analyze.html">「曲を取り込んで解析する」</a>で扱います。</p>
+    <ul>
+        <li>白い線が拍の位置（ビートグリッド）、中央の赤い縦線が再生位置</li>
+        <li>ドラムの「ドン」という音の山が、白い線にぴたりと重なっていれば、解析は合っている</li>
+        <li>山と線がずれていたら、グリッドのずれ。直し方は<a href="analyze.html">「曲を取り込んで解析する」</a>で扱う</li>
+    </ul>
+    <p>キューの印も波形の上に出ます。メモリーキューやホットキューを設定すると、その位置が全体波形と拡大波形に表示されます。設定のしかたは<a href="cue.html">「CUE を打つ」</a>で練習します。</p>
+    <div class="callout flx4">
+        <span class="callout-title">FLX4 から波形を操作する</span>
+        <p>FLX4 の <a class="ctl" data-ctl="browse">ロータリーセレクター</a>を <a class="ctl" data-ctl="shift" data-deck="1">SHIFT</a> を押しながら回すと、拡大波形が拡大・縮小します。右に回すと拡大、左に回すと縮小します。波形を細かく見たいときと、先の展開まで見渡したいときで、使い分けます。</p>
+    </div>
+    <div class="callout note">
+        <span class="callout-title">波形の色は変えられる</span>
+        <p>波形の色は、環境設定の<span class="ui">表示</span>カテゴリーの<span class="ui">カラー</span>タブで選べます。この画面や本文の説明と色が違って見えても、読み方は同じです。詳しくは<a href="rb-settings.html">「rekordbox の設定を整える」</a>で扱います。</p>
+    </div>
+
+    <div class="quiz">
+        <p class="quiz-q">テンポスライダーで曲を速くしました。トラック情報パネルの BPM と、JOG パネルの BPM は、それぞれどうなる？</p>
+        <ul>
+            <li>どちらも速くした値に変わる</li>
+            <li data-correct>トラック情報パネルは原曲の値のまま、JOG パネルは変えたあとの値になる</li>
+            <li>どちらも原曲の値のまま、割合（％）だけが変わる</li>
+        </ul>
+        <p class="quiz-explain">トラック情報パネルの BPM とキーは原曲のものです。JOG パネルには、テンポを動かしたあとの BPM と、原曲からの割合（％）が表示されます。</p>
+    </div>
+
+    <h2>ブラウザーパネル：曲を探して読み込む</h2>
+    <p>ブラウザーパネルは、次に流す曲を探して選ぶところです。左側の一覧（ツリービュー）で見たい場所を選ぶと、その中の曲が右側のトラックリストに並びます。</p>
+    <table>
+        <tr><th>場所</th><th>何があるか</th><th>使いどころ</th></tr>
+        <tr><td><span class="ui">コレクション</span></td><td>rekordbox に取り込んだ、すべての曲</td><td>曲を探す元になる一覧。<a href="analyze.html">「曲を取り込んで解析する」</a>で曲を入れる場所</td></tr>
+        <tr><td><span class="ui">プレイリスト</span></td><td>DJ プレイの用途に合わせて作った、曲のまとまり</td><td>練習用、当日用などに分けておくと、探す手間が減る</td></tr>
+        <tr><td>そのほか（関連するトラック、演奏履歴、エクスプローラなど）</td><td>いまロードしている曲に関係する曲、過去に再生した履歴など</td><td>慣れてから使う</td></tr>
+        <tr><td>トラックリスト</td><td>選んだ場所の曲の一覧。曲名、BPM、キーなどの列がある</td><td>BPM やキーを見て、いまの曲につなげやすい曲を選ぶ</td></tr>
+    </table>
+    <p>トラックリストの列は、列の見出しを右クリックして、表示するものを選べます。ドラッグで並び順も変えられます。曲が増えてくると、BPM とキーの列を見て選曲することになるので、見やすい並びにしておくと便利です。キーの表示のしかたは<a href="rb-settings.html">次のレッスン</a>で扱います。曲の探し方や整理は、のちの<a href="rb-library.html">「曲を整理して探す」</a>で詳しく説明します。</p>
+
+    <h3>FLX4 で曲を選んで、デッキに読み込む</h3>
+    <p>マウスで曲をデッキにドラッグ＆ドロップして読み込むこともできますが、DJ 中は FLX4 の操作で読み込みます。</p>
+    <ol class="steps">
+        <li><a class="ctl" data-ctl="browse">ロータリーセレクター</a>を回して、トラックリストの曲にカーソルを合わせる</li>
+        <li>ロードしたいデッキの <a class="ctl" data-ctl="load" data-deck="1">LOAD</a> を押す（左のデッキなら左の LOAD）</li>
+        <li>画面のデッキに曲名や波形が表示されたら、読み込み完了</li>
+    </ol>
+    <p>ロータリーセレクターを押すと、カーソルが左の一覧（ツリービュー）とトラックリストの間を行き来します。先にコレクションやプレイリストを選び、続けて曲を選ぶ、という流れで使えます。</p>
+    <div class="callout flx4">
+        <span class="callout-title">LOAD のほかの動き</span>
+        <p><a class="ctl" data-ctl="load" data-deck="1">LOAD</a> を 2 回押すと、反対側のデッキの曲が、押した側のデッキにも読み込まれます。再生中なら同じ位置から再生されます（インスタントダブルス）。<a class="ctl" data-ctl="shift" data-deck="2">SHIFT</a> を押しながらデッキ 2 の LOAD を押すと、デッキの表示が小さくなってブラウザーが広く表示され、もう一度押すと戻ります。</p>
+    </div>
+
+    <h2>レイアウトを切り替える</h2>
+    <p>画面の並べ方は、グローバルセクションか、画面上部の<span class="ui">表示</span>メニューから切り替えられます。デッキの数、拡大波形の向き、ブラウザー領域の広さを選べます。</p>
+    <table>
+        <tr><th>レイアウト</th><th>特徴</th></tr>
+        <tr><td><span class="ui">2Deck Horizontal</span>（2 デッキ・横波形）</td><td>拡大波形が横向きに並ぶ。このコースの説明はこの形を想定している</td></tr>
+        <tr><td><span class="ui">2Deck Vertical</span>（2 デッキ・縦波形）</td><td>拡大波形が縦向きに並ぶ</td></tr>
+        <tr><td><span class="ui">4Deck Horizontal</span> / <span class="ui">4Deck Vertical</span></td><td>4 つのデッキを使うとき</td></tr>
+        <tr><td><span class="ui">ブラウズ</span></td><td>ブラウザーパネルが広がる。曲を選ぶのに便利</td></tr>
+    </table>
+    <p>FLX4 は 2 チャンネルのコントローラーなので、<strong>初心者は 2 デッキの横波形で十分</strong>です。曲を選ぶときだけ、ブラウズに切り替えると見やすくなります。4 デッキは、DJ プレーヤーなどを追加して 4 台を操作するときの設定です。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">FLX4 をつないで DJ をするとき、画面左上で選ぶのはどれ？</p>
+        <ul>
+            <li>EXPORT</li>
+            <li data-correct>PERFORMANCE</li>
+            <li>どちらでも同じ画面になる</li>
+        </ul>
+        <p class="quiz-explain">EXPORT モードは、曲を DJ プレーヤー向けに書き出す準備のモードです。パソコンの中の曲を FLX4 で再生してミックスするのは PERFORMANCE モードです。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">拡大波形で、白い線と、中央の赤い縦線は何を表している？</p>
+        <ul>
+            <li>白い線がキューポイント、赤い縦線が曲の終わり</li>
+            <li data-correct>白い線が拍の位置（ビートグリッド）、赤い縦線が再生位置</li>
+            <li>赤い縦線が低音、白い線が高音</li>
+        </ul>
+        <p class="quiz-explain">白い線は解析で見つかった拍の位置（ビートグリッド）、中央の赤い縦線はいま再生している位置です。ドラムの音の山がこの線に重なっているかどうかで、解析が合っているかを確かめられます。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">FLX4 でトラックリストの曲を、左のデッキに読み込むときの操作はどれ？</p>
+        <ul>
+            <li>PLAY/PAUSE を押してから、ロータリーセレクターを回す</li>
+            <li data-correct>ロータリーセレクターで曲を選び、左のデッキの LOAD を押す</li>
+            <li>クロスフェーダーを左いっぱいに動かす</li>
+        </ul>
+        <p class="quiz-explain">曲を選ぶのはロータリーセレクター、読み込むのは LOAD です。LOAD は、読み込みたいデッキ側のものを押します。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>FLX4 で DJ をするのは PERFORMANCE モード。EXPORT は DJ プレーヤー向けに曲を書き出す準備のモード</li>
+            <li>最初に見るのは、トラック情報パネル、拡大波形、ミキサーパネル、ブラウザーパネル</li>
+            <li>トラック情報パネルの BPM とキーは原曲の値。テンポを変えたあとの値は JOG パネルで見る</li>
+            <li>全体波形で曲の構成、拡大波形でビートグリッド（白い線）と再生位置（中央の赤い縦線）を見る</li>
+            <li>曲はロータリーセレクターで選んで、LOAD で読み込む</li>
+            <li>レイアウトは 2 デッキの横波形でよい。曲を選ぶときだけブラウズに切り替えると見やすい</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

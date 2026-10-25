@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クラブの機材で DJ する | FLX4 DJ 入門</title>
+    <meta name="description" content="rekordbox の EXPORT モードで曲を USB メモリーに書き出し、クラブの DJ プレーヤーで使うまでの流れと、本番前の確認をまとめます。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="rb-export">
+<article class="lesson">
+    <h1>クラブの機材で DJ する</h1>
+    <p class="lead">クラブやバーには、パソコンではなく、<a class="term" data-term="cdj">CDJ</a> などの DJ プレーヤーとミキサーが置いてあることがよくあります。そこで自分の曲をかけるには、rekordbox で準備した曲を USB メモリーなどに書き出して持っていきます。このレッスンでは、その書き出しの手順と、本番前の確認を説明します。画面の説明は rekordbox（Mac/Windows）のものです。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>EXPORT モードと PERFORMANCE モードの違いを説明できる</li>
+            <li>USB メモリーに曲とプレイリストを書き出せる</li>
+            <li>書き出しで一緒に持っていける情報と、持っていけない情報を知っている</li>
+            <li>本番前の確認項目を挙げられる</li>
+        </ul>
+    </section>
+
+    <h2>なぜ書き出しが必要なのか</h2>
+    <p>家では、FLX4 をパソコンにつないで rekordbox を動かします。曲のデータもパソコンの中にあります。ところがクラブのブースには、たいていパソコンはありません。置いてあるのは DJ プレーヤー（CDJ など）と DJ ミキサーです。プレーヤーには USB メモリーなどを挿す差し込み口があり、そこから曲を読み込みます。</p>
+    <p>そこで、rekordbox の<a class="term" data-term="collection">コレクション</a>にある曲と<a class="term" data-term="playlist">プレイリスト</a>を、USB メモリーに書き出します。このとき、家で準備した次の情報も一緒に書き出されます。</p>
+    <ul>
+        <li>曲の BPM と<a class="term" data-term="beatgrid">ビートグリッド</a>（<a class="term" data-term="analysis">解析</a>の結果）</li>
+        <li>CUE やループの位置、<a class="term" data-term="hot-cue">ホットキュー</a></li>
+        <li>プレイリストの中身と順番</li>
+    </ul>
+    <p>解析や CUE 打ちを家で済ませておけば、ブースでは選曲とミックスに集中できます。これが、ここまでのレッスンで準備を丁寧にやってきた理由の 1 つでもあります。</p>
+
+    <h2>EXPORT モードとは</h2>
+    <p>rekordbox には、画面の左上で切り替える動作モードがいくつかあります。このレッスンで使うのは <span class="ui">EXPORT</span> です。FLX4 で演奏するときは、これまで使ってきた<a class="term" data-term="performance-mode">PERFORMANCE モード</a>です。</p>
+    <table>
+        <tr><th></th><th>PERFORMANCE モード</th><th>EXPORT モード</th></tr>
+        <tr><td>目的</td><td>rekordbox 対応の DJ 機器をつないで、パソコンで演奏する</td><td>曲を準備して、DJ プレーヤーに渡す（USB メモリーへの書き出し、LAN での接続）</td></tr>
+        <tr><td>音を出す場所</td><td>rekordbox と FLX4</td><td>クラブの DJ プレーヤーとミキサー</td></tr>
+        <tr><td>パソコンの役割</td><td>演奏の中心</td><td>準備と、ブースの機材との橋渡し</td></tr>
+    </table>
+    <p>EXPORT モードでは、画面のプレーヤーパネルでも曲を再生できます。<span class="ui">1 PLAYER</span>、<span class="ui">2 PLAYER</span>、<span class="ui">DUAL PLAYER</span> など、レイアウトも選べます。ここで CUE やループ、ホットキューを設定したり、ビートグリッドを直したり、2 曲を重ねて相性を確かめたりできます。つまり EXPORT モードは、「ブースに持っていく曲の下ごしらえをする場所」です。</p>
+    <div class="callout note">
+        <span class="callout-title">使える機能は契約プランと機材で変わる</span>
+        <p>操作説明書には、契約しているプランや接続している DJ 機器によって、使えない機能があると書かれています。FLX4 の Hardware Unlock で EXPORT モードのどこまでが使えるかは、rekordbox.com のプランと Hardware Unlock のページで確認してください。</p>
+    </div>
+
+    <h2>USB メモリーに書き出す</h2>
+    <h3>使える記録媒体とファイルシステム</h3>
+    <p>記録媒体は、データの整理のしかたが決まっています。この決まりを<strong>ファイルシステム</strong>といいます。rekordbox が書き込める組み合わせは次のとおりです。</p>
+    <table>
+        <tr><th>記録媒体</th><th>FAT16</th><th>FAT32</th><th>exFAT</th><th>HFS+</th><th>NTFS</th></tr>
+        <tr><td>USB ストレージデバイス（フラッシュメモリー、ハードディスク）</td><td>使える</td><td>使える</td><td>使える</td><td>使える（Mac で利用）</td><td>使えない</td></tr>
+        <tr><td>SD メモリーカード</td><td>使える</td><td>使える</td><td>使える</td><td>使えない</td><td>使えない</td></tr>
+    </table>
+    <ul>
+        <li>NTFS と、HFS（HFS+ ではない古い形式）には書き込めない。NTFS などの非対応の形式のデバイスは、rekordbox の画面に非対応を示す表示が出る</li>
+        <li>操作説明書は、Windows では FAT32、Mac では FAT32 か HFS+ のデバイスを使うよう案内している</li>
+        <li>exFAT が使えるかどうかは、<strong>ブースの DJ 機器側</strong>で決まる。操作説明書は、exFAT に対応する DJ 機器を rekordbox.com の FAQ で確認するよう案内している</li>
+        <li>DJ 機器が対応している媒体（USB だけか、SD カードも使えるか）は、機器ごとに違う。各機器の取扱説明書で確認する</li>
+    </ul>
+    <div class="callout warn">
+        <span class="callout-title">新しいメモリーを買う前に確かめる</span>
+        <p>大容量の USB メモリーは、買ったままだと exFAT や NTFS になっていることがあります。初期化（フォーマット）すると中のデータは消えるので、先にバックアップを取ってから行ってください。迷ったら、どの DJ 機器にも通りやすい FAT32 が無難です。ただし FAT32 には 1 ファイル 4 GB までという一般的な制限があります。長い WAV ファイルなどは注意してください。</p>
+    </div>
+
+    <h3>曲とプレイリストを書き出す</h3>
+    <p>ここからは、操作説明書の流れに沿った手順です。ボタンの絵や細かい表示は、rekordbox のバージョンで変わることがあります。</p>
+    <ol class="steps">
+        <li>rekordbox の画面左上で <span class="ui">EXPORT</span> を選ぶ。</li>
+        <li>書き出したい曲とプレイリストが、コレクションにそろっていて、解析と CUE 打ちが終わっていることを確かめる。</li>
+        <li>パソコンに USB メモリーを挿す。ブラウザパネルのメディアブラウザにある <span class="ui">デバイス</span> に、USB メモリーが表示される。表示されないときは、操作説明書の「コンピューターに USB ストレージデバイスを接続する」の項を見る。</li>
+        <li>必要なら、デバイスの設定を確認する。DJ プレーヤーの画面に出るデバイス名、背景色、波形の色、曲を並べる順番などを、ここで決められる。</li>
+        <li><span class="ui">デバイス</span> の中の USB メモリーを開き、<span class="ui">プレイリスト</span> フォルダも開く。</li>
+        <li>書き出したいプレイリストを、USB メモリーのところにドラッグ＆ドロップする。画面の一番下に進み具合のバーが出て、プレイリストの曲とその付随情報が転送される。</li>
+        <li>転送が終わったら、USB メモリーの横の取り外しの操作をしてから、USB メモリーを抜く。</li>
+    </ol>
+    <p>曲を 1 曲ずつ、コレクションから USB メモリーへドラッグして転送することもできます。ただし、本番で使う曲はプレイリストにまとめておくほうが、プレーヤー側で探しやすくなります。</p>
+    <div class="callout warn">
+        <span class="callout-title">抜くときは、必ず取り外しの操作をする</span>
+        <p>操作説明書によると、一部の DJ プレーヤーでは、曲を転送するだけでなく、USB メモリーの中に専用のライブラリー（曲やプレイリストのデータベース）が必要です。この専用ライブラリーは、デバイスを取り外すときに作られます。転送中のデバイスは取り外せません。いきなり引き抜かず、転送の終了を待って、取り外しの操作を行ってください。</p>
+    </div>
+
+    <h3>書き出しのあと、パソコンに戻せるもの</h3>
+    <p>書き出しは片道ではありません。クラブのプレーヤーで演奏した USB メモリーをパソコンにつなぐと、次のことができます。</p>
+    <ul>
+        <li><strong>演奏履歴の取り込み</strong>：プレーヤーで再生した曲の履歴が、rekordbox の <span class="ui">演奏履歴</span> に入る。環境設定の DJ システムカテゴリー、デバイスタブにある、演奏履歴を自動で取り込む項目にチェックが入っていれば自動で、そうでなければ手動で取り込む</li>
+        <li><strong>トラック情報の更新</strong>：USB メモリーを右クリックして <span class="ui">コレクションを更新</span> を選ぶと、プレーヤー側で変えた CUE・ループ・ホットキュー・ビートグリッド・カラー・評価・コメントが、rekordbox に反映される。反映される内容は DJ プレーヤーによって異なる</li>
+        <li><strong>別のパソコンで書き出したプレイリストの取り込み</strong>：<span class="ui">デバイス</span> の中で右クリックして、プレイリストのインポートを選ぶ</li>
+    </ul>
+    <p>本番のあと、曲順の記録や、その場で気づいた直しを持ち帰れるので、次のセットの準備に役立ちます。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">Windows のパソコンで、新しく買った USB メモリーを rekordbox で書き出し先にしたいと思います。<a class="term" data-term="file-system">ファイルシステム</a>が NTFS になっていました。どうすればよい？</p>
+        <ul>
+            <li>そのまま書き出す。NTFS は問題なく使える</li>
+            <li data-correct>バックアップを取ってから、FAT32 などに初期化する</li>
+            <li>SD メモリーカードに入れ替えれば NTFS でも使える</li>
+        </ul>
+        <p class="quiz-explain">NTFS は、USB ストレージデバイスにも SD メモリーカードにも、rekordbox からは書き込めません。Windows では FAT32 が案内されています。初期化すると中身が消えるので、先にバックアップを取ります。</p>
+    </div>
+
+    <h2>書き出しで持っていける情報</h2>
+    <p>操作説明書で確認できる範囲で、まとめます。</p>
+    <table>
+        <tr><th>情報</th><th>メモ</th></tr>
+        <tr><td>BPM とビートグリッド</td><td>プレーヤーの CUE やループの<a class="term" data-term="quantize">クオンタイズ</a>、複数のプレーヤー間の SYNC に使われる</td></tr>
+        <tr><td>CUE（<a class="term" data-term="memory-cue">メモリーキュー</a>）</td><td>1 曲に保存できるのは、ループと合わせて最大 10 個。DJ プレーヤーで呼び出せる</td></tr>
+        <tr><td>ループ</td><td>メモリーキューと同じく保存して持っていける。保存したループを「アクティブループ」にしておくと、対応するプレーヤーで再生したとき、その場所で自動でループする</td></tr>
+        <tr><td>ホットキュー</td><td>1 曲に 8 個（A〜H）。ただしプレーヤーによって、使える数が違う</td></tr>
+        <tr><td>プレイリスト</td><td>プレーヤーによって、名前やフォルダの階層に制限がある</td></tr>
+        <tr><td>キューの色・コメント</td><td>プレーヤーによっては、設定した色やコメントを表示できない</td></tr>
+        <tr><td>ホットキューバンクリスト</td><td>別々の曲のホットキューを 8 つまで組み合わせて登録できる機能。一部のプレーヤーではロードできない</td></tr>
+    </table>
+    <div class="callout tip">
+        <span class="callout-title">プレーヤーごとの違いは取扱説明書で</span>
+        <p>操作説明書は、プレーヤーでの具体的な操作を「各 DJ 機器の取扱説明書を見てください」と案内しています。機種によって、ホットキューの数、表示できる情報、読めるファイル形式が違うためです。自分がよく行く店のプレーヤーの機種が分かれば、その取扱説明書を事前に読んでおくと安心です。</p>
+    </div>
+
+    <h2>本番前のチェックリスト</h2>
+    <p>ブースでは、機材を借りて、短い時間で準備します。家でできる確認は、家で済ませておきましょう。</p>
+    <ul>
+        <li><strong>書き出したあと、実際に読み込めるか確かめる</strong>：できれば同じ系統のプレーヤーで、曲が表示されること、再生できること、CUE やホットキューが出ることを確かめる。お店や友人のスタジオ、練習用に借りられる機材などを探す</li>
+        <li><strong>ファイルシステムを確認する</strong>：使う USB メモリーの形式が、行く店のプレーヤーに対応しているか。exFAT を使うなら、機器の対応を先に確認する</li>
+        <li><strong>予備の USB メモリーを用意する</strong>：同じ内容を書き出したものを 2 つ持つ。USB メモリーは、抜き差しの途中で壊れたり、認識されなかったりすることがある</li>
+        <li><strong>曲の数と容量を確かめる</strong>：全部入れるより、そのセットに必要な曲に絞る。曲が多いと、プレーヤー側で探すのに時間がかかる</li>
+        <li><strong>ファイル形式を確認する</strong>：プレーヤーが読み込めるファイル形式は、機種ごとに決まっている。取扱説明書で確認する</li>
+        <li><strong>曲の準備を済ませておく</strong>：解析の結果、グリッドのずれ、BPM が 2 倍や半分になっていないか、CUE の位置。書き出してから直すと、また書き出しが必要になる</li>
+        <li><strong>パソコン側のバックアップ</strong>：書き出す前に、コレクションとファイルのバックアップも取っておく。操作説明書も、登録した情報が消えても責任を負えないので、別に保管するよう案内している</li>
+    </ul>
+
+    <div class="quiz">
+        <p class="quiz-q">本番前の準備として、いちばん優先度が高いのはどれ？</p>
+        <ul>
+            <li>USB メモリーに、持っている曲を全部入れる</li>
+            <li data-correct>書き出したあと、プレーヤーで読み込めて再生できるか確かめ、予備の USB メモリーも用意する</li>
+            <li>ブースに着いてから、プレーヤーで CUE を打ち直す</li>
+        </ul>
+        <p class="quiz-explain">本番に間に合うかどうかを分けるのは、読み込めること、再生できることです。予備があれば、1 つが認識されなくても続けられます。CUE は家のうちに rekordbox で打っておきます。</p>
+    </div>
+
+    <h2>PRO DJ LINK：パソコンとプレーヤーをつなぐ</h2>
+    <p>USB メモリーを使わずに、パソコンと DJ プレーヤーを<strong>LAN ケーブルまたは無線 LAN</strong> でつなぐ方法もあります。これを <a class="term" data-term="pro-dj-link">PRO DJ LINK</a> といいます。操作説明書では、書き出す方法と LAN でつなぐ方法を、次のように区別しています。</p>
+    <table>
+        <tr><th>方法</th><th>つなぎ方</th><th>特徴</th></tr>
+        <tr><td>USB EXPORT</td><td>USB メモリーなどに書き出して、プレーヤーに挿す</td><td>ブースにパソコンを持ち込まない</td></tr>
+        <tr><td>LINK EXPORT</td><td>パソコンとプレーヤーを LAN でつなぐ</td><td>書き出さなくても、rekordbox の曲をプレーヤーに直接ロードできる。rekordbox の検索機能も使える</td></tr>
+    </table>
+    <p>LINK EXPORT の流れは、おおまかに次のとおりです。</p>
+    <ol class="steps">
+        <li>パソコンと DJ 機器を、LAN ケーブルか無線 LAN でつなぐ。</li>
+        <li>機器が見つかると、ブラウザパネルの左下に <span class="ui">LINK</span> ボタンが出る。これを押して通信を始める。</li>
+        <li>下にリンクステータスパネルが出て、つながっている機器が表示される。曲をトラックリストから、そのプレーヤーの表示までドラッグすると、プレーヤーにロードされる。</li>
+    </ol>
+    <ul>
+        <li>スイッチングハブや PRO DJ LINK 対応の DJ ミキサーを間に入れると、複数のプレーヤーで音楽ファイルやデータを共有できる。つなげるプレーヤーの台数は、機器によって違う</li>
+        <li>PRO DJ LINK につなげるコンピューターは 2 台まで</li>
+        <li>PRO DJ LINK 対応の DJ ミキサーとつなぐと、ミキサーのヘッドホンで rekordbox の曲を試聴できる（環境設定の DJ システムカテゴリーでの設定が必要）</li>
+        <li>PRO DJ LINK でつないでいる間は、rekordbox でのビートグリッドの調整はできない</li>
+        <li>セキュリティソフトや OS の設定が通信を止めて、つながらないことがある</li>
+    </ul>
+    <div class="callout note">
+        <span class="callout-title">ブースにパソコンを置けるとは限らない</span>
+        <p>お店によっては、ブースにパソコンを置けなかったり、LAN の接続が使えなかったりします。LAN の接続方法も機器ごとに違います。まずは USB メモリーでの書き出しを確実にできるようにしておき、LAN は必要になったときに、機器の取扱説明書とあわせて調べましょう。</p>
+    </div>
+
+    <h2>FLX4 とクラブの機材の違い</h2>
+    <p>FLX4 で練習した基本は、クラブの機材でもそのまま通用します。<a class="term" data-term="deck">デッキ</a>で曲を選び、<a class="term" data-term="mixer">ミキサー</a>で EQ とフェーダーを動かして、つなぐ。やることは同じです。ただし、機材によって違うところもあります。ここは一般的な話なので、細かい動きは、使う機材の取扱説明書で確認してください。</p>
+    <ul>
+        <li><strong>配置</strong>：FLX4 は、デッキ 2 つとミキサーが 1 台にまとまっている。クラブでは、プレーヤー 2 台の間に、独立したミキサーが置かれることが多い。ボタンの位置が違うので、最初は探す時間がかかる</li>
+        <li><strong>曲の読み込み</strong>：FLX4 ではパソコンの画面で曲を選んでロードする。プレーヤーでは、本体のディスプレイとセレクターで、USB メモリーの中から選んで読み込む</li>
+        <li><strong>SYNC とクオンタイズ</strong>：<a class="term" data-term="sync">SYNC</a> やクオンタイズの機能を持つプレーヤーは多いが、動きや使える条件は機種ごとに違う。ビートグリッドが正しいことが前提になる点は同じ</li>
+        <li><strong>機能の数</strong>：ホットキューの数、ループ、エフェクトの種類などは、機種で違う</li>
+        <li><strong>音量の調整</strong>：ミキサーの TRIM・EQ・チャンネルフェーダーの基本は同じ。ただしブースの音響設備は店ごとに違うので、音量はその場で耳で確かめる</li>
+    </ul>
+    <p>お店のスタッフに頼んで、営業前に機材を触らせてもらえることもあります。その場合は、事前に聞いてみましょう。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">PRO DJ LINK の LINK EXPORT の説明として、正しいのはどれ？</p>
+        <ul>
+            <li>USB メモリーに書き出したあと、パソコンを接続しないで使う</li>
+            <li>LAN でつなぐと、パソコンの画面でビートグリッドを自由に直せる</li>
+            <li data-correct>パソコンとプレーヤーを LAN でつなぎ、書き出さずに rekordbox の曲をプレーヤーにロードできる</li>
+        </ul>
+        <p class="quiz-explain">パソコンを持ち込まずに USB メモリーだけで使う方法は USB EXPORT です。また、PRO DJ LINK で接続している間は、rekordbox でのビートグリッドの調整はできません。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>クラブにはパソコンがないことが多い。rekordbox で準備した曲を、USB メモリーなどに書き出して持っていく</li>
+            <li>書き出しは EXPORT モードで行う。デバイスにプレイリストをドラッグし、転送が終わったら取り外しの操作をしてから抜く</li>
+            <li>USB メモリーのファイルシステムは FAT32 が無難。NTFS には書き込めない。exFAT はブースの機器の対応を確認する</li>
+            <li>BPM・ビートグリッド・CUE・ループ・ホットキューも一緒に持っていけるが、使える内容はプレーヤーで違う</li>
+            <li>本番前に、読み込めるかを確かめ、予備の USB メモリーを用意する</li>
+            <li>PRO DJ LINK では、パソコンとプレーヤーを LAN でつなぐ。機材ごとの違いは、取扱説明書で確認する</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

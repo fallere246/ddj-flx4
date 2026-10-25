@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曲を取り込んで解析する | FLX4 DJ 入門</title>
+    <meta name="description" content="曲をソフトに取り込み、BPM とビートグリッドを解析させて、ずれていないかを確かめ、直す考え方を学びます。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="analyze">
+<article class="lesson">
+    <h1>曲を取り込んで解析する</h1>
+    <p class="lead">DJ ソフトは、曲を取り込むと、曲の BPM やビートの位置を自動で調べてくれます。この結果が正しいかどうかで、あとの SYNC やループが気持ちよく動くか、ずれてしまうかが決まります。このレッスンでは、解析とは何か、正しいかどうかの確かめ方、ずれていたときの考え方を学びます。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>解析で何が分かるのか、なぜ必要なのかを説明できる</li>
+            <li>曲をソフトに取り込み、練習用のプレイリスト（クレート）を作れる</li>
+            <li>波形を見て、ビートグリッドが合っているかを確かめられる</li>
+            <li>よくある解析の間違いを知り、ずれていたら直す方針を立てられる</li>
+        </ul>
+    </section>
+
+    <h2>解析とは</h2>
+    <p><a class="term" data-term="analysis">解析</a>とは、ソフトが曲の音を調べて、DJ に必要な情報を作ることです。主に次のものができます。</p>
+    <ul>
+        <li><strong>BPM</strong>：曲のテンポ</li>
+        <li><strong><a class="term" data-term="beatgrid">ビートグリッド</a></strong>：拍の位置を示す目印の線。どこが 1 拍目で、どこが 2 拍目かを、曲全体にわたって決めたもの</li>
+        <li><strong>キー</strong>：曲の調。相性のよい曲を探すのに使う</li>
+        <li><strong><a class="term" data-term="waveform">波形</a></strong>：曲の音量や低音・高音の分布を、絵にしたもの</li>
+    </ul>
+    <p>ビートグリッドが大事なのは、DJ ソフトの便利な機能の多くが、グリッドを基準に動くからです。</p>
+    <ul>
+        <li><a class="term" data-term="sync">SYNC</a>：グリッドを見て、2 曲のテンポと拍の位置をそろえる</li>
+        <li><a class="term" data-term="quantize">クオンタイズ</a>：CUE やループを、一番近い拍の位置にぴたりと合わせる</li>
+        <li><a class="term" data-term="loop">ループ</a>や<a class="term" data-term="beat-jump">ビートジャンプ</a>：拍の長さの単位で動く</li>
+    </ul>
+    <p>グリッドがずれていると、これらの機能も同じだけずれます。「SYNC を押したのに重ならない」の原因の多くは、操作ではなく、解析にあります。</p>
+
+    <h2>曲を取り込む</h2>
+    <p>ソフトに曲を登録する作業を「取り込み」といいます。取り込むと、ソフトは曲の場所を覚え、解析を始めます。</p>
+    <div data-sw="mac">
+        <p>rekordbox（Mac/Windows）の画面で説明します。曲は<a class="term" data-term="collection">コレクション</a>に追加して使います。</p>
+        <ol class="steps">
+            <li>画面左の<span class="ui">メディアブラウザ</span>で<span class="ui">コレクション</span>をクリックする。コレクションの曲が、右のトラックリストに表示される。</li>
+            <li>Finder（Windows ならエクスプローラー）から、曲のファイルやフォルダーを、トラックリストにドラッグ＆ドロップする。曲がコレクションに追加され、タグ（曲名やアーティスト名などの情報）が読み込まれて表示される。</li>
+            <li>解析が終わるまで待つ。解析中の曲は、左に進み具合が表示される。終わると、プレビューに波形が出る。</li>
+        </ol>
+        <p>ドラッグの代わりに、画面上部の<span class="ui">ファイル</span>メニューから<span class="ui">インポート</span>を選び、<span class="ui">楽曲をインポート</span>（ファイルを選ぶ）か<span class="ui">フォルダをインポート</span>（フォルダーを選ぶ）で追加することもできます。追加した曲をコレクションから外したいときは、曲を選んで Delete キーを押すか、右クリックして<span class="ui">コレクションから削除</span>を選びます。外しても、パソコンの中の音楽ファイル自体は消えません。</p>
+        <p>追加するだけで解析が始まるのは、自動解析がオンになっているときです。自動解析をオフにしている場合は、曲を選んでから自分で解析を実行します（後の節で説明します）。</p>
+    </div>
+    <div data-sw="serato">
+        <p>Serato DJ Lite では、<span class="ui">ファイル</span>ボタンで、PC の中身を見られるパネルを開きます。曲が入っているフォルダーを選び、crates パネルにドラッグ＆ドロップすると、クレート（crate）ができて曲がライブラリに入ります。それ以外の取り込み方や、解析の設定は、Serato DJ Lite のソフトウェアマニュアル（serato.com/dj/lite/downloads）で確認できます。</p>
+    </div>
+    <div data-sw="ios">
+        <p>rekordbox（iOS/Android）では、端末の中の曲や、ストリーミングサービスの曲が使えます。曲の追加や解析のしかたは、バージョンで変わります。公式のマニュアル（rekordbox.com/manual）を見てください。</p>
+    </div>
+    <div class="callout note">
+        <span class="callout-title">解析は曲を入れた最初の 1 回</span>
+        <p>解析の結果は、ソフトが覚えています。ふつうは、曲を入れたときに 1 回だけ待てば、次からはすぐ使えます。練習の前に、時間のあるときにまとめて取り込んでおくと楽です。</p>
+        <p data-sw="mac">古いバージョンの rekordbox で解析した曲には、「?」のマークが出ることがあります。解析した情報が足りないか古いときの表示です。曲を右クリックして<span class="ui">新しい解析データの追加</span>を選ぶと、情報が最新になって「?」が消えます。</p>
+    </div>
+
+    <h2>解析の設定</h2>
+    <p data-sw="mac">rekordbox の解析の設定は、<span class="ui">環境設定</span>ウィンドウの<span class="ui">解析</span>カテゴリーにあります。<span class="ui">環境設定</span>は、画面右上のアイコン、または画面上部の<span class="ui">ファイル</span>メニューから開きます。曲の解析に関わるのは、おもに<span class="ui">楽曲解析</span>タブです。環境設定の全体は<a href="rb-settings.html">「rekordbox の設定を整える」</a>で説明します。</p>
+    <table data-sw="mac">
+        <tr><th>項目（<span class="ui">楽曲解析</span>タブ）</th><th>できること</th></tr>
+        <tr><td><span class="ui">楽曲解析モード</span></td><td>波形の解析のしかたを選ぶ。<span class="ui">ノーマル</span>は、テンポが一定の曲に向いている。<span class="ui">ダイナミック</span>は、テンポが途中で変わる曲に向いている</td></tr>
+        <tr><td><span class="ui">BPM 範囲</span></td><td><span class="ui">ノーマル</span>で解析するときの BPM の範囲を決める。たとえば 170 BPM 前後のドラムンベースが、半分の 85 に解析されるのを防ぎたいときに、範囲を合わせる</td></tr>
+        <tr><td><span class="ui">楽曲解析設定</span></td><td>解析する項目を選ぶ。<span class="ui">BPM / Grid</span>、<span class="ui">キー</span>、<span class="ui">Phrase</span>、<span class="ui">Vocal</span>から、チェックを入れたものが解析される</td></tr>
+        <tr><td><span class="ui">自動解析</span></td><td>曲をインポートしたときに、自動で解析するかどうか（<span class="ui">有効</span>／<span class="ui">無効</span>）</td></tr>
+        <tr><td><span class="ui">解析処理</span></td><td>解析の処理のしかた。<span class="ui">パフォーマンス</span>は速いがパソコンの負荷が上がる。<span class="ui">省電力</span>は負荷がいちばん小さい</td></tr>
+    </table>
+    <p data-sw="mac">使い分けの目安は次のとおりです。ハウスなどの機械で作られた曲は、初期設定のまま始めて大丈夫です。生演奏やライブ録音のようにテンポが揺れる曲が多いときは、<span class="ui">ダイナミック</span>を試す価値があります。ジャンルがそろっていて、倍や半分に解析される曲があるときは、<span class="ui">BPM 範囲</span>を合わせます。迷ったら、初期設定のままで始めます。</p>
+    <div class="callout note" data-sw="mac">
+        <span class="callout-title">環境設定は、お使いのプランやバージョンで項目が変わる</span>
+        <p>rekordbox の操作説明書にも、バージョンや契約のプランによって表示されない項目があると書かれています。ここにある項目が見つからないときは、ほかの項目から確かめてください。</p>
+    </div>
+    <p data-sw="serato">Serato DJ Lite など、ほかのソフトにも、BPM の範囲や解析のしかたを選べる設定があることがあります。名前や場所はバージョンで変わるので、Serato DJ Lite のソフトウェアマニュアルを見てください。迷ったら、初期設定のままで始めて大丈夫です。</p>
+    <p data-sw="ios">rekordbox（iOS/Android）の解析の設定は、バージョンで変わります。公式のマニュアル（rekordbox.com/manual）を見てください。</p>
+
+    <h2>ビートグリッドを確かめる</h2>
+    <p>解析が終わっても、グリッドが合っているとは限りません。曲をデッキに読み込んだら、波形で確かめる習慣をつけましょう。見る場所は 2 つです。</p>
+    <ol class="steps">
+        <li><strong>キックとグリッドの線が重なっているか</strong>。拡大波形（再生位置の近くを大きく表示した波形）で、キックの大きな山の頭に、グリッドの線がぴったり重なっているのが正しい状態です。</li>
+        <li><strong>小節の頭の線が、本当の 1 拍目にあるか</strong>。小節の頭の線は、ほかの拍の線より目立つ色で表示されます。1 拍ずつずれると、全部の拍の位置は合っているのに、「1 拍目」だけが間違った場所になります。</li>
+    </ol>
+    <p>下のツールで、「正しいグリッドの見え方」を確認しましょう。このツールの拡大波形では、<strong>白い線が拍</strong>、<strong>赤い線が小節の頭</strong>（1 拍目）、<strong>オレンジの太い線が 8 小節（フレーズ）の頭</strong>を示します。このツールのグリッドは、いつも正しいものです。再生して、キックが線に重なっていること、フレーズの頭のオレンジの線で曲の変化が起きることを確かめてください。</p>
+    <div data-widget="structure" data-track="sunrise" data-title="正しいグリッドの見え方"></div>
+    <p data-sw="mac">rekordbox では、デッキに曲を読み込んで再生すると、拡大波形に拍の位置が白い線で表示されます（ビートグリッド）。グリッドを直すとき（このあと説明する GRID EDIT パネル）は、小節の頭の拍が赤い線で表示されます。BPM の表示には、曲を追加したときに測られたテンポが出ます。</p>
+    <p>DJ ソフトの画面でも、同じように見ます。再生をはじめて、キックの山と線が重なり続けているか、曲の変化が小節の頭の線で起きるかを確認します。曲の最初だけでなく、途中でも見てください。最初は合っているのに、途中からずれる曲があるからです。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">拡大波形で、キックの山の少し右側に、グリッドの線が毎回かかっています。どう判断する？</p>
+        <ul>
+            <li data-correct>グリッドが少しずれている。SYNC やクオンタイズもずれるので直したほうがよい</li>
+            <li>ソフトの調整が自動でされるので、そのままでよい</li>
+            <li>BPM が 2 倍になっているので、半分にする</li>
+        </ul>
+        <p class="quiz-explain">BPM が合っていて、キックの位置と線だけが少し離れているなら、グリッド全体の位置がずれています。BPM の 2 倍・半分とは別の問題です。</p>
+    </div>
+
+    <h3>よくある間違い</h3>
+    <table>
+        <tr><th>症状</th><th>見え方・聞こえ方</th></tr>
+        <tr><td>グリッドが少しずれる</td><td>キックの山とグリッドの線の位置が、少し離れている。全体が同じだけずれていることが多い</td></tr>
+        <tr><td>1 拍目がずれる</td><td>線の位置は合っているが、小節の頭の線が、本当の 2 拍目や 3 拍目、4 拍目にある。フレーズの頭の位置も一緒にずれる</td></tr>
+        <tr><td>BPM が倍・半分になる</td><td>BPM が 2 倍または半分で表示される（例：128 の曲が 64 と表示される）。グリッドの間隔が、キック 2 つ分、またはキック半分になる</td></tr>
+        <tr><td>テンポが揺れる曲</td><td>生演奏やライブ録音の曲は、テンポが一定ではない。最初は合っていても、途中から線とキックがずれていく</td></tr>
+    </table>
+    <p>とくにテンポが揺れる曲は、1 本のグリッドでは合わせきれないことがあります。ずれる曲を無理に直そうとせず、練習のうちは、機械で作られたテンポが安定した曲を選ぶのが近道です。</p>
+
+    <h2>ずれていたときの直し方</h2>
+    <div data-sw="mac">
+        <p>rekordbox では、<span class="ui">GRID/PHRASE EDIT</span> パネル（<span class="ui">GRID EDIT</span> パネル）でグリッドを直します。デッキのパフォーマンスパッドの表示を、このパネルに切り替えて使います（切り替えるアイコンの見た目はバージョンで変わるので、画面で探してください）。パネルを閉じると、パフォーマンスパッドの表示に戻ります。</p>
+        <p>グリッド全体がずれているとき（キックの山と白い線が、同じだけ離れている）の直し方は、次のとおりです。</p>
+        <ol class="steps">
+            <li>再生中に、JOG パネルの一時停止ボタンをクリックして、止める。</li>
+            <li>拡大波形を左右にドラッグして、キックの山の頭を、波形の真ん中の縦線（再生位置）に合わせる。</li>
+            <li><span class="ui">GRID EDIT</span> パネルを開く。拡大波形のグリッドの線が白から青に変わり、編集できる状態になる。</li>
+            <li>全体をスライドさせるボタンをクリックする。真ん中の縦線を基準に、グリッド全体が動き、真ん中の拍が小節の頭（赤い線）になる。真ん中の線より後ろだけを動かすボタンもある。</li>
+            <li>再生して、キックと線が重なり続けるかを、曲の頭だけでなく途中でも確かめる。</li>
+        </ol>
+        <p><span class="ui">GRID EDIT</span> パネルには、ほかにも次の操作があります。</p>
+        <ul>
+            <li><strong>1 拍目を指定し直す</strong>：再生位置に 1 拍目のグリッドを置くボタンと、いちばん近いグリッド位置を 1.1Bars（1 小節目の 1 拍目）に設定するボタンがある</li>
+            <li><strong>グリッドを左右にずらす</strong>：グリッドを左右に 1 ミリ秒、または 3 ミリ秒ずつ動かすボタン</li>
+            <li><strong>BPM を倍・半分にする</strong>：拍数（BPM）を 2 倍／半分にするボタン。グリッドの間隔は半分／2 倍になる</li>
+            <li><strong>タップで BPM を入れ直す</strong>：ボタンをクリックした間隔で BPM を決めて、グリッドの間隔を変える。<a href="rhythm.html">「拍・小節・BPM」</a>で練習した感覚を使う。BPM の数字を直接入力して、間隔を変えることもできる</li>
+            <li><strong>メトロノーム音</strong>：グリッドに合わせてメトロノームの音を鳴らしながら再生し、耳でも確かめられる</li>
+            <li><strong>操作を元に戻す</strong>：<span class="ui">GRID EDIT</span> パネルでの操作を元に戻すボタンと、元に戻した操作をやり直すボタンがある</li>
+        </ul>
+        <p>ボタンはアイコンで表示されます。マウスを重ねたときに出る説明（ポップヒント）が、アイコンの見分けに役立ちます。</p>
+        <h3>解析をやり直す</h3>
+        <p>BPM やグリッドを、ソフトにもう一度解析させることもできます。曲を右クリックして<span class="ui">楽曲を解析</span>を選ぶか、曲を選んで画面上部の<span class="ui">トラック</span>メニューから<span class="ui">楽曲を解析</span>を選びます。確認のメッセージが出たら<span class="ui">OK</span>をクリックします。このとき、<span class="ui">楽曲解析設定</span>でチェックが入っている項目だけが解析されます。</p>
+        <div class="callout warn">
+            <span class="callout-title">解析をやり直すと、手で直したグリッドは上書きされる</span>
+            <p>手で直した曲を解析し直すと、新しい解析結果で上書きされます。直した曲は、次の<a class="term" data-term="analysis-lock">解析ロック</a>で守りましょう。</p>
+        </div>
+        <h3>解析ロックで、直したグリッドを守る</h3>
+        <p><span class="ui">解析ロック</span>は、曲ごとに再解析とグリッド編集を禁止する機能です。ロックされた曲では、解析（BPM / Grid、キー、フレーズ、ボーカル）と、<span class="ui">GRID EDIT</span> パネルでの編集ができなくなります。複数の曲をまとめて解析するときも、ロックされた曲は飛ばされます。</p>
+        <ul>
+            <li>ロックのかけ方は、<span class="ui">GRID EDIT</span> パネルのロックのアイコンをクリックする、曲を右クリックして<span class="ui">解析ロック</span>を<span class="ui">有効</span>にする、画面上部の<span class="ui">トラック</span>メニューから<span class="ui">解析ロック</span>を設定する、のどれか</li>
+            <li>ロックされた曲は、トラックリストのステータスの列にマークが出る</li>
+            <li>無効にするには、同じ操作でロックを外す</li>
+        </ul>
+        <p>グリッドを直し終わった曲にロックをかけておけば、あとで全曲を解析し直しても、直した結果が消えません。</p>
+    </div>
+    <div data-sw="serato">
+        <p>DJ ソフトには、グリッドを直す機能がそろっています。ボタンの名前や場所はバージョンで変わるので、ここでは「どんな機能があるか」だけを紹介します。具体的な操作は、Serato DJ Lite のソフトウェアマニュアルで調べてください。</p>
+        <ul>
+            <li><strong>グリッドを左右にずらす</strong>：全体の位置を、少しずつ動かしてキックに合わせる</li>
+            <li><strong>1 拍目を指定し直す</strong>：本当の 1 拍目で、小節の頭を指定し直す</li>
+            <li><strong>BPM を倍・半分にする</strong>：倍や半分で解析されたときに、正しい値に直す</li>
+            <li><strong>タップで BPM を入れ直す</strong>：曲に合わせてタップして、BPM を測り直す。<a href="rhythm.html">「拍・小節・BPM」</a>で練習した感覚を使います</li>
+        </ul>
+    </div>
+    <div data-sw="ios">
+        <p>rekordbox（iOS/Android）のグリッドの直し方は、バージョンで変わります。公式のマニュアル（rekordbox.com/manual）を見てください。</p>
+    </div>
+    <p>直したら、そのままにせず、音で確かめます。</p>
+    <div class="callout tip">
+        <span class="callout-title">解析を信じすぎない</span>
+        <p>ソフトは間違えることがあります。波形の見た目だけで決めず、必ず耳で確かめましょう。直したあとに、別の曲（グリッドが合っている曲）と SYNC で重ねてみるのが確実です。キックが「ドッドッ」と二重にならず、1 つに聞こえ続ければ、グリッドは合っています。</p>
+    </div>
+    <p data-sw="mac">なお、クオンタイズ（CUE やループを近い拍にそろえる機能）は、このビートグリッドを使って働きます。rekordbox の操作説明書にも、検出・調整した拍の位置が、クオンタイズなどで使われると書かれています。だから、グリッドを直すことが、あとのキューやループの正確さにつながります。オン／オフの操作は<a href="cue.html">「CUE を打つ」</a>で説明します。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">グリッドの線は全部キックと重なっていますが、小節の頭の線が、本当の 2 拍目にあります。何が問題になる？</p>
+        <ul>
+            <li>BPM が間違っているので、SYNC ができない</li>
+            <li>問題はない。線がキックと重なっていれば十分</li>
+            <li data-correct>フレーズの頭の位置がずれ、小節の頭でのつなぎやループの区切りが、1 拍ぶんずれる</li>
+        </ul>
+        <p class="quiz-explain">線の位置が合っていても、「どれが 1 拍目か」が違うと、フレーズの頭もずれます。次の曲を再生する位置や、ループの区切りがずれるので、1 拍目を指定し直す必要があります。</p>
+    </div>
+
+    <h2>練習用のプレイリストを作る</h2>
+    <p>曲が増えると、探すだけで時間がかかります。練習用に、BPM の近い曲を 10 曲ほど集めたリストを作っておきましょう。BPM が近い曲どうしだと、テンポを大きく変えずにつなげられるからです。ハウス（118〜128 BPM くらい）が練習に向いています。</p>
+    <div data-sw="rb">
+        <p>rekordbox では<a class="term" data-term="playlist">プレイリスト</a>に曲を集めます。新しいプレイリストを作り、練習したい曲をドラッグして入れます。</p>
+    </div>
+    <div data-sw="serato">
+        <p>Serato DJ Lite では、曲を集めたものをクレート（crate）と呼びます。前の節で作ったクレートに、曲を入れておくだけで練習用のリストになります。</p>
+    </div>
+    <p>リストができたら、曲の BPM を見ながら、1 曲ずつ読み込んで、波形とグリッドを確かめます。ここで合っていることを確認した曲だけを、練習用にします。</p>
+    <div class="callout flx4">
+        <span class="callout-title">FLX4 では</span>
+        <p><a class="ctl" data-ctl="browse">ロータリーセレクター</a>を回して曲を選び、<a class="ctl" data-ctl="load" data-deck="1">LOAD</a> ボタンで読み込みます。<span data-sw="serato">Serato DJ Lite では、<a class="ctl" data-ctl="load" data-deck="1">SHIFT + LOAD</a> で、ライブラリを BPM 順（デッキ 1）やアーティスト順（デッキ 2）に並べ替えられます。</span></p>
+    </div>
+
+    <div class="quiz">
+        <p class="quiz-q">解析した曲のグリッドを確かめる、いちばん確実な方法はどれ？</p>
+        <ul>
+            <li>BPM の数字が整数かどうかを見る</li>
+            <li data-correct>波形でキックと線の重なりを見て、さらに耳で確かめる。別の曲と SYNC で重ねてみる</li>
+            <li>ソフトの解析結果を信じて、確認はしない</li>
+        </ul>
+        <p class="quiz-explain">解析は便利ですが、間違うことがあります。波形で見て、耳で確かめることで、はじめて安心して使えます。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>解析で、BPM、ビートグリッド、キー、波形ができる</li>
+            <li>SYNC・クオンタイズ・ループ・ビートジャンプは、ビートグリッドが正しいことが前提</li>
+            <li>拡大波形で、キックと線の重なりと、1 拍目の位置を確かめる</li>
+            <li>よくある間違いは、グリッドの少しのずれ、1 拍目のずれ、BPM の倍・半分、テンポの揺れる曲</li>
+            <li>直し方の機能はソフトにある。rekordbox では <span class="ui">GRID EDIT</span> パネルで直し、解析をやり直すと直した結果は上書きされるので、直した曲は解析ロックで守る</li>
+            <li>解析を信じすぎず、耳で確かめる。練習用に BPM の近い曲を 10 曲ほどのリストにまとめる</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

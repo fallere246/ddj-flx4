@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLX4 の各部とホームポジション | FLX4 DJ 入門</title>
+    <meta name="description" content="FLX4 のどこに何があるかの全体像と、毎回の始めに戻すつまみの初期位置（ホームポジション）を、理由とあわせて覚えます。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="tour">
+<article class="lesson">
+    <h1>FLX4 の各部とホームポジション</h1>
+    <p class="lead">FLX4 には、たくさんのボタンやつまみがあります。でも、最初に使うものは意外と少なく、場所のまとまりを覚えれば迷いません。このレッスンでは、FLX4 の全体像をつかみ、毎回の始めに戻す「ホームポジション」（つまみの初期位置）を、理由とあわせて覚えます。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>FLX4 を場所ごとに分けて、それぞれが何をするところか説明できる</li>
+            <li>最初に使う部品の名前と場所が分かる</li>
+            <li>本体マニュアルで、知りたい部品を調べられる</li>
+            <li>ホームポジションの各つまみの位置と、その理由を言える</li>
+        </ul>
+    </section>
+
+    <h2>FLX4 の全体像</h2>
+    <p>FLX4 の天面は、4 つの場所に分かれています。左右のデッキ、中央のミキサー、曲を選ぶブラウズ部、エフェクト部です。ほかに、背面と前面に端子があります。</p>
+    <table>
+        <tr><th>場所</th><th>何をするところか</th><th>最初に使う部品</th></tr>
+        <tr><td>ブラウズ部</td><td>曲を選んで、左右のデッキに読み込みます。</td><td><a class="ctl" data-ctl="browse">ロータリーセレクター</a>、<a class="ctl" data-ctl="load" data-deck="1">LOAD</a></td></tr>
+        <tr><td>デッキ部</td><td>曲を再生し、位置やテンポを操作します。左がデッキ 1、右がデッキ 2 です。</td><td><a class="ctl" data-ctl="play" data-deck="1">PLAY/PAUSE</a>、<a class="ctl" data-ctl="cue" data-deck="1">CUE</a>、<a class="ctl" data-ctl="jog" data-deck="1">ジョグ</a>、<a class="ctl" data-ctl="tempo" data-deck="1">TEMPO</a>、<a class="ctl" data-ctl="sync" data-deck="1">BEAT SYNC</a></td></tr>
+        <tr><td>ミキサー部</td><td>各チャンネルの音量や音色を調整して、2 曲をまぜます。</td><td><a class="ctl" data-ctl="trim" data-ch="1">TRIM</a>、<a class="ctl" data-ctl="eq" data-ch="1">EQ</a>、<a class="ctl" data-ctl="chfader" data-ch="1">チャンネルフェーダー</a>、<a class="ctl" data-ctl="master">MASTER LEVEL</a></td></tr>
+        <tr><td>エフェクト部</td><td>音にエコーなどの効果をかけます（BEAT FX）。</td><td>「エフェクト」のレッスンで扱います</td></tr>
+        <tr><td>背面・前面</td><td>背面にスピーカーや USB の端子、前面にヘッドホンの端子があります。</td><td><a class="ctl" data-ctl="masterout">MASTER 出力端子</a>、<a class="ctl" data-ctl="phones">ヘッドホン出力端子</a></td></tr>
+    </table>
+    <div class="callout note">
+        <span class="callout-title">背面にあるもの</span>
+        <p>背面には、スピーカーをつなぐ <a class="ctl" data-ctl="masterout">MASTER 出力端子</a>、PC などとつなぐ USB 端子（デバイス接続用）、電源だけを送る USB 端子（電源専用）、マイク入力端子などがあります。前面はヘッドホン出力端子だけです。<a href="setup.html">前のレッスン</a>でつなぎ方を説明しました。</p>
+    </div>
+
+    <h2>デッキ部：曲を再生して動かす</h2>
+    <p><a class="term" data-term="deck">デッキ</a>は、1 曲を再生するための部分です。FLX4 には、左（デッキ 1）と右（デッキ 2）にあります。左右のボタンの配置は同じなので、片方を覚えれば両方使えます。まず次の部品を覚えましょう。</p>
+    <ul>
+        <li><a class="ctl" data-ctl="play" data-deck="1">PLAY/PAUSE</a>：曲の再生と一時停止</li>
+        <li><a class="ctl" data-ctl="cue" data-deck="1">CUE</a>：<a class="term" data-term="cue">CUE ポイント</a>（頭出しの位置）を決めたり、そこに戻ったりする。再生中に押すとそこへ戻って一時停止、一時停止中に押すとその位置が CUE ポイントになる。くわしくは<a href="cue.html">「CUE を打つ」</a></li>
+        <li><a class="ctl" data-ctl="jog" data-deck="1">ジョグ</a>：回して曲の位置やテンポを微調整する円盤。使い方は後のレッスンで扱う</li>
+        <li><a class="ctl" data-ctl="tempo" data-deck="1">TEMPO</a>：曲の再生速度を変えるスライダー</li>
+        <li><a class="ctl" data-ctl="sync" data-deck="1">BEAT SYNC</a>：もう一方のデッキのテンポとビートの位置に、自動で合わせる</li>
+        <li><a class="ctl" data-ctl="pad" data-deck="1">パフォーマンスパッド</a>：8 つの大きなパッド。上にある<a class="ctl" data-ctl="mode-hotcue" data-deck="1">HOT CUE</a>、<a class="ctl" data-ctl="mode-padfx" data-deck="1">PAD FX1</a>、<a class="ctl" data-ctl="mode-beatjump" data-deck="1">BEAT JUMP</a>、<a class="ctl" data-ctl="mode-sampler" data-deck="1">SAMPLER</a> のモードボタンで、パッドの役割を切り替える</li>
+        <li><a class="ctl" data-ctl="in" data-deck="1">IN</a>、<a class="ctl" data-ctl="out" data-deck="1">OUT</a>、<a class="ctl" data-ctl="beat4" data-deck="1">4 BEAT/EXIT</a>：ループを作るボタン。<a class="ctl" data-ctl="beat4" data-deck="1">4 BEAT/EXIT</a> は押すと、4 拍のループがすぐに始まる</li>
+        <li><a class="ctl" data-ctl="shift" data-deck="1">SHIFT</a>：次の節で説明</li>
+    </ul>
+    <p>パッドと、ループのくわしい使い方は、「CUE を打つ」以降のレッスンで少しずつ練習します。いまは、名前と場所だけ見ておけば十分です。</p>
+
+    <h2>ミキサー部：音量と音色を調整して、まぜる</h2>
+    <p><a class="term" data-term="mixer">ミキサー</a>は、2 つのデッキの音を調整して、1 つのマスター出力にまとめるところです。デッキ 1 は左のチャンネル 1、デッキ 2 は右のチャンネル 2 につながっています。上から順に見ていきましょう。</p>
+    <ul>
+        <li><a class="ctl" data-ctl="trim" data-ch="1">TRIM</a>：チャンネルに入る音量を整える。曲ごとの音量の差を、ここでそろえる</li>
+        <li><a class="ctl" data-ctl="meter" data-ch="1">チャンネルレベルインジケーター</a>：チャンネルフェーダーを通る前の音量を表示する。TRIM を合わせるときの目安</li>
+        <li><a class="ctl" data-ctl="eq" data-ch="1">EQ（HI・MID・LOW）</a>：高音・中音・低音を増やしたり減らしたりする</li>
+        <li><a class="ctl" data-ctl="cfx" data-ch="1">CFX</a>：1 つのつまみで、フィルターなどの効果をかける。中央が効果なしの位置</li>
+        <li><a class="ctl" data-ctl="chcue" data-ch="1">ヘッドホン CUE</a>：押したチャンネルの音を、ヘッドホンで聴く</li>
+        <li><a class="ctl" data-ctl="chfader" data-ch="1">チャンネルフェーダー</a>：チャンネルの音量を調整する。奥に動かすほど大きくなる</li>
+        <li><a class="ctl" data-ctl="xfader">クロスフェーダー</a>：左右のチャンネルのどちらを出すかを切り替える</li>
+        <li><a class="ctl" data-ctl="master">MASTER LEVEL</a>：スピーカーに出る、マスター出力の音量</li>
+        <li><a class="ctl" data-ctl="hpmix">HEADPHONES MIX</a>・<a class="ctl" data-ctl="hplevel">HEADPHONES LEVEL</a>：ヘッドホンの音の割合（選んだチャンネルの音とマスターの音のバランス）と、ヘッドホンの音量</li>
+    </ul>
+    <div class="callout tip">
+        <span class="callout-title">音量は 3 か所で決まる</span>
+        <p>チャンネルの音量は、TRIM、チャンネルフェーダー、MASTER LEVEL の 3 か所で決まります。TRIM は「曲ごとの音の大きさをそろえる」、チャンネルフェーダーは「ミックス中に動かす」、MASTER LEVEL は「全体の大きさ」と、役割が違います。くわしい音量の考え方は<a href="sound.html">「音の基本」</a>で扱いました。</p>
+    </div>
+
+    <h2>SHIFT：もう 1 つの機能を呼び出す</h2>
+    <p>FLX4 のボタンの多くは、<a class="term" data-term="shift">SHIFT</a> ボタンを押しながら操作すると、別の機能になります。ボタンの数を増やさずに、多くの機能を使えるようにするしくみです。</p>
+    <ul>
+        <li>たとえば <a class="ctl" data-ctl="cue" data-deck="1">CUE</a> は、押すと CUE ポイントの操作、SHIFT を押しながらだと、曲の先頭へ戻る操作になる</li>
+        <li><a class="ctl" data-ctl="sync" data-deck="1">BEAT SYNC</a> は、SHIFT を押しながら押すと、TEMPO スライダーで動かせる幅が切り替わる</li>
+    </ul>
+    <p>SHIFT を押しながらの機能は、ボタンの近くに小さな文字で印字されています。本体マニュアルでは、SHIFT の機能も表示されます。</p>
+
+    <h2>本体マニュアルを使う</h2>
+    <p>このサイトには、FLX4 の図をクリックして調べる<a href="../manual/index.html">本体マニュアル</a>があります。取扱説明書を引くより早いので、練習中は開いておくのがおすすめです。レッスン内の黒いボタン風のリンク（たとえば <a class="ctl" data-ctl="play" data-deck="1">PLAY/PAUSE</a>）をクリックしても、本体マニュアルが開いてその部品が選ばれます。</p>
+    <ul>
+        <li><strong>図をクリック</strong>：気になるボタンやつまみをクリックすると、「説明」タブにその働きが出る</li>
+        <li><strong>SHIFT</strong>：上の SHIFT ボタンを押すか、キーボードの Shift キーを押している間、SHIFT を押しながらの機能が表示される</li>
+        <li><strong>ソフトの切り替え</strong>：上のボタンで、rekordbox（Mac/Windows）、rekordbox（iOS/Android）、Serato DJ Lite を選ぶ。ソフトによって、働きが違う部品があるため</li>
+        <li><strong>操作ガイド</strong>：「ループをする」「ホットキューを登録する」のように、やりたいことから手順を調べられる</li>
+        <li><strong>一覧と検索</strong>：「一覧」タブで部品を一覧でき、検索欄に言葉（例：ループ）を入れて探すこともできる</li>
+    </ul>
+
+    <h2>ホームポジション：毎回の始めに戻す位置</h2>
+    <p>DJ をはじめる前に、つまみとフェーダーを決まった位置に戻します。これを、このサイトでは<strong>ホームポジション</strong>と呼びます。前のレッスンで、はじめて音を出したときに使った位置です。取扱説明書にも書かれています。</p>
+    <p>毎回そろえておくと、「どのつまみが動いているか分からない」という事故を防げます。位置を決めてあるのには、すべて理由があります。</p>
+    <table>
+        <tr><th>部品</th><th>始めの位置</th><th>なぜその位置か</th></tr>
+        <tr><td><a class="ctl" data-ctl="trim" data-ch="1">TRIM</a></td><td>左いっぱい</td><td>曲を出した瞬間に、大きな音が出ないようにする。音を出してから、少しずつ上げる</td></tr>
+        <tr><td><a class="ctl" data-ctl="eq" data-ch="1">EQ</a>（HI・MID・LOW）</td><td>中央</td><td>中央が「音を増やしも減らしもしない」位置。元の音のバランスのまま聴ける</td></tr>
+        <tr><td><a class="ctl" data-ctl="cfx" data-ch="1">CFX</a></td><td>中央</td><td>中央が「効果なし」の位置。最初から音がこもったり、低音が抜けたりしない</td></tr>
+        <tr><td><a class="ctl" data-ctl="chfader" data-ch="1">チャンネルフェーダー</a></td><td>手前</td><td>手前は音が出ない位置。曲を再生しても、まだスピーカーには出さない。準備ができてから奥へ動かす</td></tr>
+        <tr><td><a class="ctl" data-ctl="master">MASTER LEVEL</a></td><td>左いっぱい</td><td>機器をつないだ直後に、スピーカーから大きな音が出ないようにする</td></tr>
+        <tr><td><a class="ctl" data-ctl="xfader">クロスフェーダー</a></td><td>中央</td><td>左右のチャンネルの両方が出る位置。片方の音が消える勘違いを防ぐ</td></tr>
+        <tr><td><a class="ctl" data-ctl="hpmix">HEADPHONES MIX</a></td><td>中央</td><td>選んだチャンネルの音とマスターの音を、半々で聴く</td></tr>
+        <tr><td><a class="ctl" data-ctl="hplevel">HEADPHONES LEVEL</a></td><td>左いっぱい</td><td>ヘッドホンから急に大きな音が出て、耳を痛めないようにする</td></tr>
+    </table>
+    <p>音を出すときは、このホームポジションから、次の順番で進めます。</p>
+    <ol class="steps">
+        <li>曲を再生する</li>
+        <li><a class="ctl" data-ctl="trim" data-ch="1">TRIM</a> を上げて、チャンネルレベルインジケーターのオレンジ色が、曲のいちばん大きいところで点灯するくらいに合わせる</li>
+        <li><a class="ctl" data-ctl="chfader" data-ch="1">チャンネルフェーダー</a>を奥に動かす</li>
+        <li><a class="ctl" data-ctl="master">MASTER LEVEL</a> を上げて、スピーカーの音量を決める</li>
+        <li>ヘッドホンのとき：チャンネルの <a class="ctl" data-ctl="chcue" data-ch="1">ヘッドホン CUE</a> を押して、HEADPHONES LEVEL を上げる</li>
+    </ol>
+    <div class="callout tip">
+        <span class="callout-title">セットが終わったら戻す</span>
+        <p>曲が終わったら、次の練習の前に、つまみをホームポジションに戻す習慣をつけましょう。前回の位置のままで再生を始めると、前の曲に合わせた EQ やフィルターが残っていて、「音がおかしい」と勘違いする原因になります。</p>
+    </div>
+
+    <h3>ホームポジションから音を出してみる</h3>
+    <p>下のツールは、1 チャンネル分のミキサーを、ブラウザの中で再現したものです。FLX4 の代わりではなく、つまみの動きを耳で確かめるためのものです。TRIM は左いっぱいから始まります。再生して、TRIM を少しずつ上げ、メーターの変化と音の大きさを確かめてください。EQ や CFX を中央から動かして、音がどう変わるかも試してみましょう。</p>
+    <div data-widget="channel" data-controls="trim eq filter fader" data-trim="0"></div>
+
+    <div class="quiz">
+        <p class="quiz-q">再生を始める前に、TRIM を左いっぱいにしておく理由はどれ？</p>
+        <ul>
+            <li>左に回したほうが、音がきれいになるから</li>
+            <li>EQ の効きがよくなるから</li>
+            <li data-correct>曲を出した瞬間に大きな音が出ないよう、小さい側から上げていくため</li>
+        </ul>
+        <p class="quiz-explain">TRIM は曲ごとの音量をそろえるつまみです。曲によって音の大きさが違うので、小さい側から、メーターを見ながら上げていきます。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">曲を再生しているのに、スピーカーから音が出ません。ホームポジションのままなら、どこを動かせばよい？</p>
+        <ul>
+            <li data-correct>チャンネルフェーダーを奥に動かし、MASTER LEVEL を少し上げる</li>
+            <li>CFX を左いっぱいにする</li>
+            <li>HEADPHONES MIX を右いっぱいにする</li>
+        </ul>
+        <p class="quiz-explain">チャンネルフェーダーが手前、MASTER LEVEL が左いっぱいのままだと、マスター出力に音が届きません。ヘッドホンのつまみは、スピーカーの音には関係しません。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">CFX と EQ を、ホームポジションで中央にしておく理由はどれ？</p>
+        <ul>
+            <li>中央が最大の音量だから</li>
+            <li>中央が、音を変えない（効果なしの）位置だから</li>
+            <li>中央にしないと、曲が再生できないから</li>
+        </ul>
+        <p class="quiz-explain">中央は、EQ では増減なし、CFX では効果なしの位置です。ここから動かした分だけ音が変わるので、元の音が基準になります。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>FLX4 は、ブラウズ部、デッキ部、ミキサー部、エフェクト部と、背面・前面の端子でできている</li>
+            <li>デッキは曲の再生と位置・テンポの操作、ミキサーは音量と音色の調整とミックス</li>
+            <li>SHIFT を押しながら操作すると、別の機能になる</li>
+            <li>本体マニュアルでは、図をクリックして働きを調べられる。SHIFT やソフトの切り替え、検索もできる</li>
+            <li>ホームポジション：TRIM は左いっぱい、EQ・CFX・クロスフェーダーは中央、チャンネルフェーダーは手前、MASTER LEVEL は左いっぱい。ヘッドホンは MIX が中央、LEVEL が左いっぱい</li>
+            <li>音を出すときは、小さい側から少しずつ上げる</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

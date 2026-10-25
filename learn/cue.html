@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUE を打つ | FLX4 DJ 入門</title>
+    <meta name="description" content="曲を狙った位置から出すための目印、CUE ポイントとホットキューの使い方を、練習ツールで試しながら覚えます。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="cue">
+<article class="lesson">
+    <h1>CUE を打つ</h1>
+    <p class="lead">DJ は、曲を頭から無造作に流すのではなく、あらかじめ決めた位置から出します。その位置につける目印が <a class="term" data-term="cue">CUE ポイント</a>です。このレッスンでは、CUE ボタンの 3 つの動きと、曲の中に複数の目印を置く<a class="term" data-term="hot-cue">ホットキュー</a>の使い方を練習します。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>CUE ボタンの 3 つの動きを使い分けられる</li>
+            <li>曲の 1 拍目に正確に CUE ポイントを打てる</li>
+            <li>ホットキューを登録・呼び出し・消去できる</li>
+            <li>どこに CUE を打つとよいかを説明できる</li>
+        </ul>
+    </section>
+
+    <h2>CUE ポイントとは</h2>
+    <p>曲の最初には、無音や余韻が入っていることがよくあります。そこから再生すると、音が出るまで待たされたり、1 拍目がずれたりします。DJ が次の曲を出すときは、いつも同じ位置、ふつうは<a class="term" data-term="downbeat">1 拍目</a>から再生したいので、そこに目印をつけておきます。これが CUE ポイントです。</p>
+    <p>CUE ポイントがあれば、再生してもやり直しても、毎回その位置から曲が始まります。「次の曲を 1 拍目ぴったりで出す」ことが、このあとのレッスンのつなぎの土台になります。</p>
+
+    <h2>CUE ボタンの 3 つの動き</h2>
+    <p>CUE ボタンは、状況によって 3 通りの動きをします。ここは rekordbox でも Serato DJ Lite でも同じです。</p>
+    <table>
+        <tr><th>状況</th><th>動き</th><th>使いどころ</th></tr>
+        <tr><td>再生中に押す</td><td>CUE ポイントに戻って一時停止する</td><td>もう一度頭から出したいとき</td></tr>
+        <tr><td>一時停止中に押す</td><td>いま止まっている位置が新しい CUE ポイントになる</td><td>CUE ポイントを打つとき</td></tr>
+        <tr><td>CUE ポイントで押し続ける</td><td>押している間だけ再生し、離すと CUE ポイントに戻る</td><td>曲の頭を聴いて確かめるとき</td></tr>
+    </table>
+    <p>3 つ目の動きは、<a class="term" data-term="cue-sampler">キューポイントサンプラー</a>と呼ばれます。再生ボタンを押さなくても、CUE ボタンを押している間だけ音が出るので、CUE ポイントの位置が合っているかをすばやく確かめられます。</p>
+    <div class="callout flx4">
+        <span class="callout-title">CUE ボタン</span>
+        <p><a class="ctl" data-ctl="cue" data-deck="1">CUE</a> を <a class="ctl" data-ctl="shift">SHIFT</a> を押しながら押すと、再生位置が曲の先頭に戻ります。<span data-sw="serato">Serato DJ Lite では、SHIFT + <a class="ctl" data-ctl="play" data-deck="1">PLAY/PAUSE</a> でテンポラリーキューポイント（一時的に覚えた位置）に戻って、そのまま再生を続けることもできます。</span></p>
+    </div>
+
+    <h3>ツールで試す</h3>
+    <p>下のツールで、3 つの動きを順番に試してください。操作するたびに、何が起きたかを説明するメッセージが出ます。</p>
+    <ol class="steps">
+        <li>PLAY を押して再生を始める。</li>
+        <li>再生中に CUE を押す。CUE ポイント（最初は曲の先頭）に戻って止まる。</li>
+        <li>PLAY で再生し、少し進んだところで PLAY をもう一度押して一時停止する。</li>
+        <li>一時停止中に CUE を押す。止まっている位置が新しい CUE ポイントになる（右上の「CUE ポイント」の表示が変わる）。</li>
+        <li>CUE を押し続ける。押している間だけ再生され、離すと CUE ポイントに戻る。</li>
+    </ol>
+    <div data-widget="cue-deck" data-track="sunrise" data-title="CUE ボタンの動き"></div>
+    <div class="quiz">
+        <p class="quiz-q">曲を再生中に CUE ボタンを押すと、どうなる？</p>
+        <ul>
+            <li>いま再生している位置が新しい CUE ポイントになる</li>
+            <li data-correct>CUE ポイントに戻って一時停止する</li>
+            <li>そのまま再生が続き、曲の先頭に戻る</li>
+        </ul>
+        <p class="quiz-explain">新しい CUE ポイントを打つのは、一時停止中に押したときです。再生中に押すと、すでにある CUE ポイントに戻って止まります。この動きのおかげで、うっかり位置を上書きせずに頭出しをやり直せます。</p>
+    </div>
+
+    <h2>頭出し：1 拍目に CUE ポイントを打つ</h2>
+    <p>曲の 1 拍目に CUE を打つ手順です。ツールの波形（上の大きな波形が曲全体、下が拡大表示）を見ながら、同じことをしてみましょう。</p>
+    <ol class="steps">
+        <li>一時停止した状態で、<a class="term" data-term="jog">ジョグ</a>を回して再生位置を動かす。音を聴きながら、最初の<a class="term" data-term="kick">キック</a>が鳴る位置を探す。</li>
+        <li>キックの立ち上がりが、波形の拍の線にそろう位置で止める。</li>
+        <li>CUE を押して、その位置を CUE ポイントにする。</li>
+        <li>CUE を押し続けて、キックが頭から鳴るかを聴いて確かめる。ずれていたら、ジョグでもう一度動かして CUE を押し直す。</li>
+    </ol>
+    <p>なぜ 1 拍目なのかというと、曲の変化は小節の頭で起きるからです。1 拍目から出せば、次のレッスン以降で扱う「2 つの曲の拍をそろえる」作業が、ずっと楽になります。</p>
+
+    <h3>クオンタイズ：拍に自動でそろえる</h3>
+    <p><a class="term" data-term="quantize">クオンタイズ</a>は、CUE やホットキューを打った位置を、いちばん近い拍に自動でそろえる機能です。<a class="term" data-term="beatgrid">ビートグリッド</a>（曲の拍の位置を示す線）が正しければ、多少ずれたタイミングで押しても、拍の位置に打てます。ツールの「クオンタイズ（拍にそろえる）」のチェックをオン・オフして、CUE の位置がどう変わるか試してみてください。</p>
+    <p>FLX4 での切り替え方は、ソフトの画面で設定します。クオンタイズがオンのとき、機能の動作に拍に合わせるための少しの遅れが出ることが、取扱説明書にも注意として書かれています。</p>
+    <div data-sw="mac">
+        <p>rekordbox の画面では、デッキの JOG パネルにある <span class="ui">Q</span> をクリックして、赤く点灯させるとオンになります。もう一度クリックするとオフです。クオンタイズはデッキごとに設定でき、オンのときは CUE（<span class="ui">IN</span> でのリアルタイムキュー）、ホットキュー、ループのポイントが、近いビートグリッドに合います。</p>
+        <ul>
+            <li>サンプラーデッキにも <span class="ui">Q</span> があり、サンプラーのクオンタイズは別に切り替える</li>
+            <li><span class="ui">環境設定</span> &gt; <span class="ui">コントローラー</span>カテゴリー &gt; <span class="ui">その他</span>タブの<span class="ui">設定方法</span>で、1 つのデッキの <span class="ui">Q</span> を切り替えたとき、ほかのデッキも同時に切り替えるようにできる（<span class="ui">一括</span>）</li>
+            <li>同じタブの <span class="ui">QUANTIZE</span> の項目で、ホットキューやループを呼び出すときの補正のしかたを選べる。<span class="ui">モード</span>にチェックを入れると、すぐ呼び出され、位置は拍に合うよう補正される。外すと、次の拍まで再生してから呼び出される</li>
+            <li>クオンタイズの拍の設定を 1/16 などの分数拍にしていると、拍位置の同期はできない</li>
+        </ul>
+        <p>また、クオンタイズがオンだと、キューの位置が思ったところから少しずれることがあります。拍にそろうためで、故障ではありません。</p>
+    </div>
+    <div class="callout warn">
+        <span class="callout-title">グリッドが合っていることが前提</span>
+        <p>クオンタイズは、ビートグリッドの位置を信じて拍にそろえます。グリッドがずれている曲では、ずれた位置にきれいにそろってしまいます。先に<a href="analyze.html">「曲を取り込んで解析する」</a>で、グリッドを確認しておきましょう。</p>
+    </div>
+
+    <h2>ホットキュー：複数の目印を置く</h2>
+    <p>CUE ポイントは 1 曲に 1 か所です。ホットキューは、1 曲に複数の目印を置いておき、パッドを押すとすぐそこから再生できる機能です。「メインの頭」「ブレイクの頭」などを登録しておけば、曲の中を自由に行き来できます。</p>
+    <p>下のツールの HOT CUE パッド（A〜D）で試してください。空いているパッドを押すと、いまの位置が登録されます。登録済みのパッドを押すと、そこへ飛びます。SHIFT を押しながらパッドを押すと、登録が消えます。</p>
+    <div data-widget="cue-deck" data-track="sunrise" data-title="ホットキューを置く"></div>
+    <div class="callout flx4">
+        <span class="callout-title">ホットキューの操作</span>
+        <ol class="steps">
+            <li><a class="ctl" data-ctl="mode-hotcue" data-deck="1">HOT CUE</a> モードボタンを押して、パッドをホットキューモードにする。</li>
+            <li>登録したい位置で、空いている<a class="ctl" data-ctl="pad" data-deck="1">パッド</a>を押す。</li>
+            <li>登録済みのパッドを押すと、その位置から再生する。</li>
+            <li><a class="ctl" data-ctl="shift">SHIFT</a> を押しながらパッドを押すと、登録が消える。</li>
+        </ol>
+        <p><span data-sw="rb">rekordbox では、FLX4 から A〜H の 8 か所を操作できます。</span><span data-sw="serato">Serato DJ Lite では、ホットキューは 1 曲 4 か所までです（パッド 1〜4 が A〜D）。残りの 4 つのパッドは、前の曲をロードする、サーチ、CENSOR といった別の機能になります。</span></p>
+    </div>
+    <p data-sw="mac">rekordbox の画面では、<span class="ui">HOT CUE</span> パネルの A〜P のパッドをクリックして登録します。1 曲に 16 か所まで置けます。パッドの <span class="ui">X</span> をクリックすると消せます。画面では 16 か所まで置けますが、FLX4 のパッドで操作できるのは A〜H の 8 か所です。FLX4 の本体から操作するときは、上の囲みのとおりです。</p>
+    <div class="callout tip">
+        <span class="callout-title">パッドを押す前にクオンタイズ</span>
+        <p>ホットキューも、クオンタイズがオンなら拍にそろいます。再生しながらタイミングよく押して登録するときは、特に助かります。</p>
+    </div>
+
+    <h2>メモリーキュー：曲に保存する目印</h2>
+    <p><span data-sw="rb"><a class="term" data-term="memory-cue">メモリーキュー</a>は、rekordbox で曲のデータに保存しておく目印です。ホットキューとは別に持てて、あとから順番に呼び出せます。</span><span data-sw="serato">メモリーキューは rekordbox の機能です。Serato DJ Lite では、複数の目印が必要なときはホットキューを使います（1 曲 4 か所まで）。</span></p>
+    <div data-sw="rb">
+        <div class="callout flx4">
+            <span class="callout-title">メモリーキューの保存と呼び出し</span>
+            <ol class="steps">
+                <li>CUE ポイントを打ったあと、<a class="ctl" data-ctl="shift">SHIFT</a> を押しながら <a class="ctl" data-ctl="callR" data-deck="1">CUE/LOOP CALL ▶</a> を押すと、そのキューポイントが曲に保存される（MEMORY）。</li>
+                <li>保存した目印は、<a class="ctl" data-ctl="callL" data-deck="1">CUE/LOOP CALL ◀</a> と <a class="ctl" data-ctl="callR" data-deck="1">▶</a> で、前後に選んで呼び出せる。</li>
+                <li>呼び出している目印は、SHIFT を押しながら CUE/LOOP CALL ◀ を押すと削除できる（DEL）。</li>
+            </ol>
+        </div>
+    </div>
+    <div data-sw="mac">
+        <p>同じことを、rekordbox の画面でもできます。上の囲みは FLX4 本体の操作、次の手順はパソコンの画面（マウス）の操作です。どちらで操作するのかを分けて覚えましょう。</p>
+        <ol class="steps">
+            <li><strong>保存する（画面）</strong>：CUE ポイントを打ってから、パフォーマンスパッドで <span class="ui">MEMORY CUE</span> を選ぶ。表示された <span class="ui">MEMORY CUE</span> パネルの <span class="ui">MEMORY</span> をクリックすると保存される。1 曲に 10 個まで保存できる。</li>
+            <li><strong>呼び出す（画面）</strong>：曲をデッキにロードし、<span class="ui">MEMORY CUE</span> パネルを開く。保存した位置が、時間（分:秒:ミリ秒）で並ぶ。時間の表示をクリックすると、その位置に移って一時停止する。再生ボタンで再生が始まる。</li>
+            <li><strong>コメントをつける（画面）</strong>：時間の表示を右クリックすると、コメントを入力できる。「サビ前」「ブレイク」のように、場所の意味を書いておくと探しやすい。</li>
+            <li><strong>消す（画面）</strong>：消したいキューにマウスを重ねると出るボタンをクリックする。</li>
+            <li><strong>色を変える（画面）</strong>：<span class="ui">MEMORY CUE</span> パネルから、キューマーカーの色を変えられる。</li>
+        </ol>
+        <p><strong>メモリーループ</strong>：ループ再生中に <span class="ui">MEMORY</span> をクリックすると、ループが保存されます（これも 1 曲 10 個の中に入ります）。保存したループは、パネルのループポイントの横のマークをクリックすると、アクティブループに設定できます。アクティブループは赤で表示されます。使いかたは、組み合わせる DJ 機器の取扱説明書を見てください。</p>
+        <p>メモリーキューをホットキューに移したいときは、曲を右クリックして<span class="ui">メモリーキューをホットキューに変換</span>を選びます。空いているホットキューに、順番に変換されます（空きがなければ変換できません）。</p>
+        <p>なお、保存した目印の呼び出しを禁止する設定が、<span class="ui">環境設定</span> &gt; <span class="ui">コントローラー</span>カテゴリーの <span class="ui">メモリーキューコールロック</span>にあります。本体の CUE/LOOP CALL で呼び出せないときは、確かめてみてください。</p>
+    </div>
+    <p data-sw="serato">Serato DJ Lite では、<a class="ctl" data-ctl="callL" data-deck="1">CUE/LOOP CALL</a> ボタンはループの長さを変えるために使います。目印の呼び出しはパッドのホットキューで行います。</p>
+
+    <h2>解析時に自動で CUE を打つ機能</h2>
+    <div data-sw="mac">
+        <p>rekordbox には、曲を解析するときに、ホットキューやメモリーキューを自動で打ってくれる <span class="ui">INTELLIGENT CUE CREATION</span> があります。自分で全部打つ手間を減らせる機能です。ご契約のプランによっては使えないことがあります（rekordbox.com のプランのページで確認してください）。</p>
+        <ul>
+            <li><strong>設定する場所</strong>：<span class="ui">環境設定</span> &gt; <span class="ui">解析</span>カテゴリー &gt; <span class="ui">CUE解析</span>タブ。<span class="ui">解析時にCUEを設定する</span>でモードを選び、<span class="ui">CUEの種類</span>で、ホットキューとメモリーキューのどちらを、何個まで打つかを決める。あわせて<span class="ui">楽曲解析</span>タブの<span class="ui">楽曲解析設定</span>で、<span class="ui">CUE</span>にチェックを入れる</li>
+            <li><strong>オートモード</strong>：一般的な CUE の打ち方を学んだデータと、自分が打った CUE の傾向を使って打つ。自分の傾向は、CUE を打った曲を <span class="ui">CUE解析用プレイリスト</span>に入れて、<span class="ui">Start</span> をクリックすると作られる。30 曲以上を目安に入れると傾向が出やすい</li>
+            <li><strong>マニュアルモード</strong>：環境設定のとおりに打つ。<span class="ui">1.1Bars に設定する</span>（曲の最初の小節の頭に打つ）か、<span class="ui">1.1Bars から小節設定値ごとに設定を繰り返す</span>（設定した小節数ごとに打つ）を選ぶ。<span class="ui">CUE の上書きを禁止する</span>で、すでに打った CUE を守れる</li>
+            <li><strong>コメント</strong>：<span class="ui">CUE にコメントを追加する</span>をオンにすると、自動で打った CUE にコメントがつく</li>
+        </ul>
+        <div class="callout warn">
+            <span class="callout-title">自動の CUE は、確かめて直す</span>
+            <p>フレーズが解析できない曲や、短すぎる曲では、CUE が打てないことがあります。打てても、個数が設定より少なくなることがあります。<span class="ui">CUE の上書きを禁止する</span>がオフだと、解析で今ある CUE の数が減ることもあります。自動で打たれた CUE は、必ず自分で再生して、フレーズの頭に合っているかを確かめ、ずれていたら打ち直してください。先に<a href="analyze.html">グリッドが合っていること</a>が前提です。</p>
+        </div>
+    </div>
+    <p data-sw="serato">この自動で CUE を打つ機能は rekordbox のものです。Serato DJ Lite では、CUE は自分で打ちます。</p>
+    <p data-sw="ios">この解析時に自動で CUE を打つ機能は、rekordbox（Mac/Windows）のものです。</p>
+
+    <h2>どこに CUE を打つか</h2>
+    <p>目印は、つなぎで「ここから出したい」「ここで入れ替えたい」と思う場所につけます。次の表が基本です。</p>
+    <table>
+        <tr><th>位置</th><th>理由</th></tr>
+        <tr><td>曲の最初の 1 拍目</td><td>次の曲を頭から出すための基本の CUE。最初に必ず打つ</td></tr>
+        <tr><td>イントロのあとの主要な区間の頭（<a class="term" data-term="intro">イントロ</a>が終わるところ、メイン、<a class="term" data-term="break">ブレイク</a>、<a class="term" data-term="drop">ドロップ</a>）</td><td>曲の盛り上がりへ、すぐ飛べる。途中から入りたいときにも使える</td></tr>
+        <tr><td><a class="term" data-term="outro">アウトロ</a>の頭</td><td>いまかけている曲から次へ渡すとき、どこから渡し始めるかの目安になる</td></tr>
+        <tr><td>つなぎを始めたい位置</td><td>自分のつなぎ方に合う位置。慣れるとよく使う場所が決まってくる</td></tr>
+    </table>
+    <p>どの位置も、フレーズ（8 小節）の頭に打ちます。フレーズがそろうと、2 曲の構成がきれいに重なるからです。</p>
+    <div class="callout tip">
+        <span class="callout-title">色と位置のルールを決めておく（一つの流派として）</span>
+        <p>たとえば「A = 曲の頭（1 拍目）、B = メインの頭、C = ブレイクの頭、D = アウトロの頭」のように、パッドの文字と意味を決めておく方法があります。どの曲でも A を押せば頭、D を押せばアウトロに飛べるので、本番で迷いません。色を使うソフトでは、色も同じ意味にそろえると見分けやすくなります。正解は 1 つではないので、自分に合うルールを見つけてください。</p>
+    </div>
+
+    <h2>本番の前に準備する</h2>
+    <p>CUE の位置を決める作業は、本番の前に終わらせておきます。本番中は、次の曲を選び、テンポを合わせ、音量を調整する作業でいっぱいになるので、曲の中で位置を探している余裕はありません。</p>
+    <ul>
+        <li>セットで使う曲は、すべて<a href="analyze.html">解析</a>してからビートグリッドを確認する</li>
+        <li>すべての曲に、頭の CUE ポイントを打つ</li>
+        <li>必要な曲には、ホットキュー（rekordbox ならメモリーキューも）を置く</li>
+        <li>CUE を押し続けて、頭から正しく鳴ることを確かめる</li>
+    </ul>
+
+    <div class="quiz">
+        <p class="quiz-q">一時停止中に、曲の途中でうっかり CUE ボタンを押しました。何が起きる？</p>
+        <ul>
+            <li data-correct>その位置が新しい CUE ポイントになる</li>
+            <li>CUE ポイントの位置は変わらず、その位置から再生が始まる</li>
+            <li>曲の先頭に戻る</li>
+        </ul>
+        <p class="quiz-explain">一時停止中に押す CUE は、CUE ポイントを打つ操作です。以前の位置は上書きされます。曲の頭に戻りたいときは、SHIFT を押しながら CUE を押します。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">ホットキューは、CUE ポイントと比べてどこが違う？</p>
+        <ul>
+            <li>ホットキューは 1 曲に 1 か所だけ置ける</li>
+            <li>ホットキューは、パッドを押している間しか再生できない</li>
+            <li data-correct>ホットキューは 1 曲に複数置け、パッドを押すとそこから再生できる</li>
+        </ul>
+        <p class="quiz-explain">CUE ポイントは 1 曲に 1 か所、ホットキューは複数置けます。FLX4 のパッドで操作できるのは、rekordbox では A〜H の 8 か所、Serato DJ Lite では 4 か所です（rekordbox の画面では 1 曲に 16 か所まで置けます）。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>CUE ポイントは、曲を出す位置の目印。基本は 1 拍目に打つ</li>
+            <li>CUE ボタンは、再生中は CUE ポイントに戻って停止、一時停止中は新しい CUE ポイントを打つ、押し続けると押している間だけ再生</li>
+            <li>クオンタイズをオンにすると、位置が拍にそろう。ビートグリッドが正しいことが前提</li>
+            <li>ホットキューは、HOT CUE モードのパッドで登録・呼び出し、SHIFT + パッドで消去する</li>
+            <li>本番の前に、すべての曲に CUE を打っておく</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

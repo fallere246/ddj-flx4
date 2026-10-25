@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テンポを合わせる（ビートマッチ） | FLX4 DJ 入門</title>
+    <meta name="description" content="2 つの曲のテンポと拍をそろえるビートマッチを、SYNC と、耳と手で合わせる方法の両方で練習します。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="beatmatch">
+<article class="lesson">
+    <h1>テンポを合わせる（ビートマッチ）</h1>
+    <p class="lead">2 つの曲を重ねるときに、いちばん先に必要なのが、テンポと拍をそろえる作業です。これを<a class="term" data-term="beatmatch">ビートマッチ</a>といいます。このレッスンでは、ボタン 1 つでそろえる SYNC と、耳と手でそろえる方法の両方を練習します。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>テンポがずれると何が起きるかを説明できる</li>
+            <li>BEAT SYNC の働きと、使うときの前提がわかる</li>
+            <li>テンポスライダーとジョグで、2 つの曲の拍をそろえられる</li>
+            <li>どちらが先に鳴っているかを聴き分けられる</li>
+        </ul>
+    </section>
+
+    <h2>なぜテンポを合わせるのか</h2>
+    <p>2 つの曲を同時に流すとき、<a class="term" data-term="bpm">BPM</a> が少しでも違うと、2 つの<a class="term" data-term="kick">キック</a>の位置がだんだんずれていきます。ずれたキックは「ドドッ」と二重に聞こえます。このずれた音は、<a class="term" data-term="flam">フラム</a>と呼ばれることもあります。</p>
+    <p>BPM が同じでも、キックの位置がずれていれば、同じように聞こえます。テンポ（速さ）と、拍の位置（タイミング）の両方がそろって、はじめてきれいに重なります。</p>
+
+    <h2>方法 1：SYNC に任せる</h2>
+    <p><a class="term" data-term="sync">SYNC</a> は、ソフトが自動で、テンポと拍の位置をそろえてくれる機能です。FLX4 では <a class="ctl" data-ctl="sync" data-deck="1">BEAT SYNC</a> ボタンを押します。</p>
+    <div class="callout flx4">
+        <span class="callout-title">BEAT SYNC の動き</span>
+        <p data-sw="rb">rekordbox では、「<a class="term" data-term="sync-master">同期のマスター</a>」に設定したデッキに、もう一方のデッキが合わせます。BEAT SYNC を押すと、そのデッキのテンポ（ピッチ）と<a class="term" data-term="beatgrid">ビートグリッド</a>が、マスターのデッキに合います。BEAT SYNC をもう一度押すと解除されます。BEAT SYNC を 1 秒以上押すと、そのデッキが同期のマスターになります。</p>
+        <p data-sw="serato">Serato DJ Lite では、BEAT SYNC を押すと、両デッキのテンポ（ピッチ）とビートグリッドが自動で合います。BEAT SYNC を 1 秒以上押すと、SYNC が解除されます。</p>
+    </div>
+    <div data-sw="mac">
+        <h3>rekordbox の画面での SYNC</h3>
+        <p>rekordbox では、デッキのトラック情報パネルに、SYNC に関するボタンが並びます。画面（マウス）で操作するときは、次のようにします。FLX4 の BEAT SYNC は、これと同じ働きをします。</p>
+        <ol class="steps">
+            <li>基準にしたいデッキのトラック情報パネルで <span class="ui">MASTER</span> をクリックする。そのデッキが、シンクマスター（同期の基準）になる。</li>
+            <li>合わせたいデッキで曲を再生する。</li>
+            <li>合わせたいデッキのトラック情報パネルで <span class="ui">BEAT SYNC</span> をクリックする。再生中の曲の BPM と拍の位置が、マスターの曲に合う。</li>
+            <li>解除するには、もう一度 <span class="ui">BEAT SYNC</span> をクリックする。</li>
+        </ol>
+        <p>基準を別のデッキにしたいときは、そのデッキの <span class="ui">MASTER</span> をクリックします。マスターのデッキの曲を入れ替えたり、アンロードすると、基準は別のデッキに移ります。</p>
+        <p>テンポが 2 倍や半分の曲に合わせたいときは、BEAT SYNC がオンのあいだ、トラック情報パネルの <span class="ui">x 1</span>／<span class="ui">x 2</span>／<span class="ui">x 1/2</span> ボタン（SYNC RATE）で、マスターの BPM の 1 倍・2 倍・半分に切り替えられます。このボタンは、マスターのデッキには出ません。表示のオン／オフは、<span class="ui">環境設定</span> &gt; <span class="ui">表示</span>カテゴリー &gt; <span class="ui">レイアウト</span>タブの<span class="ui">SYNC RATE を表示</span>で切り替えます。</p>
+        <p>同期のしかたに関する設定は、<span class="ui">環境設定</span> &gt; <span class="ui">コントローラー</span>カテゴリーの <span class="ui">ビート / BPM シンク</span>にあります。</p>
+        <ul>
+            <li><span class="ui">シンクの種類</span>：<span class="ui">ビートシンク</span>（BPM と拍の位置を合わせる）か、<span class="ui">BPM シンク</span>（BPM を合わせる方式）を選ぶ</li>
+            <li><span class="ui">倍または半分の BPM でもシンクする</span>：マスターとの BPM 差が 2 倍や半分のとき、チェックを入れておくと原曲に近い BPM で同期できる</li>
+        </ul>
+        <p>設定を細かく変えなくても、初期設定のままで、このレッスンの練習はできます。</p>
+    </div>
+    <p>SYNC は便利ですが、動かすには前提があります。ソフトはビートグリッド（曲の拍の位置の情報）を見て合わせるので、グリッドが正しくないと、きれいにそろいません。取り込んだ曲の BPM やグリッドは、先に<a href="analyze.html">「曲を取り込んで解析する」</a>で確認しておきましょう。</p>
+    <div class="callout note">
+        <span class="callout-title">SYNC を使うのは恥ずかしいことではない</span>
+        <p>SYNC は、現在の DJ で広く使われている、正式な方法です。テンポ合わせに集中する時間を、選曲やエフェクトなど、ほかの工夫にまわせます。ただ、グリッドが合っていない曲に当たったときや、機材やソフトが調子の悪いときのために、手で合わせる方法も知っておくと安心です。</p>
+    </div>
+
+    <h2>方法 2：耳と手で合わせる</h2>
+    <p>手で合わせる手順は、次のとおりです。ここでは、いま流れている曲（DECK 1）に、次の曲（DECK 2）を合わせるとします。</p>
+    <ol class="steps">
+        <li>2 つのデッキの BPM 表示を見て、DECK 2 の<a class="term" data-term="tempo-slider">テンポスライダー</a>を動かし、BPM を大まかに近づける。</li>
+        <li>DECK 2 を、頭出しした 1 拍目で再生する。DECK 1 の小節の頭に合わせて押す。</li>
+        <li>DECK 2 のチャンネルフェーダーを下げたまま、<a href="monitor.html">ヘッドホン</a>で 2 曲を聴き比べる。</li>
+        <li>どちらのキックが先に鳴っているかを聴き分ける。</li>
+        <li>DECK 2 が先に鳴っているときは、ジョグの外周部（側面）を回して、一時的に DECK 2 を遅くする。遅れているときは、速くする。これを<a class="term" data-term="pitch-bend">ピッチベンド</a>という。</li>
+        <li>拍がそろっても、しばらくするとまたずれてくるときは、BPM が違っている証拠。テンポスライダーを少しだけ動かして直す。</li>
+        <li>4〜6 をくり返し、ずれが出なくなるまで整える。</li>
+    </ol>
+    <div class="callout flx4">
+        <span class="callout-title">ジョグの外周部と天面</span>
+        <p><a class="ctl" data-ctl="jog" data-deck="1">ジョグ</a>の外周部（側面）を回すと、回しているあいだだけ速度が変わります（ピッチベンド）。天面は、VINYL モードがオンのときはスクラッチ、オフのときはピッチベンドになります。<span data-sw="mac">rekordbox Mac/Windows では、VINYL モードは、rekordbox のショートカットキーで切り替えます。</span><span data-sw="ios">rekordbox iOS/Android では、天面を回すとスクラッチになります。</span><span data-sw="serato">Serato DJ Lite では、VINYL モードは SHIFT + <a class="ctl" data-ctl="out" data-deck="1">OUT</a> で切り替えます。</span> 外周部は、いつでもピッチベンドとして使えます。</p>
+    </div>
+    <p>このとき、テンポスライダーとジョグの使い分けが大事です。<strong>ジョグは「いまのずれ」を直す</strong>道具で、<strong>テンポスライダーは「ずれ続ける原因」を直す</strong>道具です。ジョグだけで合わせ続けると、BPM が違うままなので、何度もずれます。</p>
+
+    <h3>なぜ手で合わせる練習をするのか</h3>
+    <ul>
+        <li><strong>グリッドが合わない曲がある。</strong>古い曲や、テンポが揺れる曲では、SYNC が当てにならない</li>
+        <li><strong>耳が鍛えられる。</strong>聴いて「先か遅れか」を判断する力は、あらゆるつなぎに役立つ</li>
+        <li><strong>ずれに気づけるようになる。</strong>SYNC を使っていても、ずれたときに自分で直せる</li>
+    </ul>
+
+    <h2>ツールで練習する（SYNC なし）</h2>
+    <p>下のツールで、DECK 2 のテンポスライダーとジョグを使って、DECK 1 に合わせる練習をします。DECK 2 の BPM は毎回変わります。</p>
+    <ol class="steps">
+        <li>「DECK 1 を流す」を押して、DECK 1 を再生する。</li>
+        <li>最初は、「BPM を表示する」と「ずれメーターを表示する」をオンにする。BPM が近づくのが数字で、位置のずれがメーターでわかる。</li>
+        <li>DECK 2 を、DECK 1 の小節の頭に合わせて再生する。</li>
+        <li>テンポスライダーで BPM を近づけ、ジョグ（または「−」「＋」ボタン）でずれを直す。ツールの「−」は押している間だけ遅く、「＋」は速くする（ジョグの外周部を回すのと同じ）。</li>
+        <li>「答え合わせ」を押す。テンポの差（BPM）と、拍のずれ（ms：ミリ秒、1 ミリ秒は 1000 分の 1 秒）が出る。</li>
+        <li>慣れたら、「BPM を表示する」と「拡大波形を表示する」と「ずれメーターを表示する」をすべてオフにして、耳だけで合わせてみる。</li>
+    </ol>
+    <p>目標の目安は、テンポの差が 0.1 BPM 程度、拍のずれが十数 ms 以内です。ツールの「ばっちり！」は、この目安で判定しています。</p>
+    <div data-widget="beatmatch" data-title="耳と手でビートマッチ"></div>
+    <div class="callout tip">
+        <span class="callout-title">先か遅れかの聴き分けかた</span>
+        <p>答え合わせの表示は「DECK 2 が先に鳴っている」「DECK 2 が遅れている」となります。耳だけで合わせるときも、まずキックのどちらが「ドッ」と先に聞こえるかを探します。迷ったら、片方のデッキだけをしばらく聴いて、そのリズムを頭に入れてから、もう一方を重ねると聴き分けやすくなります。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">DECK 2 のキックが、DECK 1 のキックより先に鳴っています。ジョグの外周部をどうする？</p>
+        <ul>
+            <li>DECK 2 が速くなるように回す</li>
+            <li data-correct>DECK 2 が遅くなる方向に回す</li>
+            <li>回さず、テンポスライダーを大きく動かす</li>
+        </ul>
+        <p class="quiz-explain">先に鳴っているデッキは、少し遅らせると相手に追いつかれます。ジョグで直すのは、いまのずれです。ずれが戻ってくるときだけ、テンポスライダーを少し動かします。</p>
+    </div>
+
+    <h2>SYNC を体験する</h2>
+    <p>こんどは SYNC つきのツールです。DECK 2 を再生してから BEAT SYNC を押すと、一瞬で、テンポと拍の位置がそろうのを確かめてください。さきほど手で合わせたものと比べてみましょう。</p>
+    <div data-widget="beatmatch" data-sync="on" data-title="BEAT SYNC で合わせる"></div>
+
+    <h2>テンポを変えすぎない</h2>
+    <p>再生速度を大きく変えると、曲の雰囲気が変わります。速くすると声が高く、遅くすると低く聞こえることがあります。テンポ差が小さい（目安は数 % 以内）曲どうしをつなぐのが基本です。FLX4 のテンポスライダーの動かせる幅は、<a class="term" data-term="tempo-range">テンポの可変幅</a>で切り替えます。<a class="ctl" data-ctl="sync" data-deck="1">SHIFT + BEAT SYNC</a> を押すたびに切り替わります。<span data-sw="rb">rekordbox では ±6%・±10%・±16%・WIDE です。</span><span data-sw="serato">Serato DJ Lite では ±8%・±16%・±50% です。</span></p>
+    <div data-sw="mac">
+        <h3>画面でのテンポの可変幅</h3>
+        <p>rekordbox の画面では、デッキの JOG パネルのプラッター（円形の部分）の中に、テンポの操作があります。</p>
+        <ul>
+            <li><span class="ui">＋</span>／<span class="ui">－</span>をクリックすると、再生速度が速く／遅くなる。変えた割合が %で表示される。その数字をダブルクリックすると、0% に戻る</li>
+            <li><span class="ui">テンポレンジ</span>をクリックするたびに、可変幅が切り替わる：<span class="ui">±6</span>、<span class="ui">±10</span>、<span class="ui">±16</span>、<span class="ui">WIDE</span>。可変幅が狭いほど細かく動かせる（<span class="ui">±6</span> は 0.02% 単位、<span class="ui">±10</span> と <span class="ui">±16</span> は 0.04% 単位、<span class="ui">WIDE</span> は 0.5% 単位）</li>
+        </ul>
+        <p>FLX4 の <a class="ctl" data-ctl="sync" data-deck="1">SHIFT + BEAT SYNC</a> は、この画面の <span class="ui">テンポレンジ</span>を切り替える操作と同じ役目です。ビートマッチの練習では、まず狭い可変幅で、細かく合わせるのがおすすめです。</p>
+    </div>
+    <p>テンポを変えても音の高さを変えないようにする<a class="term" data-term="master-tempo">マスターテンポ</a>という機能もあります。くわしくは<a href="key.html">「キーと曲の相性」</a>で説明しています。</p>
+    <p data-sw="mac">rekordbox の画面では、デッキの JOG パネルの <span class="ui">MT</span> をクリックして、赤く点灯させるとマスターテンポがオンになります。オンにすると、テンポを変えても音の高さは変わりません。もう一度クリックするとオフです。ただし、操作説明書にあるとおり、音をデジタル処理するため、音質は変わります。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">BEAT SYNC を使っても、キックがずれたまま重なる曲がありました。いちばんありそうな原因は？</p>
+        <ul>
+            <li>ヘッドホンの音量が小さい</li>
+            <li data-correct>その曲のビートグリッドが、実際の拍とずれている</li>
+            <li>テンポスライダーが中央にある</li>
+        </ul>
+        <p class="quiz-explain">SYNC はグリッドを頼りに合わせます。グリッドが実際の拍とずれていると、ソフトの上では合っていても、耳には合って聞こえません。その曲は解析をやり直すか、手で合わせます。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">手で合わせている途中、ジョグで直してもすぐまたずれるのはなぜ？</p>
+        <ul>
+            <li>ジョグを回す方向が逆だから</li>
+            <li data-correct>2 つの曲の BPM がまだ違うから</li>
+            <li>ヘッドホンの CUE を押していないから</li>
+        </ul>
+        <p class="quiz-explain">ずれが戻ってくるのは、2 曲の速さがまだ違うからです。テンポスライダーを少しだけ動かして、BPM を近づけましょう。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>BPM や拍の位置がずれると、キックが二重に聞こえる</li>
+            <li>BEAT SYNC はテンポと拍を自動でそろえる。ビートグリッドが正しいことが前提</li>
+            <li>手で合わせるときは、テンポスライダーで BPM、ジョグの外周部でいまのずれを直す</li>
+            <li>どちらが先に鳴っているかを、ヘッドホンで聴き分ける</li>
+            <li>目標は、テンポの差 0.1 BPM 程度、拍のずれ十数 ms 以内</li>
+            <li>テンポを大きく変えすぎない</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

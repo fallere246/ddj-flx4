@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>困ったとき | FLX4 DJ 入門</title>
+    <meta name="description" content="音が出ない、PC が FLX4 を認識しない、BPM がおかしいなど、よくある困りごとの確かめ方をまとめた付録です。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="trouble">
+<article class="lesson">
+    <h1>困ったとき</h1>
+    <p class="lead">機材は、ちょっとしたことで動かなくなります。あわてず、症状ごとに「確かめること」を上から順に試してください。多くの場合、ケーブル、つまみの位置、ソフトの設定のどれかが原因です。ここにない症状や、それでも直らないときは、最後に書いた公式サポートを見てください。</p>
+
+    <h2>電源が入らない・勝手に切れる</h2>
+    <ol class="steps">
+        <li>USB ケーブルが、FLX4 と PC の両方にしっかり差さっているか確かめる。接続の順番は<a href="setup.html">「機材をつないでソフトを準備する」</a>を見る</li>
+        <li>USB ケーブルを別のものに替える。ケーブルの断線や、充電専用で通信できないケーブルのことがある</li>
+        <li>モバイルバッテリーを電源にしているときは、省電力機能のないものを使う。電力が足りないと、勝手に切れることがある</li>
+        <li>両デッキの <a class="ctl" data-ctl="in" data-deck="1">IN</a> と <a class="ctl" data-ctl="out" data-deck="1">OUT</a> のボタンが点滅して動かないときは、<a class="ctl" data-ctl="usbpower">USB 端子（電源専用）</a>につないだ電源の供給量が足りないことが考えられる。取扱説明書で指定された電力に対応した機器を使う</li>
+    </ol>
+
+    <h2>PC / Mac が FLX4 を認識しない</h2>
+    <ol class="steps">
+        <li>付属の USB ケーブルを使い、<a class="ctl" data-ctl="usbdevice">USB 端子（デバイス接続用）</a>に差し直す</li>
+        <li>USB ハブを使っているなら、外して PC に直接つなぐ。ハブが必要なら、PC メーカーが勧めるものを使う</li>
+        <li>PC の別の USB ポートにつなぎ替える</li>
+        <li>外付けハードディスクなど、ほかの USB 機器を外す</li>
+        <li>DJ ソフト以外のアプリを閉じて、もう一度試す</li>
+        <li>Mac では、音の設定を確認するユーティリティー（Audio MIDI 設定）に FLX4 が出ているか、Windows ではデバイスマネージャーに FLX4 が出ているかを見る。出ていなければ、ケーブルか PC 側の問題が考えられる</li>
+    </ol>
+    <p data-sw="ios">スマートフォンやタブレットにつなぐ場合は、ケーブルと電源の確認を先にします。Bluetooth がつながらない、途切れるときは、電子レンジや無線 LAN など 2.4 GHz 帯の電波を出す機器から離します。本体とモバイル機器の間に障害物があるなら、距離や位置を変えます。</p>
+
+    <h2>音が出ない・小さい・ひずむ</h2>
+    <ol class="steps">
+        <li>接続ケーブルを確かめる。<a class="ctl" data-ctl="masterout">MASTER 出力端子</a>とスピーカーのつなぎ、スピーカーの電源と音量も見る</li>
+        <li>再生前のつまみの位置に戻す。<a class="ctl" data-ctl="trim" data-ch="1">TRIM</a>、<a class="ctl" data-ctl="chfader" data-ch="1">チャンネルフェーダー</a>、<a class="ctl" data-ctl="xfader">クロスフェーダー</a>、<a class="ctl" data-ctl="master">MASTER LEVEL</a>のどれかが下がっていると、音が出ない（<a href="tour.html">「FLX4 の各部とホームポジション」</a>）</li>
+        <li><a class="ctl" data-ctl="meter" data-ch="1">チャンネルレベルインジケーター</a>が振れているか見る。振れていなければ曲が再生されていないか、TRIM が下がっている。オレンジ色が常に点いたまま音がひずむときは、TRIM を下げる</li>
+        <li>端子やプラグが汚れていたら拭き取って、差し直す</li>
+        <li><span data-sw="rb">rekordbox の環境設定のオーディオの項目で、出力先が FLX4 になっているか確認する。</span><span data-sw="serato">Serato DJ Lite の設定で、出力先が FLX4 になっているか確認する。</span></li>
+        <li>音がとぎれるときは、ソフトのオーディオ設定のバッファサイズを見直す。大きくすると途切れにくくなり、そのぶん反応が少し遅れる</li>
+    </ol>
+    <div class="callout tip">
+        <span class="callout-title">TRIM を上げすぎない</span>
+        <p>音がひずむ原因は、TRIM の上げすぎが多いです。ひずみは<a href="sound.html">「音の基本」</a>で説明した「音割れ」です。</p>
+    </div>
+
+    <h2>ヘッドホンの音が小さい</h2>
+    <ol class="steps">
+        <li><a class="ctl" data-ctl="hplevel">HEADPHONES LEVEL</a>を上げ、<a class="ctl" data-ctl="hpmix">HEADPHONES MIX</a>の位置を見る</li>
+        <li>ヘッドホンのインピーダンスが 32 Ω 以上のものか確かめる</li>
+        <li>使っていない USB 機器が別のポートにつながっていたら外す。USB からの給電が足りないと、ヘッドホンの音量が抑えられることがある</li>
+    </ol>
+
+    <h2>音は出るが、ヘッドホンから次の曲が聞こえない</h2>
+    <p>スピーカーからは聞こえるのに、ヘッドホンで次の曲の確認ができないときは、次の順で確かめます。</p>
+    <ol class="steps">
+        <li>次の曲のチャンネルの<a class="ctl" data-ctl="chcue" data-ch="2">ヘッドホン CUE</a>ボタンが点灯しているか</li>
+        <li><a class="ctl" data-ctl="hplevel">HEADPHONES LEVEL</a>が上がっているか</li>
+        <li><a class="ctl" data-ctl="hpmix">HEADPHONES MIX</a>が、CUE 側に寄っているか。MASTER 側に回しきると、CUE の音が聞こえない</li>
+        <li>次の曲のデッキが再生中か。停止中は音が出ない</li>
+        <li><a class="ctl" data-ctl="trim" data-ch="2">TRIM</a>が下がりすぎていないか</li>
+        <li><span data-sw="rb">rekordbox の出力設定で、ヘッドホン出力が FLX4 の PHONES になっているか確認する。</span><span data-sw="serato">Serato DJ Lite のオーディオ設定で、ヘッドホンの出力先が FLX4 になっているか確認する。</span></li>
+    </ol>
+    <p>使い方は<a href="monitor.html">「ヘッドホンで次の曲を聴く」</a>で練習できます。</p>
+
+    <h2>PC のスピーカーからも音が出てしまう</h2>
+    <p>FLX4 につないだスピーカーと同じ音が、PC 内蔵のスピーカーからも出ることがあります。2 か所で鳴るので、二重に聞こえたり、DJ プレイの邪魔になったりします。</p>
+    <ol class="steps">
+        <li data-sw="mac"><a class="term" data-term="pc-master-out">PC MASTER OUT</a>がオンになっていないか見る。この機能は、PC のスピーカーからもマスター音声を出す機能で、初期設定ではオンになっている。オフにすれば PC のスピーカーからは鳴らなくなる。ボタンの場所は、取扱説明書の rekordbox の項目を参照する</li>
+        <li data-sw="ios">スマートフォンやタブレットでは、USB ケーブルでつないでいる間は、モバイル機器本体から音は出ません。音を出したいときは、<a class="ctl" data-ctl="masterout">MASTER 出力端子</a>にパワードスピーカーなどをつなぎます。</li>
+        <li data-sw="serato">Serato DJ Lite では、出力先を FLX4 だけにしているかを、ソフトのオーディオ設定で確認する。</li>
+        <li>Mac や Windows の音の出力先が、FLX4 以外になっていないかも見る</li>
+    </ol>
+
+    <h2>BPM やビートグリッドがおかしい</h2>
+    <p>曲の BPM が 2 倍や半分になっていたり、ビートグリッド（拍の目印）が、曲の拍とずれていたりすると、SYNC もずれます。</p>
+    <ol class="steps">
+        <li>BPM が 2 倍か半分になっていないか確認する。なっていたら、BPM の解析範囲を変更して、もう一度解析する</li>
+        <li>それでも直らないときは、BPM とビートグリッドを手で設定する</li>
+        <li><span data-sw="rb">グリッドが拍とずれているだけなら、グリッド編集の機能で位置を合わせる。</span><span data-sw="serato">Serato DJ Lite で BPM が表示されないときは、解析の設定で BPM の設定にチェックが入っているか確かめてから、もう一度解析する。</span></li>
+    </ol>
+    <p>詳しい直し方は<a href="analyze.html">「曲を取り込んで解析する」</a>にあります。</p>
+
+    <h2>SYNC がうまくいかない</h2>
+    <ol class="steps">
+        <li>2 曲とも、BPM とビートグリッドが合っているか見る。どちらかがずれていると、SYNC してもずれる</li>
+        <li>曲の途中でテンポが変わる曲や、拍がゆれる曲（ライブ録音など）は、SYNC では合わせにくい。手で合わせる</li>
+        <li><span data-sw="serato">Serato DJ Lite では、BPM が解析されていない曲だと SYNC が動かない。解析を済ませる。</span><span data-sw="rb">rekordbox では、曲を解析してから使う。</span></li>
+        <li>SYNC は拍をそろえるだけで、フレーズの位置はそろえない。フレーズの頭に合わせるのは<a href="phrasing.html">自分の仕事</a></li>
+    </ol>
+
+    <h2>ソフトの動きが不安定</h2>
+    <ol class="steps">
+        <li><span data-sw="rb">rekordbox</span><span data-sw="serato">Serato DJ Lite</span>を最新のバージョンにする</li>
+        <li>DJ ソフト以外のアプリを閉じる</li>
+        <li>それでも不安定なら、無線 LAN などの無線接続、セキュリティソフト、スクリーンセーバー、省電力モードを、一時的に切って試す</li>
+        <li>FLX4 以外の USB 機器を外す</li>
+        <li>ノート PC は、バッテリー駆動ではなく AC アダプターにつなぐ</li>
+    </ol>
+
+    <h2>曲やデッキの表示、そのほかの機能</h2>
+    <ul>
+        <li data-sw="serato"><strong>ライブラリに曲が出ない（Serato）</strong>：音楽ファイルを取り込んでいるか、曲の入っていない箱（クレート）を選んでいないかを確かめる</li>
+        <li data-sw="serato"><strong>バーチャルデッキが出ない（Serato）</strong>：練習モードで開いていることがある。USB ケーブルの接続とソフトのバージョンを確認する</li>
+        <li data-sw="serato"><strong>クロスフェーダーが効かない（Serato）</strong>：ソフトのクロスフェーダーの設定で、無効になっていないかを見る</li>
+        <li data-sw="rb"><strong>フェーダースタートが動かない</strong>：先にキューを設定しておく。ソフトの設定でフェーダースタートが有効になっているかも確かめる</li>
+        <li data-sw="serato"><strong>フェーダースタートが動かない</strong>：先に一時的なキューを設定しておく。FLX4 の設定モードでも、フェーダースタートが有効か確かめる</li>
+        <li data-sw="mac"><strong>録音機能が使えない</strong>：FLX4 をつないでいないと、録音機能が使えないことがある（契約のプランによる）。FLX4 などの対象機器をつなぐ</li>
+        <li data-sw="ios"><strong>Android で音が乱れる</strong>：機種によっては、本体背面の Android MONO/STEREO スイッチを MONO にすると直ることがある</li>
+        <li data-sw="ios"><strong>Bluetooth 接続中は音が出ない</strong>：Bluetooth でつないでいる間は、MASTER 出力やヘッドホン出力から音が出ない。音は機器から出る。出力したいときは USB ケーブルでつなぐ</li>
+        <li data-sw="ios"><strong>マイクの音が出ない</strong>：マイクのつまみ（MIC LEVEL、MIC ATT.）の位置を確かめる。Bluetooth 接続中は、マイクの音は出力されない</li>
+    </ul>
+
+    <h2>それでも直らないとき</h2>
+    <p>外からの静電気などで、本体の動きがおかしくなることもあります。電源を入れ直すと、直ることがあります。</p>
+    <p>ここに書いた方法で直らないときは、Pioneer DJ の公式サポートページ（<strong>pioneerdj.com/support/</strong>）で、DDJ-FLX4 の「よくある質問（FAQ）」を探してください。ソフトのことは、rekordbox や Serato の公式マニュアルを見てください。使用上の注意をよく読んだうえで、販売店に相談することもできます。</p>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

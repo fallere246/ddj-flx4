@@ -695,3 +695,18 @@ mark {
         animation: none;
     }
 }
+
+/* ========== サイトのトップへのリンク ========== */
+.home-link {
+    padding: 5px 10px;
+    border: 1px solid var(--ui-line);
+    border-radius: 6px;
+    color: var(--ui-sub);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.home-link::before { content: "← "; }
+.home-link:hover { color: var(--accent); border-color: var(--accent); }

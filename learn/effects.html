@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エフェクト：CFX と BEAT FX | FLX4 DJ 入門</title>
+    <meta name="description" content="CFX のフィルターと BEAT FX の使い方、エコーアウトのやり方を、音を聴きながら覚えます。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="effects">
+<article class="lesson">
+    <h1>エフェクト：CFX と BEAT FX</h1>
+    <p class="lead">エフェクトは、音に変化を加える機能です。うまく使うと、曲と曲のつなぎがなめらかになり、演奏にも表情が出ます。このレッスンでは、FLX4 にある 2 種類のエフェクト、<a class="term" data-term="cfx">CFX</a>（フィルター）と <a class="term" data-term="beat-fx">BEAT FX</a> の使い方を学びます。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>CFX を左右に回したときの音の変化を説明できる</li>
+            <li>BEAT FX の 5 つの操作（種類・拍の長さ・かけるチャンネル・効き具合・ON/OFF）を使える</li>
+            <li>エコーアウトで曲を自然に終わらせられる</li>
+        </ul>
+    </section>
+
+    <h2>エフェクトの役割</h2>
+    <p>DJ がエフェクトを使う目的は、大きく 2 つあります。</p>
+    <ul>
+        <li>つなぎをなめらかにする：音の質感を少しずつ変えて、次の曲に入りやすくする</li>
+        <li>曲に変化をつける：ブレイクの前後などで、場面の切り替わりを強調する</li>
+    </ul>
+    <p>ただし、エフェクトは使いすぎると曲のよさを消してしまいます。「この場面で何をしたいのか」を決めてから使うのが基本です。</p>
+
+    <h2>CFX：回すだけのフィルター</h2>
+    <p><a class="ctl" data-ctl="cfx" data-ch="1">CFX</a> は、チャンネルごとに 1 つずつあるノブです。中央では何も起きず、左右に回すと音が変わります。どんな効果がかかるかは、ソフトと <a class="ctl" data-ctl="smartcfx">SMART CFX</a> ボタンの状態で決まります。</p>
+    <ul>
+        <li data-sw="mac">rekordbox（Mac/Windows）：SMART CFX がオフのとき、CFX には rekordbox の SOUND COLOR FX がかかります。SOUND COLOR FX は、COLOR ノブに連動して変わるエフェクトです。中央では効果がかからず、左に回したときと右に回したときで効き方が変わります。エフェクトの種類は、画面のエフェクトパネルで選びます（この下で説明します）。種類として FILTER を選んでいるときが、下の表のフィルターです。</li>
+        <li data-sw="ios">rekordbox（iOS/Android）：SMART CFX がオフのあいだ、CFX を回しても原音のままです。SMART CFX ボタンをオンにすると、SOUND COLOR FX がかかります。どの効果がかかるかは、アプリの画面で選びます。</li>
+        <li data-sw="serato">Serato DJ Lite：SMART CFX がオフのとき、CFX はそのままフィルターとして働きます。</li>
+    </ul>
+    <p>フィルターとして使うときは、次のように音が変わります。</p>
+    <table>
+        <tr><th>回す向き</th><th>名前</th><th>音の変化</th></tr>
+        <tr><td>中央</td><td>効果なし</td><td>原音のまま</td></tr>
+        <tr><td>左</td><td><a class="term" data-term="lpf">ローパスフィルター</a></td><td>高い音が削られ、こもった音になる</td></tr>
+        <tr><td>右</td><td><a class="term" data-term="hpf">ハイパスフィルター</a></td><td>低い音が削られ、軽く細い音になる</td></tr>
+    </table>
+    <p>名前の「ロー」「ハイ」は、通す音のほうを指します。ローパスは低い音を通す（高い音を削る）、ハイパスは高い音を通す（低い音を削る）という意味です。<a href="sound.html">「音の基本」</a>で学んだ EQ の HI と LOW を、ノブ 1 つで同時に操作するイメージです。</p>
+    <p>まず下のツールで、再生しながら CFX を左右に回し、音がどう変わるか聴いてみましょう。</p>
+    <div data-widget="mixer" data-features="filter" data-mission="filter" data-title="CFX を回して聴く"></div>
+
+    <div data-sw="mac">
+        <h3>rekordbox の画面で SOUND COLOR FX を選ぶ</h3>
+        <p>rekordbox（Mac/Windows）の PERFORMANCE モードで、グローバルセクション（画面上部の共通ボタンが並ぶところ）のエフェクトパネルのボタンを押すと、エフェクトパネルが開きます。そこで <a class="term" data-term="sound-color-fx">SOUND COLOR FX</a> の画面に切り替えて、種類を決めます。使い方は 2 つのモードに分かれます。</p>
+        <ul>
+            <li><span class="ui">シングルモード</span>：チャンネル共通の設定で使う。さらに <span class="ui">DEFAULT</span> と <span class="ui">USER</span> がある。DEFAULT は、つないだ機器に合わせたエフェクトが表示される（機器をつないでいないときは FILTER）。USER は、9 種類のエフェクトから好きなものを選んで保存でき、CH1〜CH4 に同じエフェクトが設定される</li>
+            <li><span class="ui">マルチモード</span>：チャンネルごとに別のエフェクトを選べる。たとえば、リズムの曲に DUB ECHO、歌だけの音源に FILTER、というように分けられる。ほかに NOISE などもある</li>
+        </ul>
+        <p>FLX4 をつなぐと、DEFAULT で表示される種類は機器に合わせて決まります。FLX4 のときに具体的に何が表示されるかは、操作説明書では確認できませんでした。画面を見て、CFX を回したときの音がフィルターかどうかを、自分の耳で確かめてください。</p>
+    </div>
+
+    <div class="callout flx4">
+        <span class="callout-title">SMART CFX ボタン</span>
+        <p><span data-sw="mac">rekordbox for Mac/Windows では、SMART CFX ボタンをオンにすると、SOUND COLOR FX の代わりに、CFX ノブ 1 つでいくつかのエフェクトを組み合わせた SMART CFX がかかります。SHIFT を押しながら SMART CFX ボタンを押すと、SMART CFX のプリセットを選ぶ画面が出ます。プリセットによっては、エフェクトのほかにループやキーを変えるものもあります。中央では原音のままです。SMART CFX がオンのあいだは、画面側で操作できなくなる機能（一部のエフェクトやトリム）があります。</span><span data-sw="ios">rekordbox for iOS/Android では、SMART CFX ボタンが SOUND COLOR FX のオン／オフになります。オフのあいだは CFX を回しても原音のままなので、音が変わらないときはこのボタンを確かめましょう。</span><span data-sw="serato">Serato DJ Lite では、SMART CFX ボタンをオンにすると、フィルターの代わりに SMART CFX がかかります。ボタンを押すとプリセット 1（エコー系）、SHIFT を押しながらだとプリセット 2（リバーブ系）です。中央では原音のままです。</span></p>
+        <p>このレッスンでは、CFX をフィルターとして使う場合を中心に説明します。</p>
+    </div>
+
+    <h3>フィルターを使ったつなぎ</h3>
+    <p>EQ でのつなぎは、2 曲目の LOW を下げて入れ、あとで LOW を入れ替える方法でした（<a href="first-mix.html">「はじめてのミックス」</a>）。フィルターでのつなぎは、音全体の質感を変えながら入れるところが違います。</p>
+    <ol class="steps">
+        <li>2 曲目の CFX を右（ハイパス）に回し、低音を抜いて軽くした状態でミックスに入れる</li>
+        <li>フレーズの切り替わりに合わせて、CFX を少しずつ中央に戻す。低音がじわじわ戻ってくる</li>
+        <li>1 曲目は逆に、CFX を左（ローパス）や右に回しながらフェーダーを下げていく</li>
+    </ol>
+    <p>音の質感をなめらかに変えられるので、EQ の切り替えより「流れる」印象になります。どちらが正しいということはなく、曲によって使い分けます。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">CFX を右いっぱいに回すと、音はどう変わる？</p>
+        <ul>
+            <li>高い音が削られて、こもった音になる</li>
+            <li data-correct>低い音が削られて、軽く細い音になる</li>
+            <li>音量が大きくなる</li>
+        </ul>
+        <p class="quiz-explain">右に回すとハイパスフィルターが効き、低い音が削られます。こもった音になるのは、左に回したときのローパスフィルターです。</p>
+    </div>
+
+    <h2>BEAT FX：曲のテンポに合うエフェクト</h2>
+    <p>BEAT FX は、デッキにロードした曲の BPM に合わせてかかるエフェクトです。拍の長さは BPM から自動で決まるので、エコーの間隔などが曲のリズムとずれません。手でテンポを合わせる必要はありません。</p>
+    <p>FLX4 のエフェクト部には、5 つの操作があります。</p>
+    <table>
+        <tr><th>操作</th><th>はたらき</th></tr>
+        <tr><td><a class="ctl" data-ctl="fxselect">BEAT FX SELECT</a></td><td>エフェクトの種類を、一覧の次のものに切り替える。SHIFT を押しながらだと前のもの</td></tr>
+        <tr><td><a class="ctl" data-ctl="beatL">BEAT ◀</a> / <a class="ctl" data-ctl="beatR">BEAT ▶</a></td><td>エフェクトを同期させる拍数を小さく／大きくする</td></tr>
+        <tr><td><a class="ctl" data-ctl="fxch">CH SELECT</a></td><td>かけるチャンネルを 1 / 2 / 1&amp;2 から選ぶ</td></tr>
+        <tr><td><a class="ctl" data-ctl="depth">LEVEL/DEPTH</a></td><td>エフェクトのかかり具合を調整する</td></tr>
+        <tr><td><a class="ctl" data-ctl="fxon">ON/OFF</a></td><td>エフェクトをオン／オフする</td></tr>
+    </table>
+    <p data-sw="serato ios">選べるエフェクトの種類はソフトで違い、ソフトの画面の一覧から選びます。種類の名前や数はバージョンで変わるので、ソフトの画面で確認してください。</p>
+    <div data-sw="mac">
+        <h3>rekordbox の画面：エフェクトパネル</h3>
+        <p>rekordbox（Mac/Windows）では、<span class="ui">エフェクトパネル</span>で BEAT FX を操作します。パネルは、グローバルセクションのエフェクトパネルのボタンで開閉します。パネルの形式は、<span class="ui">環境設定</span> &gt; <span class="ui">表示</span> カテゴリー &gt; <span class="ui">レイアウト</span> タブの <span class="ui">エフェクトパネル</span> でも設定できます。FLX4 で使うときは、<strong>マルチモード</strong>にしておきます（取扱説明書の手順では、最初にマルチモードに設定します）。マルチモードでは、1 つのエフェクトユニット（FX1 と FX2 の 2 つがあります）で最大 3 つのエフェクトを同時に使えます。</p>
+        <ul>
+            <li><strong>かける対象：</strong>パネルで、デッキ <span class="ui">1</span>〜<span class="ui">4</span>、サンプラーデッキ <span class="ui">S</span>、マスターアウト <span class="ui">M</span> のどれにかけるかを選びます。M（マスターアウト）にすると、全体の音にかかります。M に割り当てているあいだは、デッキ 1〜4 やサンプラーデッキには割り当てられません</li>
+            <li><strong>エフェクトの種類：</strong>画面の一覧から選びます。FLX4 では BEAT FX SELECT で切り替えます。操作説明書で名前を確認できるのは ECHO（やまびこのようにくり返す音）と REVERB（響き）です。そのほかの種類の一覧は、パネルのプルダウンで確認してください</li>
+            <li><strong>拍数：</strong>選んだ BPM の拍に合わせて効果がかかります。FLX4 では BEAT ◀ ▶ で変えます。REVERB のように、拍ではなく数値のパラメーターで設定するエフェクトもあります</li>
+            <li><strong>FX LEVEL/DEPTH：</strong>原音とエフェクト音の割合です。最小で原音だけ、最大でエフェクト音だけが出ます。ECHO なら、原音にエコーをどれだけ混ぜるか、という意味になります</li>
+            <li><strong>BPM の基準：</strong>画面の <span class="ui">AUTO</span> と <span class="ui">TAP</span> で切り替わります。初期状態は AUTO です</li>
+        </ul>
+        <p>このほかに、画面には <span class="ui">シングルモード</span>もあります。1 つのユニットに 1 つのエフェクトを選び、そのエフェクトごとのパラメーターを細かく調整できるモードです。調整した状態を <span class="ui">SNAPSHOT</span> で保存することもできます。はじめは、マルチモードのままで十分です。</p>
+        <p>エフェクトの数や名前は、契約プランや接続している機器で変わることがあります（操作説明書にも、プランによって使えない機能があると書かれています）。</p>
+    </div>
+    <div class="callout flx4">
+        <span class="callout-title">拍の長さの決め方</span>
+        <p>初期状態では、曲の BPM がエフェクトの基準になります（BPM オートモード）。<span data-sw="rb">rekordbox では、SHIFT を押しながら BEAT ▶ を指でタップすると、タップした間隔が基準になるモード（BPM タップモード）に変わります。SHIFT + BEAT ◀ でオートモードに戻ります。</span><span data-sw="serato">Serato DJ Lite でも、SHIFT + BEAT ◀ でオートモードにできます。</span>ふだんはオートモードのままで問題ありません。</p>
+    </div>
+    <div class="callout flx4">
+        <span class="callout-title">リリース FX（rekordbox）</span>
+        <p data-sw="rb">SHIFT を押しながら ON/OFF を押して離すと、かかっていた BEAT FX を止めて、<a class="term" data-term="release-fx">リリース FX</a>（余韻をつける効果）がかかります。</p>
+        <p data-sw="mac">画面のエフェクトパネルには、リリース FX の欄もあります。ここで、リリース FX の種類と拍数（効果の長さ）を選んでおきます。リリース FX は、BEAT FX を止めながら効果をつけることで、再生中の曲とエフェクト音をなめらかにつなぐための機能です。SOUND COLOR FX も同時にオフにしたいときは、<span class="ui">環境設定</span> &gt; <span class="ui">コントローラー</span> カテゴリー &gt; <span class="ui">エフェクト</span> タブの <span class="ui">CFX にも RELEASE FX を掛ける</span> にチェックを入れます。</p>
+        <p data-sw="serato">Serato DJ Lite では、ON/OFF を押すとオン、もう一度押すとオフになります。</p>
+    </div>
+
+    <h3>代表的なエフェクト</h3>
+    <ul>
+        <li><a class="term" data-term="echo">エコー</a>：音がくり返し、だんだん小さくなりながら遅れて聞こえる。やまびこのような効果</li>
+        <li><a class="term" data-term="reverb">リバーブ</a>：音の響き。広い部屋やホールで鳴っているような空気感を加える</li>
+    </ul>
+    <p data-sw="mac">rekordbox（Mac/Windows）には、BEAT FX のほかに、パッドで押している間だけかけられる PAD FX（<a href="pads.html">「パッドを使ったテクニック」</a>）や、曲のつなぎのための MERGE FX などもあります。MERGE FX は、<span class="ui">環境設定</span> で有効にすると、エフェクトパネルに MFX パネルが出る機能で、使えるかどうかは契約プランや接続機器で変わります。</p>
+    <p>ほかにも、音を切り刻むもの、うねらせるものなどがあります。最初はエコーとリバーブ、フィルターの 3 つを使いこなせれば十分です。</p>
+
+    <h2>エコーアウトで曲を終える</h2>
+    <p>エコーアウトは、DJ のつなぎでよく使われる方法の 1 つです。エコーをかけたまま曲の音を切ると、元の音は消えて、エコーの残響だけが空間に残ります。曲が急に途切れた感じがなく、自然に消えていきます。その残響の上で次の曲を始めると、つなぎ目が目立ちません。</p>
+    <p>下のツールで試してみましょう。ミッションの手順が表示され、操作すると次へ進みます。</p>
+    <div data-widget="mixer" data-features="eq fx" data-mission="echo-out" data-title="エコーアウトを試す"></div>
+    <p>流れは次のとおりです。</p>
+    <ol class="steps">
+        <li>終わらせたい曲に、エコーをかける</li>
+        <li>かけたまま、その曲のチャンネルフェーダーを下げる</li>
+        <li>元の音が消え、エコーの残響だけが残る</li>
+        <li>残響が消えるころ、次の曲が主役になる</li>
+    </ol>
+    <p>エコーの拍の長さを短くするとせわしなく、長くするとゆったりした残響になります。曲の雰囲気に合わせて選びましょう。</p>
+
+    <h2>使うときのコツ</h2>
+    <ul>
+        <li>フレーズの頭で ON/OFF する。曲の切り替わりに合わせると、エフェクトが音楽の一部に聞こえる</li>
+        <li>DEPTH を上げすぎない。原音が聞こえなくなると、何の曲かわからなくなる</li>
+        <li>ずっとかけっぱなしにしない。数小節かけて、外すくらいがちょうどよい</li>
+        <li>かける対象を確かめてから ON にする。FLX4 では CH SELECT のスイッチ<span data-sw="mac">と、画面のエフェクトパネルの 1〜4 / S / M の選択</span>を見る</li>
+        <li>かける前に、ヘッドホンで聴いてみる。<a href="monitor.html">「ヘッドホンで次の曲を聴く」</a>の方法が使える</li>
+    </ul>
+    <div class="callout warn">
+        <span class="callout-title">音量の上がりすぎに注意</span>
+        <p>エフェクトによっては、かけると音量が大きく感じられることがあります。最初は DEPTH を小さくして、少しずつ上げましょう。</p>
+    </div>
+
+    <div class="quiz">
+        <p class="quiz-q">エコーアウトの説明として正しいのはどれ？</p>
+        <ul>
+            <li>エコーをかけたまま曲を止めると、元の音が残って、エコーだけが消える</li>
+            <li>エコーを外してからフェーダーを下げて、静かに終わらせる</li>
+            <li data-correct>エコーをかけたまま曲の音を切ると、元の音が消えて、エコーの残響だけが残る</li>
+        </ul>
+        <p class="quiz-explain">エコーは遅れて音をくり返すので、元の音を切ったあとも、くり返しの音が少し残ります。この残響が次の曲へのつなぎ目をなだらかにします。</p>
+    </div>
+
+    <div class="quiz">
+        <p class="quiz-q">BEAT FX の拍の長さは、どうやって決まる？</p>
+        <ul>
+            <li data-correct>デッキにロードした曲の BPM から自動で決まる</li>
+            <li>つねに 1 秒に固定されている</li>
+            <li>クロスフェーダーの位置で決まる</li>
+        </ul>
+        <p class="quiz-explain">BEAT FX は曲の BPM に合わせてかかります。BEAT ◀ ▶ で選ぶのは、その基準に対して何拍ぶんの長さにするか、という設定です。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>エフェクトは、つなぎをなめらかにし、曲に変化をつけるために使う。使いすぎない</li>
+            <li>CFX は中央で効果なし。左でローパス（こもる）、右でハイパス（低音が抜ける）。SMART CFX がオンだと別のエフェクトになる</li>
+            <li>BEAT FX は、種類・拍数・チャンネル・DEPTH・ON/OFF の 5 つの操作で使う。拍の長さは曲の BPM から決まる</li>
+            <li>エコーをかけたままフェーダーを下げると、残響だけを残して自然に曲を終えられる</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

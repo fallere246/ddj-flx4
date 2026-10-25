@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>はじめてのミックス | FLX4 DJ 入門</title>
+    <meta name="description" content="EQ の LOW とチャンネルフェーダーを使って、2 つの曲の低音を入れ替えながらつなぐ、いちばん基本のミックスを練習します。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="first-mix">
+<article class="lesson">
+    <h1>はじめてのミックス</h1>
+    <p class="lead">ここまでのレッスンで、ヘッドホンで次の曲を聴くこと、テンポを合わせること、フレーズの頭で再生することを練習してきました。このレッスンでは、それらをすべて使って、1 曲目から 2 曲目へ実際につなぎます。使うのは、チャンネルフェーダーと EQ の LOW だけです。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>2 曲の低音を同時に鳴らすと、なぜよくないかを説明できる</li>
+            <li>低音を入れ替えながら、2 曲をつなげる</li>
+            <li>入れ替えの速さやつなぎの長さを選べる</li>
+            <li>よくある失敗に気づいて直せる</li>
+        </ul>
+    </section>
+
+    <h2>なぜ低音を入れ替えるのか</h2>
+    <p>2 つの曲を重ねると、2 つの<a class="term" data-term="kick">キック</a>と 2 つの<a class="term" data-term="bassline">ベースライン</a>が同時に鳴ります。低い音は、周波数が近いと干渉して、ぼやけたりこもったりします（<a href="sound.html">「音の基本」</a>）。さらに、音が重なった分だけ全体の音量が大きくなり、スピーカーが苦しそうな音になったり、音割れしたりします。</p>
+    <p>そこで、よく使われる方法の 1 つが、<strong>低音はどちらか 1 曲だけにする</strong>という原則です。DJ はこれを<a class="term" data-term="bass-swap">低音の入れ替え</a>と呼びます（ベーススワップとも呼ばれます）。2 曲目が入ってくる間は、2 曲目の低音を EQ で抜いておきます。そして、フレーズの頭で、1 曲目の低音を抜くのと同時に、2 曲目の低音を戻します。</p>
+    <p>中音や高音は重なっても聞き分けやすいので、そのままにします。重なった中高音のうえで、低音が 1 曲から 2 曲に切り替わる、というのが基本形です。</p>
+
+    <h2>全体の流れ</h2>
+    <p>つなぎ全体は、フレーズ（8 小節）を単位に進みます。まず図で全体をつかみましょう。ここでは、DECK 1 のアウトロの頭から、アウトロの 2 フレーズ分でつなぐ場合を例にします。</p>
+    <figure>
+        <div class="table-wrap">
+            <table>
+                <tr><th>タイミング</th><th>DECK 1（1 曲目）</th><th>DECK 2（2 曲目）</th></tr>
+                <tr><td>準備（再生前）</td><td>フェーダーは上、LOW は中央</td><td>フェーダーは下、<b>LOW は左いっぱい</b>、CUE 済み</td></tr>
+                <tr><td>アウトロの頭（フレーズ 1 の頭）</td><td>そのまま</td><td>PLAY を押す（フェーダーは下のまま）</td></tr>
+                <tr><td>フレーズ 1 の間</td><td>そのまま</td><td>フェーダーをゆっくり上げる。LOW は左のまま</td></tr>
+                <tr><td>次のフレーズの頭（フレーズ 2 の頭）</td><td><b>LOW を左いっぱいに下げる</b></td><td><b>LOW を中央に戻す</b></td></tr>
+                <tr><td>フレーズ 2 の間</td><td>フェーダーを下げていく</td><td>そのまま</td></tr>
+                <tr><td>つなぎの終わり</td><td>フェーダーを下げきって、停止。LOW を中央に戻す</td><td>主役になる</td></tr>
+            </table>
+        </div>
+        <figcaption>クロスフェーダーは中央のまま、チャンネルフェーダーと LOW でつなぐ</figcaption>
+    </figure>
+    <div class="callout note">
+        <span class="callout-title">クロスフェーダーは使わない</span>
+        <p>この方法では、<a class="term" data-term="crossfader">クロスフェーダー</a>は中央に置いたままにします。左右に動かすと、2 つのチャンネルの音量が連動して変わってしまい、細かい調整がしにくいからです。チャンネルフェーダーだけで、それぞれの曲の音量を別々に操作します。</p>
+    </div>
+
+    <h2>FLX4 での手順</h2>
+    <h3>準備</h3>
+    <ol class="steps">
+        <li>DECK 2 に次の曲を<a class="ctl" data-ctl="load" data-deck="2">LOAD</a>する。テンポが近く、キーの相性もよい曲を選ぶ（<a href="key.html">「キーと曲の相性」</a>）</li>
+        <li>CH 2 の<a class="ctl" data-ctl="chcue" data-ch="2">ヘッドホン CUE</a>を押して、ヘッドホンで DECK 2 を聴けるようにする。DECK 2 の<a class="ctl" data-ctl="chfader" data-ch="2">チャンネルフェーダー</a>は<strong>下げたまま</strong>にする（<a href="monitor.html">「ヘッドホンで次の曲を聴く」</a>）</li>
+        <li>イントロの頭の 1 拍目に <a class="ctl" data-ctl="cue" data-deck="2">CUE</a> を打っておく</li>
+        <li>CH 2 の <a class="ctl" data-ctl="eq" data-ch="2">EQ</a> の LOW を左いっぱいまで回す。<strong>再生する前にやっておくことが大事です</strong>。再生した瞬間から低音が鳴ってしまうのを防げます</li>
+        <li>再生中に CH 2 の <a class="ctl" data-ctl="trim" data-ch="2">TRIM</a> を調整して、DECK 1 と同じくらいの音量にする（<a href="sound.html">「音の基本」</a>）。チャンネルレベルインジケーターを見て、両方のチャンネルで同じくらいの位置で光るようにそろえる</li>
+    </ol>
+    <h3>つなぐ</h3>
+    <ol class="steps">
+        <li>テンポを合わせる。<a class="ctl" data-ctl="sync" data-deck="2">BEAT SYNC</a> を押すか、<a class="ctl" data-ctl="tempo" data-deck="2">TEMPO</a> スライダーで手で合わせる（<a href="beatmatch.html">「テンポを合わせる」</a>）</li>
+        <li>DECK 1 のアウトロの頭（フレーズの頭）で、DECK 2 の <a class="ctl" data-ctl="play" data-deck="2">PLAY/PAUSE</a> を押す（<a href="phrasing.html">「フレーズの頭でつなぐ」</a>）。まだフェーダーは下がっているので、お客さんには聞こえません</li>
+        <li>ヘッドホンで 2 曲のずれがないか確かめてから、DECK 2 のチャンネルフェーダーをゆっくり上げる。LOW が抜けているので、DECK 2 は中音と高音だけが重なって聞こえる</li>
+        <li>次のフレーズの頭で、DECK 1 の LOW を左いっぱいに下げる。同時に、DECK 2 の LOW を中央に戻す。これが低音の入れ替え</li>
+        <li>DECK 1 のチャンネルフェーダーをゆっくり下げる。2 曲目が主役になっていく</li>
+        <li>DECK 1 のフェーダーを下げきったら、DECK 1 を止める。DECK 1 の EQ を中央に戻しておく（次に使うときのため）</li>
+    </ol>
+    <div class="callout flx4">
+        <span class="callout-title">両手を使う</span>
+        <p>入れ替えのとき、片手で DECK 1 の LOW を左に、もう片方の手で DECK 2 の LOW を中央に、同時に回します。2 つの手が別々に動くので、慣れるまで練習が必要です。両方の低音が同時に鳴る時間は、できるだけ短くしましょう。</p>
+    </div>
+
+    <h2>ミックス練習</h2>
+    <p>下のツールで、ここまでの手順を一通り試せます。DECK 1（Sunrise Drive）は「ドロップ」から始まります。アウトロに入るまで、約 30 秒あります。その間に、DECK 2 の準備をしましょう。表示されるミッションの順番どおりに進めます。</p>
+    <ol class="steps">
+        <li>DECK 1 を再生する</li>
+        <li>DECK 2 の LOW を左いっぱいまで下げる。DECK 2 のチャンネルフェーダーは下がっています</li>
+        <li>DECK 2 の BEAT SYNC を押して、テンポを DECK 1 に合わせる</li>
+        <li>DECK 1 がアウトロに入る瞬間（フレーズの頭）に、DECK 2 を再生する。フレーズがそろったかどうかも判定されます</li>
+        <li>DECK 2 のチャンネルフェーダーを上げる</li>
+        <li>次のフレーズの頭で、DECK 1 の LOW を下げ、DECK 2 の LOW を中央に戻す</li>
+        <li>DECK 1 のチャンネルフェーダーを下げきる</li>
+    </ol>
+    <div data-widget="mixer" data-features="eq sync phones" data-mission="first-mix" data-a="sunrise@ドロップ" data-title="はじめてのミックス"></div>
+    <p>うまくいかなかったら、何度でもやり直せます。ウィジェットは FLX4 の代わりではなく、仕組みを耳で確かめるためのものです。実機でも、同じ順番で操作します。</p>
+
+    <h2>入れ替えのタイミングと速さ</h2>
+    <p>低音の入れ替えには、大きく 2 つのやり方があります。どちらも、よく使われる方法です。</p>
+    <table>
+        <tr><th>やり方</th><th>操作</th><th>聞こえ方</th></tr>
+        <tr><td>スパッと入れ替える</td><td>フレーズの頭で、一気に回す</td><td>曲の展開に合わせて、低音が切り替わる。はっきりした変化が出る</td></tr>
+        <tr><td>じわじわ入れ替える</td><td>数小節かけて、少しずつ回す</td><td>低音が自然に移る。変化がなめらか</td></tr>
+    </table>
+    <p>最初は「スパッと」のほうが、フレーズの頭に合わせる練習になるのでおすすめです。じわじわ入れ替えるときは、2 つの曲の低音がどちらも半分くらい鳴る時間が長くなるので、重なって濁りやすくなります。曲を選んで、少しずつ試してみましょう。</p>
+
+    <h3>応用：HI や MID も使う、つなぎの長さ</h3>
+    <p>低音の入れ替えに慣れたら、<a class="ctl" data-ctl="eq" data-ch="1">HI や MID</a> も使ってみましょう。たとえば、2 曲目を入れるときに HI も少し下げておくと、ハイハットが重ならずすっきりします。ボーカルが入った曲どうしを重ねるときは、片方の MID を下げると、歌が重なって聞こえにくくなるのを防げます。</p>
+    <p>つなぎの長さも調整できます。</p>
+    <ul>
+        <li>8 小節：短くてはっきりした展開。初心者が最初に試すのにちょうどよい長さ</li>
+        <li>16 小節：ゆっくり雰囲気を変えたいときに。2 つのフェーダーの動きを、よりなめらかにできる</li>
+        <li>32 小節：長い時間をかけて、じっくり重ねる。曲のイントロやアウトロが長いとき向き</li>
+    </ul>
+    <p>長くすると、その間 2 つの曲が重なり続けます。曲が変化を重ねていく部分と、重ねたくない部分（ボーカルが重なるなど）に気をつけて選びます。</p>
+
+    <h2>よくある失敗</h2>
+    <table>
+        <tr><th>失敗</th><th>聞こえ方</th><th>直し方</th></tr>
+        <tr><td>低音が重なった</td><td>低音がぼやけて、ぼわっと濁る。音量も大きくなる</td><td>入れ替えの前に、DECK 2 の LOW が左いっぱいになっているか確認する。再生前に下げておく</td></tr>
+        <tr><td>フェーダーを上げすぎて音量が上がった</td><td>2 曲が足し算になって、全体が大きくなる。チャンネルレベルインジケーターのピークが点きっぱなしになる</td><td>DECK 2 を上げる間に、DECK 1 のフェーダーも少し下げる。TRIM で音量を事前にそろえておく</td></tr>
+        <tr><td>フレーズがずれた</td><td>8 小節ごとの変化が 2 曲でずれる</td><td>フェーダーを上げる前に気づいて、CUE で戻すかビートジャンプで直す（<a href="phrasing.html">「フレーズの頭でつなぐ」</a>）</td></tr>
+        <tr><td>DECK 1 の止め忘れ</td><td>フェーダーが下がっていても DECK 1 は再生し続けている。のちにフェーダーを上げると、突然鳴り出す。EQ が下がったままだと、次に使うときに低音が出ない</td><td>フェーダーを下げきったら、すぐに DECK 1 を止める。EQ を中央に戻す</td></tr>
+    </table>
+    <p>失敗しても、落ち込む必要はありません。ほとんどの DJ が通る道です。ヘッドホンで確認して、気づいた時点で直せば大丈夫です。</p>
+
+    <h2>SMART FADER について</h2>
+    <p data-sw="rb">FLX4 には<a class="ctl" data-ctl="smartfader">SMART FADER</a> ボタンがあります。これをオンにすると、フェーダーを動かすだけで、rekordbox が BPM・EQ の LOW・エコーを自動で調整して、つないでくれます（<a class="term" data-term="smart-fader">SMART FADER</a>）。便利な機能ですが、まずは今回のように手で操作して、「なぜその操作が必要なのか」を理解するのがおすすめです。仕組みが分かっていると、自動でつないだ結果が気に入らないときにも、自分で直せます。</p>
+    <p data-sw="serato">Serato DJ Lite でも、FLX4 の <a class="ctl" data-ctl="smartfader">SMART FADER</a> ボタンで SMART FADER モードを使えます（押すとプリセット 1、SHIFT を押しながら押すとプリセット 2）。フェーダー操作に合わせて、つなぎを自動で手伝ってくれる機能です。ただ、まずはこのレッスンのように手で操作して、低音の入れ替えの仕組みを理解するのがおすすめです。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">DECK 2 を再生する前に、DECK 2 の LOW を下げておくのはなぜ？</p>
+        <ul>
+            <li>DECK 2 の音量を小さくするため</li>
+            <li data-correct>再生した瞬間に、DECK 1 の低音と DECK 2 の低音が重なるのを防ぐため</li>
+            <li>DECK 2 のテンポを合わせやすくするため</li>
+        </ul>
+        <p class="quiz-explain">再生してからあわてて下げると、その間に低音が重なって濁ります。あらかじめ下げておけば、2 曲目が入ってくる間は中音と高音だけが重なります。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">低音の入れ替えは、どのタイミングで行うのがよい？</p>
+        <ul>
+            <li>DECK 2 を再生した直後の、どこでもよいタイミング</li>
+            <li>DECK 1 のフェーダーを下げきったあと</li>
+            <li data-correct>次のフレーズの頭</li>
+        </ul>
+        <p class="quiz-explain">曲の変化はフレーズの頭で起きます。低音の切り替えも、そこに合わせると自然に聞こえます。フェーダーを下げきったあとでは、すでに DECK 1 の低音は聞こえません。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">2 曲のつなぎで、クロスフェーダーはどう使う？</p>
+        <ul>
+            <li data-correct>中央に置いたままにして、チャンネルフェーダーで音量を操作する</li>
+            <li>DECK 1 側から DECK 2 側に、ゆっくり動かす</li>
+            <li>低音の入れ替えと同時に、端まで一気に動かす</li>
+        </ul>
+        <p class="quiz-explain">このレッスンの方法では、クロスフェーダーは中央のままです。チャンネルフェーダーと EQ で、2 曲を別々に操作します。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>2 曲の低音が重なると濁って音量も上がる。低音はどちらか 1 曲だけにする</li>
+            <li>再生前に DECK 2 の LOW を下げておき、フレーズの頭で DECK 1 と DECK 2 の LOW を入れ替える</li>
+            <li>クロスフェーダーは中央のまま、チャンネルフェーダーでつなぐ</li>
+            <li>つなぎ終わったら DECK 1 を止めて、EQ を中央に戻す</li>
+            <li>まず手で操作して仕組みを理解してから、SMART FADER などの自動機能を試す</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

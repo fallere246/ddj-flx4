@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用語集 | FLX4 DJ 入門</title>
+    <meta name="description" content="BPM、フレーズ、ホットキュー、ビートマッチなど、DJ 入門コースに出てくる用語の一覧。">
+    <link rel="stylesheet" href="../css/site.css">
+</head>
+<body data-root="../" data-page="glossary">
+<article class="lesson">
+    <h1>用語集</h1>
+    <p class="lead">このサイトに出てくる DJ の用語をまとめました。レッスンの本文で点線の下線が付いた言葉にマウスを重ねても、同じ説明が出ます。</p>
+    <div class="glossary-tools">
+        <input type="search" placeholder="用語を検索（例：キュー、BPM）" aria-label="用語を検索">
+        <div class="glossary-cats" role="group" aria-label="分類で絞り込む"></div>
+    </div>
+    <p class="glossary-count"></p>
+    <dl class="glossary-list"></dl>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script>
+    (() => {
+        const { esc, lessons } = Site;
+        const list = document.querySelector('.glossary-list');
+        const input = document.querySelector('.glossary-tools input');
+        const cats = document.querySelector('.glossary-cats');
+        const count = document.querySelector('.glossary-count');
+        let cat = '';
+
+        // 用語は分類ごと、分類の中は読みの順
+        const entries = Object.entries(GLOSSARY).map(([id, g]) => ({ id, ...g }));
+        const reading = g => g.yomi || g.term;
+        entries.sort((a, b) => GLOSSARY_CATS.indexOf(a.cat) - GLOSSARY_CATS.indexOf(b.cat) || reading(a).localeCompare(reading(b), 'ja'));
+
+        cats.innerHTML = ['', ...GLOSSARY_CATS].map(c => `<button type="button" data-cat="${esc(c)}" aria-pressed="${c === ''}">${c || 'すべて'}</button>`).join('');
+
+        const render = () => {
+            const q = input.value.trim().toLowerCase();
+            const shown = entries.filter(g => (!cat || g.cat === cat) &&
+                (!q || [g.term, g.yomi || '', g.short, g.desc || ''].some(s => s.toLowerCase().includes(q))));
+            list.innerHTML = shown.map(g => {
+                const lesson = lessons.find(l => l.id === g.see);
+                return `<div id="${g.id}">
+                    <dt>${esc(g.term)}${g.yomi ? `<small>${esc(g.yomi)}</small>` : ''}<small>${esc(g.cat)}</small></dt>
+                    <dd>${esc(g.short)}${g.desc ? ` ${esc(g.desc)}` : ''}</dd>
+                    ${lesson ? `<dd class="see">詳しくは <a href="${g.see}.html">レッスン ${lesson.no}「${esc(lesson.title)}」</a></dd>` : ''}
+                </div>`;
+            }).join('');
+            count.textContent = `${shown.length} 語`;
+        };
+
+        cats.addEventListener('click', e => {
+            const b = e.target.closest('button');
+            if (!b) return;
+            cat = b.dataset.cat;
+            cats.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+            render();
+        });
+        input.addEventListener('input', render);
+        render();
+
+        // #用語 で開いたときは、その用語までスクロールする
+        if (location.hash) {
+            const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+            if (el) { el.classList.add("target"); el.scrollIntoView(); }
+        }
+    })();
+</script>
+</body>
+</html>

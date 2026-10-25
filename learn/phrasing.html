@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フレーズの頭でつなぐ | FLX4 DJ 入門</title>
+    <meta name="description" content="テンポがそろっていても、再生するタイミングがずれると違和感が出ます。次の曲を「いつ」再生するか、フレーズの頭をそろえる考え方を練習します。">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/widgets.css">
+</head>
+<body data-root="../" data-page="phrasing">
+<article class="lesson">
+    <h1>フレーズの頭でつなぐ</h1>
+    <p class="lead">前のレッスンで、2 つの曲のテンポをそろえる方法を練習しました。ところが、テンポがぴったり合っていても、なんとなく気持ちの悪いつなぎになることがあります。原因の多くは「次の曲を再生するタイミング」です。このレッスンでは、曲の変化の区切りである<a class="term" data-term="phrase">フレーズ</a>の頭をそろえて、自然につなぐ考え方を学びます。</p>
+    <section class="goals">
+        <h2>このレッスンでできるようになること</h2>
+        <ul>
+            <li>テンポが合っていても違和感が出る理由を説明できる</li>
+            <li>1 曲目のフレーズの頭で、2 曲目を再生できる</li>
+            <li>2 曲目をどこから入れればよいかを、小節数から逆算できる</li>
+            <li>ずれたときに、CUE やビートジャンプで直せる</li>
+        </ul>
+    </section>
+
+    <h2>テンポが合っても、タイミングが合わないと違和感が出る</h2>
+    <p>ダンスミュージックの曲は、8 小節ごとに「何かが変わる」ように作られています。ハイハットが入る、シンバルが鳴る、ベースが加わる、静かなブレイクに入る、といった変化です。この 8 小節のまとまりが<strong>フレーズ</strong>でした（<a href="structure.html">「曲の構成とフレーズ」</a>）。</p>
+    <p>2 曲を重ねたとき、キックの位置（拍）が合っていても、8 小節の区切りがずれていると、片方の曲が盛り上がる瞬間にもう片方が静かになったり、2 つの曲の変化が別々の場所で起きたりします。聴いている人は「どこか落ち着かない」と感じます。</p>
+    <p>そこで、<strong>2 つの曲のフレーズの頭どうしをそろえます</strong>。そろえると、2 曲の変化が同時に起きるので、1 つの曲のように聞こえます。</p>
+
+    <h2>基本形：アウトロの頭で、イントロの頭から再生する</h2>
+    <p>いちばん基本の形は、1 曲目（DECK 1）の<a class="term" data-term="outro">アウトロ</a>の頭に合わせて、2 曲目（DECK 2）を<a class="term" data-term="intro">イントロ</a>の 1 拍目から再生することです。アウトロは曲の終わりの部分で、だんだん楽器が減っていきます。イントロは曲の始まりの部分で、楽器が少ないところから始まります。どちらも音数が少ないので、重ねても濁りにくく、つなぎの練習に向いています。</p>
+    <figure>
+        <svg viewBox="0 0 440 176" style="width:100%;height:auto" role="img" aria-label="DECK 1 のアウトロの頭で DECK 2 のイントロを始める図。">
+            <g font-size="11" fill="#1f1f1f" font-family="sans-serif">
+                <text x="0" y="16">DECK 1</text>
+                <rect x="40" y="24" width="100" height="26" fill="#2f6fb0" opacity="0.35"/>
+                <text x="46" y="41">ドロップ</text>
+                <rect x="140" y="24" width="240" height="26" fill="#9a9a9a" opacity="0.45"/>
+                <text x="146" y="41">アウトロ 24 小節</text>
+                <rect x="140" y="58" width="240" height="4" fill="#e47a1c" opacity="0.6"/>
+                <text x="146" y="76" font-size="10" fill="#b85a0c">2 曲が重なって鳴る区間</text>
+                <text x="0" y="96">DECK 2</text>
+                <rect x="140" y="104" width="160" height="26" fill="#9a9a9a" opacity="0.45"/>
+                <text x="146" y="121">イントロ 16 小節</text>
+                <rect x="300" y="104" width="140" height="26" fill="#2f8a4c" opacity="0.4"/>
+                <text x="306" y="121">メイン</text>
+                <line x1="140" y1="18" x2="140" y2="140" stroke="#e47a1c" stroke-width="2"/>
+                <line x1="300" y1="84" x2="300" y2="158" stroke="#e47a1c" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <text x="144" y="152" fill="#e47a1c">▲ ここで DECK 2 を再生</text>
+                <text x="438" y="172" fill="#e47a1c" text-anchor="end">▲ 16 小節後にメインが始まる</text>
+            </g>
+        </svg>
+        <figcaption>上が 1 曲目、下が 2 曲目。左から右に時間が進む。DECK 2 は DECK 1 のアウトロと同時に始まる</figcaption>
+    </figure>
+    <p>この形のよいところは、1 曲目が静かになっていくのに合わせて、2 曲目が盛り上がっていく流れになることです。聴いている人には「1 曲目から 2 曲目へ、自然に引き継がれた」ように聞こえます。</p>
+
+    <h2>逆算して、入れる場所を決める</h2>
+    <p>「どこで 2 曲目を入れるか」は、2 曲目のイントロの長さから逆算して決めます。ポイントは次の 1 つです。</p>
+    <div class="callout note">
+        <span class="callout-title">逆算の考え方</span>
+        <p>2 曲目を再生してから、2 曲目のメイン（盛り上がる部分）が始まるまでの時間は、2 曲目のイントロの小節数と同じです。メインを入れたい場所から、イントロの小節数だけ前に戻った位置が、再生を始める場所になります。</p>
+    </div>
+    <p>例として、練習用の曲を使います。1 曲目の Sunrise Drive はアウトロが 24 小節、2 曲目の Night Signal はイントロが 16 小節です。</p>
+    <ul>
+        <li>アウトロの頭で DECK 2 を再生すると、メインが始まるのは再生から 16 小節後。アウトロは 24 小節あるので、DECK 1 が終わる 8 小節前に DECK 2 のメインが始まる。2 曲が 8 小節重なって盛り上がる</li>
+        <li>アウトロの 8 小節目の頭（アウトロが始まってから 8 小節後）で再生すると、メインが始まるのはちょうど DECK 1 が終わるとき。重なりのないスパッとしたつなぎになる</li>
+        <li>それより遅く再生すると、DECK 1 が終わってもまだ DECK 2 はイントロの途中。音が薄くなって、盛り上がりが途切れる</li>
+    </ul>
+    <p>つまり、「1 曲目が終わる前に 2 曲目を盛り上げたい」なら、<strong>1 曲目の終わりの 16 小節以上前</strong>に 2 曲目を再生する必要があります。イントロが短い曲は、再生を遅らせても間に合います。</p>
+
+    <div class="quiz">
+        <p class="quiz-q">DECK 1 のアウトロは残り 16 小節です。DECK 2 のイントロは 8 小節で、DECK 1 が終わるのとちょうど同時に DECK 2 のメインを始めたいとき、DECK 2 を再生するのはどこ？</p>
+        <ul>
+            <li>DECK 1 のアウトロの頭（残り 16 小節のとき）</li>
+            <li data-correct>アウトロの残りが 8 小節になったフレーズの頭</li>
+            <li>DECK 1 が終わる 4 小節前</li>
+        </ul>
+        <p class="quiz-explain">再生してからメインまで 8 小節かかるので、DECK 1 が終わる 8 小節前に再生すればぴったりです。しかも 8 小節前はフレーズの頭なので、フレーズもそろいます。4 小節前では、フレーズの途中になってしまいます。</p>
+    </div>
+
+    <h2>やり方：再生、確認、やり直し</h2>
+    <p>手順は次のとおりです。「いつ押すか」以外は、すでに練習したことばかりです。</p>
+    <ol class="steps">
+        <li>DECK 2 の曲の 1 拍目に <a class="ctl" data-ctl="cue" data-deck="2">CUE</a> を打つ（<a href="cue.html">「CUE を打つ」</a>）。イントロの頭の 1 拍目が基本</li>
+        <li>テンポを合わせる。<a class="ctl" data-ctl="sync" data-deck="2">BEAT SYNC</a> を使うか、<a class="ctl" data-ctl="tempo" data-deck="2">TEMPO</a> スライダーとジョグで手で合わせる（<a href="beatmatch.html">「テンポを合わせる」</a>）。ヘッドホンで聴きながら進める（<a href="monitor.html">「ヘッドホンで次の曲を聴く」</a>）</li>
+        <li>DECK 1 を聴きながら小節を数える。フレーズの頭（8 小節ごとの 1 拍目。たとえばアウトロの頭）が来る少し前から、「いち・に・さん・し、に・に・さん・し……」と数えておく</li>
+        <li>数えている最後の小節の 4 拍目が終わるタイミングで、DECK 2 の <a class="ctl" data-ctl="play" data-deck="2">PLAY/PAUSE</a> を押す。次の 1 拍目と同時に DECK 2 が鳴り出すように、ほんの少しだけ早く押す</li>
+    </ol>
+    <p>最初はタイミングが合いません。ヘッドホンの音（DECK 2）とスピーカーの音（DECK 1）の両方に耳を向けて、練習を重ねましょう。</p>
+    <div class="callout tip">
+        <span class="callout-title">クオンタイズがオンなら助けてくれる</span>
+        <p><a class="term" data-term="quantize">クオンタイズ</a>は、操作のタイミングを近くの拍に合わせて補正するソフトの機能です。オンのとき、PLAY を少し早く（遅く）押しても、近い拍にそろって再生される場合があります。補正の効き方はソフトや設定、<a class="term" data-term="beatgrid">ビートグリッド</a>が正しいかどうかで変わるので、頼りきらず、まず自分の耳と数えで合わせる練習をしましょう。</p>
+    </div>
+
+    <h3>合っているかの確かめ方</h3>
+    <p>再生してから 8 小節ほど聴いて、次のことを確かめます。</p>
+    <ul>
+        <li>8 小節ごとに起きるシンバルや楽器の変化が、2 曲で同時に起きている</li>
+        <li>キックが「ドッドッ」と二重に聞こえない（これはテンポのずれ。ビートマッチに戻る）</li>
+        <li>一方の曲の変化が、もう一方の曲の途中に食い込んでいない</li>
+    </ul>
+    <p>変化が半拍や 1 拍ずれて聞こえたら、再生のタイミングがずれています。1 小節以上ずれているときは、フレーズ全体がずれています。</p>
+
+    <h3>ずれたときの直し方</h3>
+    <ol class="steps">
+        <li><strong>CUE で戻してやり直す。</strong>DECK 2 の <a class="ctl" data-ctl="cue" data-deck="2">CUE</a> を押すと、CUE ポイントに戻って止まります。DECK 1 の次のフレーズの頭を待って、もう一度 PLAY を押します</li>
+        <li><strong>ビートジャンプで位置を直す。</strong>再生しながら 8 小節単位で位置を前後に動かして、フレーズの区切りを合わせる方法です。DECK 2 を 1 フレーズ分ずらしたいだけなら、これがいちばん手早い方法です。操作は<a href="loops.html">「ループとビートジャンプ」</a>で説明します</li>
+        <li>半拍ほどのずれなら、ジョグの側面で少しだけ速度を変えて直す（<a href="beatmatch.html">「テンポを合わせる」</a>と同じ方法）</li>
+    </ol>
+    <div class="callout warn">
+        <span class="callout-title">合っていないままつながない</span>
+        <p>ずれに気づいたら、フェーダーを上げる前に必ず直します。フェーダーが下がっている間はお客さんに聞こえないので、やり直しがきくのは「ヘッドホンで確認している間」だけです。</p>
+    </div>
+
+    <h2>2 つのデッキで練習する</h2>
+    <p>下のツールは、DECK 1 に Sunrise Drive、DECK 2 に Night Signal が入っています。両方のチャンネルフェーダーが上がっているので、両方の音が聞こえます。各デッキに「メイン（あと N 小節）」のような表示が出るので、これを見ながら次の手順で練習してみましょう。</p>
+    <ol class="steps">
+        <li>DECK 1 は「メイン」から始まります。Sunrise Drive のメインの次はブレイクです。表示の「あと N 小節」が減っていくのを見て、ブレイクが近づいていると分かります</li>
+        <li>DECK 2 の曲は頭に CUE が打ってあります。BEAT SYNC で DECK 1 にテンポを合わせます</li>
+        <li>DECK 1 がブレイクに入る瞬間（1 拍目）に、DECK 2 の PLAY を押します</li>
+        <li>両方の音を聴いて、ブレイクの 8 小節ごとの変化と、DECK 2 のイントロの変化が同時に起きているかを確かめます。ずれたら DECK 2 の CUE で戻して、DECK 1 の次の 8 小節ごとの区切りでやり直します</li>
+    </ol>
+    <div data-widget="mixer" data-features="sync" data-a="sunrise@メイン" data-b="signal" data-fader2="1" data-title="フレーズの頭で DECK 2 を再生する"></div>
+    <p>この練習では、フェーダーを上げて 2 曲を同時に聴きます。実際のつなぎでは、ここに EQ とフェーダーの操作が加わります。それは次の<a href="first-mix.html">「はじめてのミックス」</a>で練習します。</p>
+
+    <h2>別の曲で、フレーズの頭を当てる</h2>
+    <p>最後に、フレーズの頭を耳で見つける練習です。下のツールで Night Signal を再生して、8 小節ごとに音が変わる瞬間にタップしてください。どのくらいずれたかが表示されます。</p>
+    <div data-widget="structure" data-game="phrase" data-track="signal" data-title="フレーズの頭をタップ"></div>
+
+    <div class="quiz">
+        <p class="quiz-q">2 曲のテンポは完全にそろっていますが、8 小節ごとの変化が 2 曲でずれて聞こえます。何がそろっていない？</p>
+        <ul>
+            <li>BPM</li>
+            <li>音の大きさ</li>
+            <li data-correct>フレーズの頭の位置</li>
+        </ul>
+        <p class="quiz-explain">BPM が合っていれば、拍の間隔は同じです。変化がずれて聞こえるのは、再生を始めたタイミングがフレーズの頭とずれているからです。CUE で戻して、次のフレーズの頭でやり直します。</p>
+    </div>
+    <div class="quiz">
+        <p class="quiz-q">2 曲目の再生を始めたら、位置が 8 小節ぶん前後にずれていることに気づきました。まず試す方法として合っているのは？</p>
+        <ul>
+            <li data-correct>ビートジャンプで 8 小節動かす、または CUE で戻してやり直す</li>
+            <li>TEMPO スライダーを大きく動かして追いつく</li>
+            <li>そのままフェーダーを上げて、ごまかす</li>
+        </ul>
+        <p class="quiz-explain">位置のずれは、テンポではなく再生位置の問題です。テンポを変えると今度は拍がずれてしまいます。位置を飛ばす（ビートジャンプ）か、戻してやり直すのが基本です。</p>
+    </div>
+
+    <section class="summary">
+        <h2>まとめ</h2>
+        <ul>
+            <li>テンポが合っていても、フレーズの頭がずれていると違和感が出る</li>
+            <li>基本形は、1 曲目のアウトロの頭で、2 曲目をイントロの 1 拍目から再生すること</li>
+            <li>2 曲目のメインが始まるのは、再生からイントロの小節数だけ後。そこから逆算して再生する場所を決める</li>
+            <li>合っているかは、8 小節ごとの変化が 2 曲で同時に起きるかで確かめる</li>
+            <li>ずれたら、CUE で戻して次のフレーズの頭でやり直すか、ビートジャンプで直す</li>
+        </ul>
+    </section>
+</article>
+<script src="../js/course.js"></script>
+<script src="../js/glossary.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/widgets.js"></script>
+</body>
+</html>

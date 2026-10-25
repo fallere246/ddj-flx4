@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDJ-FLX4 Webマニュアル</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <defs>
+            <!-- つまみの目盛り円弧 (-135°〜+135°) -->
+            <symbol id="arc" viewBox="-20 -20 40 40">
+                <path d="M-12.37 12.37A17.5 17.5 0 1 1 12.37 12.37" fill="none" stroke="#a8a8a8" stroke-width="1.3"/>
+            </symbol>
+            <!-- 円弧のないつまみの両端の目盛り -->
+            <symbol id="ticks" viewBox="-20 -20 40 40">
+                <path d="M-9.9 9.9L-12.4 12.4M9.9 9.9L12.4 12.4" stroke="#9a9a9a" stroke-width="1"/>
+            </symbol>
+            <symbol id="pioneer-mark" viewBox="-15 -15 30 30">
+                <path d="M0-11.5L10-5.75V5.75L0 11.5L-10 5.75V-5.75Z" fill="none" stroke="#4b4b4b" stroke-width="4.5" stroke-linejoin="round"/>
+                <circle r="3.6" fill="#4b4b4b"/>
+            </symbol>
+            <symbol id="play-pause" viewBox="0 0 18 8">
+                <path d="M0 0.5L6.5 4L0 7.5Z" fill="#c8dc2a"/>
+                <path d="M8.2 7.6L10.4 0.4" stroke="#c8dc2a" stroke-width="0.9"/>
+                <rect x="12" y="0.5" width="2.2" height="7" fill="#c8dc2a"/>
+                <rect x="15.3" y="0.5" width="2.2" height="7" fill="#c8dc2a"/>
+            </symbol>
+            <symbol id="headphones" viewBox="-4 -4 8 8">
+                <path d="M-2.8 2.8V0A2.8 2.8 0 0 1 2.8 0V2.8" fill="none" stroke="#8e8e8e" stroke-width="0.9"/>
+                <rect x="-3.3" y="0.8" width="1.4" height="2.6" fill="#8e8e8e"/>
+                <rect x="1.9" y="0.8" width="1.4" height="2.6" fill="#8e8e8e"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <header class="topbar">
+        <a class="home-link" href="../index.html" title="DJ入門コースのトップへ">DJ入門</a>
+        <h1 class="title">DDJ-FLX4 <span>Webマニュアル</span></h1>
+        <div class="sw-select" role="radiogroup" aria-label="使用するソフトウェア">
+            <label><input type="radio" name="sw" value="mac" checked><span>rekordbox<small>Mac/Windows</small></span></label>
+            <label><input type="radio" name="sw" value="ios"><span>rekordbox<small>iOS/Android</small></span></label>
+            <label><input type="radio" name="sw" value="serato"><span>Serato<small>DJ Lite</small></span></label>
+        </div>
+        <label class="pro-toggle" hidden><input type="checkbox" id="show-pro"> Serato DJ Pro の機能も表示</label>
+        <button class="shift-toggle" type="button" aria-pressed="false" title="キーボードの Shift キーを押している間も SHIFT になります">SHIFT</button>
+        <input class="search" type="search" placeholder="機能を検索（例: ループ）" aria-label="機能を検索">
+    </header>
+
+    <main class="layout">
+        <section class="viewer" aria-label="コントローラー">
+            <div class="stage-box">
+    <div class="stage">
+        <div class="controller">
+            <!-- 背面のジャック -->
+            <div class="jack mic"></div>
+            <div class="jack usb"></div>
+            <div class="jack rca l"></div>
+            <div class="jack rca r"></div>
+            <div class="jack pin"></div>
+
+            <!-- 左デッキ -->
+            <div class="deck left">
+                <div class="p lbl" style="--x: 90; --y: 152">IN</div>
+                <div class="p lbl" style="--x: 139; --y: 152">OUT</div>
+                <div class="p lbl" style="--x: 188.5; --y: 156">4 BEAT/EXIT</div>
+                <div class="p lbl" style="--x: 259; --y: 156">CUE/LOOP</div>
+                <div class="p lbl" style="--x: 258.5; --y: 166">CALL</div>
+                <div class="p lbl" style="--x: 326; --y: 156">− MASTER</div>
+
+                <div class="link" style="--x1: 106; --x2: 124; --y: 174.5"></div>
+                <div class="link" style="--x1: 155; --x2: 177; --y: 174.5"></div>
+                <div class="link" style="--x1: 247; --x2: 270; --y: 174.5"></div>
+
+                <button class="p btn-orange" data-ctl="in" style="--x: 90.5; --y: 173.5; --d: 25" aria-label="IN"></button>
+                <button class="p btn-orange" data-ctl="out" style="--x: 139.5; --y: 173.5; --d: 25" aria-label="OUT"></button>
+                <button class="p btn-black" data-ctl="beat4" style="--x: 189; --y: 174; --d: 16" aria-label="4 BEAT/EXIT"></button>
+                <button class="p btn-black" data-ctl="callL" style="--x: 238; --y: 175; --d: 15" aria-label="CUE/LOOP CALL ◀"><span class="tri left"></span></button>
+                <button class="p btn-black" data-ctl="callR" style="--x: 279; --y: 175; --d: 15" aria-label="CUE/LOOP CALL ▶"><span class="tri right"></span></button>
+                <button class="p btn-ring" data-ctl="sync" aria-label="BEAT SYNC" style="--x: 325.5; --y: 175; --d: 20">BEAT<br>SYNC</button>
+
+                <div class="p tag fill" style="--x: 90; --y: 199.5; --w: 19">IN ADJ</div>
+                <div class="p tag fill" style="--x: 139.5; --y: 199.5; --w: 25">OUT ADJ</div>
+                <div class="p tag" style="--x: 189; --y: 194.5; --w: 22">ACTIVE</div>
+                <div class="p lbl xs" style="--x: 238; --y: 187">1/2X</div>
+                <div class="p tag fill" style="--x: 258.5; --y: 186; --w: 19; --h: 6">LOOP</div>
+                <div class="p lbl xs" style="--x: 279; --y: 187">2X</div>
+                <div class="p tag" style="--x: 238; --y: 195; --w: 18">DEL</div>
+                <div class="p tag" style="--x: 279; --y: 195; --w: 22">MEMORY</div>
+                <div class="p tag" style="--x: 325; --y: 195; --w: 32">TEMPO RANGE</div>
+
+                <div class="p jog" data-ctl="jog" aria-label="ジョグ" style="--x: 207.5; --y: 338.5">
+                    <div class="jog-gap"></div>
+                    <div class="jog-dimples"></div>
+                    <div class="jog-ring"></div>
+                    <div class="jog-platter"></div>
+                    <div class="jog-center"></div>
+                    <div class="jog-ticks"></div>
+                    <div class="jog-hub"><svg><use href="#pioneer-mark"/></svg></div>
+                </div>
+                <div class="p tag search-tag" style="--x: 106; --y: 237; --w: 30; --h: 8">◂ SEARCH ▸</div>
+
+                <div class="p tag" style="--x: 90.5; --y: 455.5; --w: 23">SHIFT</div>
+                <button class="p shift-btn" data-ctl="shift" style="--x: 90; --y: 473.5" aria-label="SHIFT"></button>
+
+                <button class="p btn-big" data-ctl="cue" aria-label="CUE" style="--x: 90; --y: 526"><span class="cue-text">CUE</span></button>
+                <button class="p btn-big" data-ctl="play" style="--x: 90; --y: 580" aria-label="PLAY/PAUSE"><svg><use href="#play-pause"/></svg></button>
+                <div class="p lbl" style="--x: 90; --y: 611">PLAY / PAUSE</div>
+
+                <button class="p pad-mode-btn" data-ctl="mode-hotcue" style="--x: 143.5; --y: 503">HOT CUE</button>
+                <button class="p pad-mode-btn" data-ctl="mode-padfx" style="--x: 186.5; --y: 503">PAD FX1</button>
+                <button class="p pad-mode-btn" data-ctl="mode-beatjump" style="--x: 229; --y: 503">BEAT JUMP</button>
+                <button class="p pad-mode-btn" data-ctl="mode-sampler" style="--x: 272; --y: 503">SAMPLER</button>
+                <div class="p tag" style="--x: 143.5; --y: 515.5; --w: 31">KEYBOARD</div>
+                <div class="p tag" style="--x: 186.5; --y: 515.5; --w: 31">PAD FX2</div>
+                <div class="p tag" style="--x: 229; --y: 515.5; --w: 31">BEAT LOOP</div>
+                <div class="p tag" style="--x: 272; --y: 515.5; --w: 31">KEY SHIFT</div>
+
+                <button class="p pad" style="--x: 143.5; --y: 546.5" data-ctl="pad" data-pad="1" aria-label="Pad 1"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 186.5; --y: 546.5" data-ctl="pad" data-pad="2" aria-label="Pad 2"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 229; --y: 546.5" data-ctl="pad" data-pad="3" aria-label="Pad 3"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 272; --y: 546.5" data-ctl="pad" data-pad="4" aria-label="Pad 4"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 143.5; --y: 589" data-ctl="pad" data-pad="5" aria-label="Pad 5"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 186.5; --y: 589" data-ctl="pad" data-pad="6" aria-label="Pad 6"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 229; --y: 589" data-ctl="pad" data-pad="7" aria-label="Pad 7"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 272; --y: 589" data-ctl="pad" data-pad="8" aria-label="Pad 8"><span class="pad-label"></span></button>
+
+                <div class="p lbl" style="--x: 300; --y: 474">−</div>
+                <div class="p lbl" style="--x: 300; --y: 532">0</div>
+                <div class="p lbl" style="--x: 300; --y: 590">+</div>
+                <div class="p ticks" style="--x: 325; --y: 532; --w: 36; --h: 117.2; --step: 9.667"></div>
+                <div class="p slot" style="--x: 325; --y: 531.5; --w: 6; --h: 129"></div>
+                <div class="p fader-knob" style="--x: 325; --y: 530.5; --w: 32; --h: 35"></div>
+                <div class="p hot-area" data-ctl="tempo" aria-label="TEMPO" style="--x: 325; --y: 531.5; --w: 42; --h: 136"></div>
+                <div class="p lbl" style="--x: 325; --y: 611">TEMPO</div>
+            </div>
+
+            <!-- 中央ミキサー -->
+            <div class="p lbl" style="--x: 449; --y: 143">LOAD</div>
+            <button class="p load-btn" data-ctl="load" data-deck="1" style="--x: 448.5; --y: 155.5" aria-label="LOAD 1"></button>
+            <div class="p tag" style="--x: 449; --y: 169; --w: 20; --h: 8">⤢</div>
+            <div class="p knob browse" data-ctl="browse" style="--x: 512; --y: 148; --r: 17" aria-label="BROWSE"></div>
+            <div class="p tag" style="--x: 511.5; --y: 173; --w: 21; --h: 6">BACK</div>
+            <div class="p lbl" style="--x: 574; --y: 143">LOAD</div>
+            <button class="p load-btn" data-ctl="load" data-deck="2" style="--x: 574.5; --y: 155.5" aria-label="LOAD 2"></button>
+            <div class="p tag" style="--x: 574; --y: 169; --w: 20; --h: 6">VIEW</div>
+
+            <!-- 左カラム -->
+            <div class="p lbl xs brand" style="--x: 401; --y: 186">PERFORMANCE</div>
+            <div class="p lbl xs brand" style="--x: 401; --y: 192">DJ CONTROLLER</div>
+            <div class="p brand model" style="--x: 401; --y: 203">DDJ-FLX4</div>
+            <div class="p brand rekordbox" style="--x: 401; --y: 222">
+                <svg viewBox="-4 -4 8 8"><circle r="3.2" fill="none" stroke="#9a9a9a" stroke-width="0.9"/><circle r="1.2" fill="#9a9a9a"/></svg>rekordbox
+            </div>
+            <div class="p brand serato" style="--x: 401; --y: 238">serato</div>
+
+            <div class="p lbl" style="--x: 401; --y: 266">MIC LEVEL</div>
+            <svg class="p scale" style="--x: 401; --y: 290"><use href="#ticks"/></svg>
+            <div class="p knob" style="--x: 401; --y: 290; --r: 13" data-ctl="mic" aria-label="MIC LEVEL"></div>
+            <div class="p lbl s" style="--x: 386; --y: 308">−∞</div>
+            <div class="p lbl s" style="--x: 415; --y: 308">0</div>
+
+            <div class="link dash" style="--x1: 420; --x2: 452; --y: 385"></div>
+            <button class="p btn-ring" data-ctl="smartcfx" aria-label="SMART CFX" style="--x: 401; --y: 385; --d: 19">SMART<br>CFX</button>
+            <div class="p tag" style="--x: 401.5; --y: 405; --w: 27">FX SELECT</div>
+
+            <div class="p lbl" style="--x: 401; --y: 418"><svg width="6" height="6"><use href="#headphones"/></svg> MIX</div>
+            <div class="p cue-line" style="--x: 401; --y: 425.5; --w: 1"></div>
+            <svg class="p scale" style="--x: 401; --y: 443"><use href="#ticks"/></svg>
+            <div class="p knob" style="--x: 401; --y: 443; --r: 12" data-ctl="hpmix" aria-label="HEADPHONES MIX"></div>
+            <div class="p lbl xs" style="--x: 385; --y: 461">CUE</div>
+            <div class="p lbl xs" style="--x: 418; --y: 461">MST</div>
+
+            <div class="p lbl" style="--x: 401; --y: 473"><svg width="6" height="6"><use href="#headphones"/></svg> LEVEL</div>
+            <svg class="p scale" style="--x: 401; --y: 492"><use href="#ticks"/></svg>
+            <div class="p knob" style="--x: 401; --y: 492; --r: 12" data-ctl="hplevel" aria-label="HEADPHONES LEVEL"></div>
+            <div class="p lbl s" style="--x: 385; --y: 511">−∞</div>
+            <div class="p lbl s" style="--x: 415; --y: 511">0</div>
+
+            <button class="p btn-ring" data-ctl="smartfader" aria-label="SMART FADER" style="--x: 401; --y: 548; --d: 19">SMART<br>FADER</button>
+
+            <div class="p divider" style="--x: 437.5; --y: 377.5"></div>
+            <div class="p divider" style="--x: 586.5; --y: 377.5"></div>
+
+            <!-- チャンネル 1 -->
+            <div class="p lbl" style="--x: 474; --y: 177">TRIM</div>
+            <svg class="p scale" style="--x: 474; --y: 193"><use href="#ticks"/></svg>
+            <div class="p knob" style="--x: 474; --y: 193; --r: 12" data-ctl="trim" data-ch="1" aria-label="TRIM 1"></div>
+            <div class="p lbl s" style="--x: 461; --y: 211">−∞</div>
+            <div class="p lbl s" style="--x: 487; --y: 211">+9</div>
+
+            <div class="p lbl" style="--x: 474; --y: 219">HI</div>
+            <svg class="p scale" style="--x: 474; --y: 242"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 474; --y: 242; --r: 13" data-ctl="eq" data-ch="1" aria-label="HI 1"></div>
+            <div class="p lbl s" style="--x: 456; --y: 261">−26</div>
+            <div class="p lbl s" style="--x: 489.5; --y: 261">+6</div>
+
+            <div class="p lbl" style="--x: 474; --y: 266">MID</div>
+            <svg class="p scale" style="--x: 474; --y: 290"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 474; --y: 290; --r: 13" data-ctl="eq" data-ch="1" aria-label="MID 1"></div>
+            <div class="p lbl s" style="--x: 456; --y: 308">−26</div>
+            <div class="p lbl s" style="--x: 489.5; --y: 308">+6</div>
+
+            <div class="p lbl" style="--x: 474; --y: 314">LOW</div>
+            <svg class="p scale" style="--x: 474; --y: 337"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 474; --y: 337; --r: 13" data-ctl="eq" data-ch="1" aria-label="LOW 1"></div>
+            <div class="p lbl s" style="--x: 456; --y: 355">−26</div>
+            <div class="p lbl s" style="--x: 489.5; --y: 355">+6</div>
+
+            <div class="p lbl" style="--x: 474; --y: 363">CFX</div>
+            <svg class="p scale" style="--x: 474; --y: 385"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 474; --y: 385; --r: 13" data-ctl="cfx" data-ch="1" aria-label="CFX 1"></div>
+            <div class="p lbl xs" style="--x: 456; --y: 406">LOW</div>
+            <div class="p lbl xs" style="--x: 488; --y: 406">HI</div>
+
+            <button class="p cue-btn" data-ctl="chcue" data-ch="1" aria-label="ヘッドホン CUE 1" style="--x: 473; --y: 433">CUE</button>
+            <div class="p lbl num" style="--x: 473; --y: 452">1</div>
+            <div class="p ticks" style="--x: 473.5; --y: 511.5; --w: 45; --h: 76.6; --step: 7.5"></div>
+            <div class="p slot" style="--x: 473; --y: 511; --w: 4; --h: 88"></div>
+            <div class="p fader-knob" style="--x: 473; --y: 511; --w: 43; --h: 16"></div>
+            <div class="p hot-area" data-ctl="chfader" data-ch="1" aria-label="チャンネルフェーダー 1" style="--x: 473.5; --y: 511; --w: 50; --h: 94"></div>
+
+            <!-- メーター -->
+            <svg class="p" style="--x: 512; --y: 210" width="5" height="7" viewBox="-2.5 -3.5 5 7"><path class="icon" d="M-1.6-1.4L1.6 1.4L0 2.9V-2.9L1.6-1.4L-1.6 1.4" stroke-width="0.7"/></svg>
+            <div class="p lbl xs" style="--x: 512; --y: 220">MIDI</div>
+            <div class="p midi-led" style="--x: 512; --y: 227.5"></div>
+            <div class="p hot-area" data-ctl="midi" aria-label="Bluetooth MIDI インジケーター" style="--x: 512; --y: 218; --w: 16; --h: 26"></div>
+            <div class="p seg red" style="--x: 503.5; --y: 258"></div>
+            <div class="p seg amber" style="--x: 503.5; --y: 274.5"></div>
+            <div class="p seg amber" style="--x: 503.5; --y: 291"></div>
+            <div class="p seg green" style="--x: 503.5; --y: 307.5"></div>
+            <div class="p seg green" style="--x: 503.5; --y: 324"></div>
+            <div class="p seg red" style="--x: 520.5; --y: 258"></div>
+            <div class="p seg amber" style="--x: 520.5; --y: 274.5"></div>
+            <div class="p seg amber" style="--x: 520.5; --y: 291"></div>
+            <div class="p seg green" style="--x: 520.5; --y: 307.5"></div>
+            <div class="p seg green" style="--x: 520.5; --y: 324"></div>
+            <div class="link dash" style="--x1: 495; --x2: 530; --y: 385"></div>
+            <div class="p hot-area" data-ctl="meter" aria-label="チャンネルレベルインジケーター" style="--x: 512; --y: 291; --w: 26; --h: 82"></div>
+
+            <!-- チャンネル 2 -->
+            <div class="p lbl" style="--x: 551; --y: 177">TRIM</div>
+            <svg class="p scale" style="--x: 551; --y: 193"><use href="#ticks"/></svg>
+            <div class="p knob" style="--x: 551; --y: 193; --r: 12" data-ctl="trim" data-ch="2" aria-label="TRIM 2"></div>
+            <div class="p lbl s" style="--x: 538; --y: 211">−∞</div>
+            <div class="p lbl s" style="--x: 564; --y: 211">+9</div>
+
+            <div class="p lbl" style="--x: 551; --y: 219">HI</div>
+            <svg class="p scale" style="--x: 551; --y: 242"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 551; --y: 242; --r: 13" data-ctl="eq" data-ch="2" aria-label="HI 2"></div>
+            <div class="p lbl s" style="--x: 533; --y: 261">−26</div>
+            <div class="p lbl s" style="--x: 566.5; --y: 261">+6</div>
+
+            <div class="p lbl" style="--x: 551; --y: 266">MID</div>
+            <svg class="p scale" style="--x: 551; --y: 290"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 551; --y: 290; --r: 13" data-ctl="eq" data-ch="2" aria-label="MID 2"></div>
+            <div class="p lbl s" style="--x: 533; --y: 308">−26</div>
+            <div class="p lbl s" style="--x: 566.5; --y: 308">+6</div>
+
+            <div class="p lbl" style="--x: 551; --y: 314">LOW</div>
+            <svg class="p scale" style="--x: 551; --y: 337"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 551; --y: 337; --r: 13" data-ctl="eq" data-ch="2" aria-label="LOW 2"></div>
+            <div class="p lbl s" style="--x: 533; --y: 355">−26</div>
+            <div class="p lbl s" style="--x: 566.5; --y: 355">+6</div>
+
+            <div class="p lbl" style="--x: 551; --y: 363">CFX</div>
+            <svg class="p scale" style="--x: 551; --y: 385"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 551; --y: 385; --r: 13" data-ctl="cfx" data-ch="2" aria-label="CFX 2"></div>
+            <div class="p lbl xs" style="--x: 533; --y: 406">LOW</div>
+            <div class="p lbl xs" style="--x: 565; --y: 406">HI</div>
+
+            <button class="p cue-btn" data-ctl="chcue" data-ch="2" aria-label="ヘッドホン CUE 2" style="--x: 550; --y: 433">CUE</button>
+            <div class="p lbl num" style="--x: 550; --y: 452">2</div>
+            <div class="p ticks" style="--x: 550.5; --y: 511.5; --w: 45; --h: 76.6; --step: 7.5"></div>
+            <div class="p slot" style="--x: 550; --y: 511; --w: 4; --h: 88"></div>
+            <div class="p fader-knob" style="--x: 550; --y: 511; --w: 43; --h: 16"></div>
+            <div class="p hot-area" data-ctl="chfader" data-ch="2" aria-label="チャンネルフェーダー 2" style="--x: 550.5; --y: 511; --w: 50; --h: 94"></div>
+
+            <!-- クロスフェーダー -->
+            <div class="p pioneer-logo" style="--x: 512; --y: 568">Pioneer DJ</div>
+            <div class="p guide" style="--x: 474.5; --y: 603"></div>
+            <div class="p guide" style="--x: 549.5; --y: 603"></div>
+            <div class="p slot" style="--x: 511.5; --y: 603.5; --w: 85; --h: 5"></div>
+            <div class="p xfader-knob" style="--x: 512; --y: 603.5"></div>
+            <div class="p hot-area" data-ctl="xfader" aria-label="クロスフェーダー" style="--x: 512; --y: 603.5; --w: 92; --h: 48"></div>
+
+            <!-- 右カラム -->
+            <div class="p lbl" style="--x: 621; --y: 172">MASTER LEVEL</div>
+            <svg class="p scale" style="--x: 622; --y: 194; width: 42px; height: 42px"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 622; --y: 194; --r: 14.5" data-ctl="master" aria-label="MASTER LEVEL"></div>
+            <div class="p lbl s" style="--x: 605; --y: 214">−∞</div>
+            <div class="p lbl s" style="--x: 640; --y: 214">0</div>
+            <div class="p cue-line" style="--x: 622; --y: 225"></div>
+            <button class="p cue-btn" data-ctl="mastercue" aria-label="ヘッドホン CUE（MASTER）" style="--x: 622; --y: 243">CUE</button>
+
+            <div class="p lbl l" style="--x: 622; --y: 291">BEAT FX</div>
+            <div class="p lbl s" style="--x: 614; --y: 323">1</div>
+            <div class="p lbl s" style="--x: 622; --y: 323">2</div>
+            <div class="p lbl s" style="--x: 634; --y: 323">1&amp;2</div>
+            <div class="p lbl xs" style="--x: 622; --y: 328.5; letter-spacing: 3.2px; text-indent: 3.2px">•••</div>
+            <div class="p beatfx-switch" data-ctl="fxch" aria-label="BEAT FX CH SELECT" style="--x: 622; --y: 338"></div>
+            <div class="p switch-mark" style="--x: 621; --y: 338"></div>
+
+            <div class="p lbl s" style="--x: 622; --y: 373">FX SELECT</div>
+            <button class="p dark-btn" style="--x: 621.5; --y: 385; --w: 29; --h: 12" data-ctl="fxselect" aria-label="BEAT FX SELECT"><span class="tri-down"></span></button>
+            <div class="p tag" style="--x: 621.5; --y: 399; --w: 17; --h: 6">▲</div>
+
+            <div class="p lbl" style="--x: 622; --y: 421">BEAT</div>
+            <button class="p dark-btn" style="--x: 607.5; --y: 433.5; --w: 19; --h: 13" data-ctl="beatL" aria-label="BEAT ◀"><span class="tri left"></span></button>
+            <button class="p dark-btn" style="--x: 635.5; --y: 433.5; --w: 19; --h: 13" data-ctl="beatR" aria-label="BEAT ▶"><span class="tri right"></span></button>
+            <div class="p tag" style="--x: 607.5; --y: 446; --w: 17">AUTO</div>
+            <div class="p tag" style="--x: 635.5; --y: 446; --w: 17">TAP</div>
+
+            <div class="p lbl" style="--x: 622; --y: 469">LEVEL / DEPTH</div>
+            <svg class="p scale" style="--x: 622; --y: 492; width: 41px; height: 41px"><use href="#arc"/></svg>
+            <div class="p knob" style="--x: 622; --y: 492; --r: 14" data-ctl="depth" aria-label="LEVEL/DEPTH"></div>
+            <div class="p lbl xs" style="--x: 604; --y: 511">MIN</div>
+            <div class="p lbl xs" style="--x: 641; --y: 511">MAX</div>
+
+            <div class="p lbl" style="--x: 622; --y: 527">ON / OFF</div>
+            <button class="p btn-orange soft" style="--x: 622; --y: 548; --d: 25" data-ctl="fxon" aria-label="BEAT FX ON/OFF"></button>
+            <div class="p tag" style="--x: 622; --y: 572.5; --w: 36">RELEASE FX</div>
+
+            <!-- 右デッキ（左デッキと同じ構成） -->
+            <div class="deck right">
+                <div class="p lbl" style="--x: 90; --y: 152">IN</div>
+                <div class="p lbl" style="--x: 139; --y: 152">OUT</div>
+                <div class="p lbl" style="--x: 188.5; --y: 156">4 BEAT/EXIT</div>
+                <div class="p lbl" style="--x: 259; --y: 156">CUE/LOOP</div>
+                <div class="p lbl" style="--x: 258.5; --y: 166">CALL</div>
+                <div class="p lbl" style="--x: 326; --y: 156">− MASTER</div>
+
+                <div class="link" style="--x1: 106; --x2: 124; --y: 174.5"></div>
+                <div class="link" style="--x1: 155; --x2: 177; --y: 174.5"></div>
+                <div class="link" style="--x1: 247; --x2: 270; --y: 174.5"></div>
+
+                <button class="p btn-orange" data-ctl="in" style="--x: 90.5; --y: 173.5; --d: 25" aria-label="IN"></button>
+                <button class="p btn-orange" data-ctl="out" style="--x: 139.5; --y: 173.5; --d: 25" aria-label="OUT"></button>
+                <button class="p btn-black" data-ctl="beat4" style="--x: 189; --y: 174; --d: 16" aria-label="4 BEAT/EXIT"></button>
+                <button class="p btn-black" data-ctl="callL" style="--x: 238; --y: 175; --d: 15" aria-label="CUE/LOOP CALL ◀"><span class="tri left"></span></button>
+                <button class="p btn-black" data-ctl="callR" style="--x: 279; --y: 175; --d: 15" aria-label="CUE/LOOP CALL ▶"><span class="tri right"></span></button>
+                <button class="p btn-ring" data-ctl="sync" aria-label="BEAT SYNC" style="--x: 325.5; --y: 175; --d: 20">BEAT<br>SYNC</button>
+
+                <div class="p tag fill" style="--x: 90; --y: 199.5; --w: 19">IN ADJ</div>
+                <div class="p tag fill" style="--x: 139.5; --y: 199.5; --w: 25">OUT ADJ</div>
+                <div class="p tag" style="--x: 189; --y: 194.5; --w: 22">ACTIVE</div>
+                <div class="p lbl xs" style="--x: 238; --y: 187">1/2X</div>
+                <div class="p tag fill" style="--x: 258.5; --y: 186; --w: 19; --h: 6">LOOP</div>
+                <div class="p lbl xs" style="--x: 279; --y: 187">2X</div>
+                <div class="p tag" style="--x: 238; --y: 195; --w: 18">DEL</div>
+                <div class="p tag" style="--x: 279; --y: 195; --w: 22">MEMORY</div>
+                <div class="p tag" style="--x: 325; --y: 195; --w: 32">TEMPO RANGE</div>
+
+                <div class="p jog" data-ctl="jog" aria-label="ジョグ" style="--x: 207.5; --y: 338.5">
+                    <div class="jog-gap"></div>
+                    <div class="jog-dimples"></div>
+                    <div class="jog-ring"></div>
+                    <div class="jog-platter"></div>
+                    <div class="jog-center"></div>
+                    <div class="jog-ticks"></div>
+                    <div class="jog-hub"><svg><use href="#pioneer-mark"/></svg></div>
+                </div>
+                <div class="p tag search-tag" style="--x: 106; --y: 237; --w: 30; --h: 8">◂ SEARCH ▸</div>
+
+                <div class="p tag" style="--x: 90.5; --y: 455.5; --w: 23">SHIFT</div>
+                <button class="p shift-btn" data-ctl="shift" style="--x: 90; --y: 473.5" aria-label="SHIFT"></button>
+
+                <button class="p btn-big" data-ctl="cue" aria-label="CUE" style="--x: 90; --y: 526"><span class="cue-text">CUE</span></button>
+                <button class="p btn-big" data-ctl="play" style="--x: 90; --y: 580" aria-label="PLAY/PAUSE"><svg><use href="#play-pause"/></svg></button>
+                <div class="p lbl" style="--x: 90; --y: 611">PLAY / PAUSE</div>
+
+                <button class="p pad-mode-btn" data-ctl="mode-hotcue" style="--x: 143.5; --y: 503">HOT CUE</button>
+                <button class="p pad-mode-btn" data-ctl="mode-padfx" style="--x: 186.5; --y: 503">PAD FX1</button>
+                <button class="p pad-mode-btn" data-ctl="mode-beatjump" style="--x: 229; --y: 503">BEAT JUMP</button>
+                <button class="p pad-mode-btn" data-ctl="mode-sampler" style="--x: 272; --y: 503">SAMPLER</button>
+                <div class="p tag" style="--x: 143.5; --y: 515.5; --w: 31">KEYBOARD</div>
+                <div class="p tag" style="--x: 186.5; --y: 515.5; --w: 31">PAD FX2</div>
+                <div class="p tag" style="--x: 229; --y: 515.5; --w: 31">BEAT LOOP</div>
+                <div class="p tag" style="--x: 272; --y: 515.5; --w: 31">KEY SHIFT</div>
+
+                <button class="p pad" style="--x: 143.5; --y: 546.5" data-ctl="pad" data-pad="1" aria-label="Pad 1"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 186.5; --y: 546.5" data-ctl="pad" data-pad="2" aria-label="Pad 2"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 229; --y: 546.5" data-ctl="pad" data-pad="3" aria-label="Pad 3"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 272; --y: 546.5" data-ctl="pad" data-pad="4" aria-label="Pad 4"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 143.5; --y: 589" data-ctl="pad" data-pad="5" aria-label="Pad 5"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 186.5; --y: 589" data-ctl="pad" data-pad="6" aria-label="Pad 6"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 229; --y: 589" data-ctl="pad" data-pad="7" aria-label="Pad 7"><span class="pad-label"></span></button>
+                <button class="p pad" style="--x: 272; --y: 589" data-ctl="pad" data-pad="8" aria-label="Pad 8"><span class="pad-label"></span></button>
+
+                <div class="p lbl" style="--x: 300; --y: 474">−</div>
+                <div class="p lbl" style="--x: 300; --y: 532">0</div>
+                <div class="p lbl" style="--x: 300; --y: 590">+</div>
+                <div class="p ticks" style="--x: 325; --y: 532; --w: 36; --h: 117.2; --step: 9.667"></div>
+                <div class="p slot" style="--x: 325; --y: 531.5; --w: 6; --h: 129"></div>
+                <div class="p fader-knob" style="--x: 325; --y: 530.5; --w: 32; --h: 35"></div>
+                <div class="p hot-area" data-ctl="tempo" aria-label="TEMPO" style="--x: 325; --y: 531.5; --w: 42; --h: 136"></div>
+                <div class="p lbl" style="--x: 325; --y: 611">TEMPO</div>
+            </div>
+        </div>
+    </div>
+            </div>
+            <p class="hint">ボタンやつまみをクリックすると、その説明が表示されます。SHIFT を押した状態（キーボードの Shift キーでも可）でクリックすると SHIFT 機能を確認できます。</p>
+        </section>
+
+        <aside class="panel">
+            <nav class="tabs" role="tablist">
+                <button type="button" role="tab" data-tab="detail" aria-selected="true">説明</button>
+                <button type="button" role="tab" data-tab="guide" aria-selected="false">操作ガイド</button>
+                <button type="button" role="tab" data-tab="index" aria-selected="false">一覧</button>
+            </nav>
+            <div class="tab-body" data-body="detail"></div>
+            <div class="tab-body" data-body="guide" hidden></div>
+            <div class="tab-body" data-body="index" hidden></div>
+            <p class="source">内容は取扱説明書（DRJ1092-A）をもとに要約しています。ページ番号は取扱説明書のものです。</p>
+        </aside>
+    </main>
+
+    <script src="../js/manual-data.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
