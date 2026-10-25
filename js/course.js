@@ -51,6 +51,7 @@ const COURSE = [
             { id: 'pads', title: 'パッドを使ったテクニック', min: 15, summary: 'ホットキュー、PAD FX、サンプラーで曲に変化をつける。' },
             { id: 'rb-features', title: 'rekordbox の演奏機能', min: 25, summary: 'サンプラーデッキ、シーケンサー、STEMS、MIX POINT LINK など、rekordbox ならではの機能。' },
             { id: 'set', title: '選曲とセットの組み立て', min: 20, summary: '次の曲の選び方と、30 分〜1 時間のセットの流れの作り方。' },
+            { id: 'anchor-set', title: '1 曲を軸にミニセットを組む', min: 25, summary: '必ずかけたい 1 曲を決め、前後の曲を選んで 3〜4 曲のミニセットを組み、録音する。' },
             { id: 'rb-export', title: 'クラブの機材で DJ する', min: 20, summary: 'EXPORT モードで USB メモリーに曲を書き出したり、PRO DJ LINK でつないだりして、CDJ などで使う。' },
             { id: 'practice', title: '練習のしかたと次のステップ', min: 15, summary: '毎日の練習メニュー、録音して聴き返す方法、よくある失敗。' },
         ],
