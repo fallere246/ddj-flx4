@@ -376,7 +376,11 @@ a.ctl:hover { background: var(--accent); color: #fff; }
     border-radius: 4px;
     background: #fafaf8;
     font-size: 0.9em;
-    white-space: nowrap;
+    /* 項目名は途中で改行しない。1 行に収まらない長い名前だけ、中で折り返す */
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 /* ========== 用語のツールチップ ========== */

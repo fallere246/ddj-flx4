@@ -17,6 +17,7 @@
     line-height: 1.55;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     overflow: hidden;
+    overflow: clip; /* hidden だと中の position: sticky が効かないため */
 }
 
 .w:focus-visible { outline: 3px solid var(--w-accent); outline-offset: 2px; }
@@ -381,6 +382,8 @@
 .mission li.now { color: #fff; font-weight: 700; }
 .mission li.now::marker { color: var(--w-accent); }
 .mission li.done { color: var(--w-good); text-decoration: line-through; text-decoration-color: rgba(76,208,122,0.5); }
+.mission-count { font-family: var(--mono); font-size: 12px; color: var(--w-sub); }
+.mission-all { display: none; }
 
 /* ---- Camelot ホイール ---- */
 .kw-wrap { display: grid; place-items: center; }
@@ -401,6 +404,18 @@
 /* ---- 狭い幅 ---- */
 @container (max-width: 620px) {
     .dk-pair { grid-template-columns: 1fr; grid-template-areas: "a" "m" "b"; }
+    /* 操作しながら手順が読めるように、ミッションを画面の上に留め、今の手順だけを出す */
+    .mission-box { position: sticky; top: calc(var(--header-h, 56px) + 6px); z-index: 5; padding: 10px 12px; box-shadow: 0 6px 14px rgba(0,0,0,0.45); }
+    .mission-box .w-row { flex-wrap: wrap; gap: 6px 8px; }
+    .mission-box .w-row .w-btn { padding: 3px 8px; font-size: 11.5px; }
+    .mission-all { display: inline-flex; }
+    .mission-box:not(.open) .mission { list-style: none; padding-left: 0 !important; margin: 6px 0 2px !important; }
+    .mission-box:not(.open) .mission li:not(.now) { display: none; }
+    .mission-box:not(.open) .mission-msg:empty { display: none; }
+    /* ミキサーのつまみを 2 列に並べて、縦の長さを詰める */
+    .mx-ch { display: grid; grid-template-columns: repeat(2, auto); justify-items: center; gap: 6px 10px; }
+    .mx-ch > .w-btn, .mx-ch > .ch-fader { grid-column: 1 / -1; }
+    .w-jog { width: 92px; height: 92px; }
     .mc-beat { height: 52px; font-size: 22px; }
     .mc-stats { grid-template-columns: 1fr; }
 }

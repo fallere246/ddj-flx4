@@ -221,6 +221,94 @@ body {
     }
 }
 
+/* ---- 本体図の拡大と、説明のシート（スマホ） ---- */
+.zoom-bar,
+.sheet-toggle {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .zoom-bar {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 10px;
+        padding: 3px;
+        border-radius: 8px;
+        background: #e4e3df;
+    }
+
+    .zoom-bar button {
+        flex: 1;
+        min-height: 36px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--ui-sub);
+    }
+
+    .zoom-bar button[aria-pressed="true"] {
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+
+    .stage-scroll.zoomed {
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-behavior: smooth;
+        margin: 0 -16px;
+        padding: 0 16px;
+        scroll-padding: 0 16px;
+    }
+
+    /* 説明パネルは画面の下に留め、部品を選ぶと開く */
+    .layout {
+        padding-bottom: calc(52vh + 24px);
+    }
+
+    .panel {
+        position: fixed;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+        max-height: 52vh;
+        border-radius: 14px 14px 0 0;
+        border-bottom: 0;
+        box-shadow: 0 -6px 20px rgba(0,0,0,0.18);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .panel:not(.open) .tab-body,
+    .panel:not(.open) .source {
+        display: none;
+    }
+
+    .sheet-toggle {
+        display: block;
+        width: 100%;
+        padding: 8px 0 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--ui-sub);
+    }
+
+    .sheet-toggle::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 4px;
+        margin: 0 auto 6px;
+        border-radius: 2px;
+        background: #cfcecb;
+    }
+
+    .panel .source {
+        padding: 6px 20px;
+    }
+}
+
 @media (max-width: 600px) {
     .topbar,
     .layout {

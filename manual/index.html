@@ -51,6 +51,13 @@
 
     <main class="layout">
         <section class="viewer" aria-label="コントローラー">
+            <div class="zoom-bar" role="group" aria-label="本体図の表示範囲">
+                <button type="button" data-zoom="all" aria-pressed="true">全体</button>
+                <button type="button" data-zoom="left" aria-pressed="false">左デッキ</button>
+                <button type="button" data-zoom="mixer" aria-pressed="false">ミキサー</button>
+                <button type="button" data-zoom="right" aria-pressed="false">右デッキ</button>
+            </div>
+            <div class="stage-scroll">
             <div class="stage-box">
     <div class="stage">
         <div class="controller">
@@ -401,10 +408,12 @@
         </div>
     </div>
             </div>
+            </div>
             <p class="hint">ボタンやつまみをクリックすると、その説明が表示されます。SHIFT を押した状態（キーボードの Shift キーでも可）でクリックすると SHIFT 機能を確認できます。</p>
         </section>
 
         <aside class="panel">
+            <button class="sheet-toggle" type="button" aria-expanded="false">説明を開く</button>
             <nav class="tabs" role="tablist">
                 <button type="button" role="tab" data-tab="detail" aria-selected="true">説明</button>
                 <button type="button" role="tab" data-tab="guide" aria-selected="false">操作ガイド</button>

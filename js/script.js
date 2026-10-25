@@ -38,16 +38,72 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== 画面サイズに合わせて拡大縮小（?scale=1 で等倍固定） ==========
     const OVERHANG = 12; // 本体上辺からはみ出すジャックの分
     const fixedScale = parseFloat(new URLSearchParams(location.search).get('scale'));
+    // スマホでは全体だと部品が小さすぎるので、左デッキ・ミキサー・右デッキを拡大して見られるようにする
+    const narrow = () => matchMedia('(max-width: 700px)').matches;
+    const ZOOM_W = 400; // 拡大したときに画面の幅に収める、本体図の幅
+    const ZOOM_X = { left: 0, mixer: (931 - ZOOM_W) / 2, right: 931 - ZOOM_W };
+    const stageScroll = document.querySelector('.stage-scroll');
+    const zoomBtns = [...document.querySelectorAll('[data-zoom]')];
+    let zoom = 'all';
+    const zoomed = () => zoom !== 'all' && narrow() && !fixedScale;
     const fit = () => {
         const maxH = innerHeight - 140;
-        const scale = fixedScale || Math.max(Math.min(viewer.clientWidth / 931, maxH / (516 + OVERHANG)), 0.2);
+        const scale = fixedScale || (zoomed() ? viewer.clientWidth / ZOOM_W
+            : Math.max(Math.min(viewer.clientWidth / 931, maxH / (516 + OVERHANG)), 0.2));
         stage.style.setProperty('--scale', scale);
         stage.style.marginTop = `${OVERHANG * scale}px`;
         stageBox.style.width = `${931 * scale}px`;
         stageBox.style.height = `${(516 + OVERHANG) * scale}px`;
+        stageScroll.classList.toggle('zoomed', zoomed());
+        if (zoomed()) stageScroll.scrollLeft = ZOOM_X[zoom] * scale;
     };
+    const setZoom = z => {
+        zoom = z;
+        zoomBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.zoom === z)));
+        fit();
+    };
+    zoomBtns.forEach(b => b.addEventListener('click', () => setZoom(b.dataset.zoom)));
     fit();
     addEventListener('resize', fit);
+
+    // 拡大中に、画面の外にある部品が光ったら、その部品が見える範囲へ移る
+    // 部品が本体図のどの範囲（左デッキ・ミキサー・右デッキ）にあるか
+    const regionOf = el => {
+        const c = controller.getBoundingClientRect();
+        const r = el.getBoundingClientRect();
+        const x = ((r.left + r.right) / 2 - c.left) / (c.width / 931);
+        return x < 317 ? 'left' : x > 608 ? 'right' : 'mixer';
+    };
+    const reveal = el => {
+        if (!zoomed() || !el) return;
+        const box = stageScroll.getBoundingClientRect();
+        const r = el.getBoundingClientRect();
+        if (r.left >= box.left && r.right <= box.right) return;
+        setZoom(regionOf(el));
+    };
+
+    // スマホでは説明パネルを画面の下から出るシートにする
+    const panel = document.querySelector('.panel');
+    const sheetToggle = document.querySelector('.sheet-toggle');
+    const openSheet = open => {
+        panel.classList.toggle('open', open);
+        sheetToggle.setAttribute('aria-expanded', String(open));
+        sheetToggle.textContent = open ? '説明を閉じる' : '説明を開く';
+    };
+    sheetToggle.addEventListener('click', () => openSheet(!panel.classList.contains('open')));
+    // シートを開いたときに、選んだ部品がシートに隠れないようにページを動かす
+    const keepAboveSheet = el => {
+        if (!narrow() || !el || !panel.classList.contains('open')) return;
+        const r = el.getBoundingClientRect();
+        const top = panel.getBoundingClientRect().top;
+        if (r.bottom > top - 12) scrollBy({ top: r.bottom - top + 24, behavior: 'smooth' });
+        else if (r.top < 0) scrollBy({ top: r.top - 24, behavior: 'smooth' });
+    };
+    // 選んだ部品の説明を画面に入れる。1 カラム表示では説明パネルが図の下にあるので、そこまでスクロールする
+    const showPanel = smooth => {
+        if (narrow()) openSheet(true);
+        else if (matchMedia('(max-width: 1000px)').matches) panel.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+    };
 
     // ========== データの引き当て ==========
     const deckOf = el => {
@@ -347,10 +403,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             select(sel);
-            // 1 カラム表示では説明パネルが図の下にあるので、そこまでスクロールする
-            if (matchMedia('(max-width: 1000px)').matches) {
-                document.querySelector('.panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            showPanel(true);
+            keepAboveSheet(el);
         });
         el.addEventListener('keydown', e => {
             if (el.tagName !== 'BUTTON' && (e.key === 'Enter' || e.key === ' ')) {
@@ -381,9 +435,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.panel').addEventListener('click', e => {
         const t = e.target.closest('button');
         if (!t) return;
+        // 一覧や操作ガイドで選んだ部品が、拡大中の範囲の外なら移る
+        if (['pick', 'pickPad', 'setMode', 'guide', 'step', 'stepMove'].some(k => k in t.dataset)) {
+            requestAnimationFrame(() => {
+                const el = controller.querySelector('.is-guide') || controller.querySelector('.is-sel');
+                reveal(el);
+                keepAboveSheet(el);
+            });
+        }
         if (t.dataset.tab) {
             state.tab = t.dataset.tab;
             render();
+            if (narrow()) openSheet(true);
         } else if (t.dataset.setMode) {
             const deck = Number(t.dataset.deck) || 1;
             state.modes[deck] = t.dataset.setMode;
@@ -478,7 +541,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     render();
     // URL で部品を選んで開いたときも、1 カラム表示なら説明パネルを画面に入れる（クリック時と同じ条件）
-    if (state.sel && matchMedia('(max-width: 1000px)').matches) {
-        requestAnimationFrame(() => document.querySelector('.panel').scrollIntoView({ block: 'start' }));
+    if (state.sel) {
+        requestAnimationFrame(() => {
+            showPanel(false);
+            const el = hotspots.find(h => h.dataset.ctl === state.sel.id && (!state.sel.deck || !deckOf(h) || deckOf(h) === state.sel.deck));
+            // レッスンのリンクから開いたときは、スマホなら部品のある範囲を拡大する
+            if (el && narrow() && !fixedScale) setZoom(regionOf(el));
+            keepAboveSheet(el);
+        });
     }
 });

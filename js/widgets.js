@@ -1018,6 +1018,7 @@ const Widgets = (() => {
 
         // ---- ミッション ----
         let missionEl = null;
+        let missionCount = null;
         const steps = MISSIONS[root.dataset.mission] || null;
         let stepIdx = 0;
         let judgeMsg = '';
@@ -1040,7 +1041,15 @@ const Widgets = (() => {
         };
         if (steps) {
             missionEl = h('ol', { class: 'mission' }, steps.map(s => h('li', { text: s.text })));
-            body.append(h('div', { class: 'mission-box' }, h('div', { class: 'w-row' }, h('span', { class: 'w-label', text: 'ミッション' }), btn('最初からやり直す', { onClick: () => reset() })), missionEl, h('p', { class: 'w-msg mission-msg' })));
+            missionCount = h('span', { class: 'mission-count' });
+            // 狭い画面では今の手順だけを出す。「すべての手順」で全部を開く
+            const all = btn('すべての手順', { cls: 'mission-all', pressed: false, onClick: () => {
+                const open = !missionBox.classList.contains('open');
+                missionBox.classList.toggle('open', open);
+                all.setAttribute('aria-pressed', String(open));
+            } });
+            const missionBox = h('div', { class: 'mission-box' }, h('div', { class: 'w-row' }, h('span', { class: 'w-label', text: 'ミッション' }), missionCount, btn('最初からやり直す', { onClick: () => reset() }), all), missionEl, h('p', { class: 'w-msg mission-msg' }));
+            body.append(missionBox);
         }
         const reset = () => {
             [[A, a], [B, b]].forEach(([d, spec]) => { d.pause(); d.exitLoop(); d.setTempo(0); d.setNudge(0); d.syncWith = null; const s = sectionBeat(d.track, spec.at); d.seek(s); d.cuePoint = s; });
@@ -1088,6 +1097,7 @@ const Widgets = (() => {
                         stepIdx++;
                     }
                     [...missionEl.children].forEach((li, i) => { li.classList.toggle('done', i < stepIdx); li.classList.toggle('now', i === stepIdx); });
+                    missionCount.textContent = stepIdx >= steps.length ? '完了' : `${stepIdx + 1} / ${steps.length}`;
                     const m = body.querySelector('.mission-msg');
                     m.textContent = stepIdx >= steps.length ? `ミッション完了！ ${judgeMsg}` : judgeMsg;
                 }
